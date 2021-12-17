@@ -1,8 +1,0 @@
-﻿  LoginUI.cpp
-F:\College-HCMUS\demo_oop\demo_oop\Database.h(22,3): warning C4018: '<': signed/unsigned mismatch
-F:\College-HCMUS\demo_oop\demo_oop\LoginUI.cpp(7,33): warning C4829: Possibly incorrect parameters to function main. Consider 'int main(Platform::Array<Platform::String^>^ argv)'
-  MainMenuUI.cpp
-F:\College-HCMUS\demo_oop\demo_oop\Database.h(22,3): warning C4018: '<': signed/unsigned mismatch
-  Generating Code...
-  Database.obj : MSIL module encountered; incremental linking is disabled for MSIL; performing full link
-  demo_oop.vcxproj -> F:\College-HCMUS\demo_oop\Debug\demo_oop.exe

@@ -7,3 +7,5 @@ src/.vs
 *.sln
 src/Debug
 */Release/*
+src/demo_oop/Release
+src/demo_oop/Debug
