@@ -3,3 +3,6 @@
 *.user
 *.vcxproj
 *vcxproj*
+src/.vs
+*.sln
+src/Debug

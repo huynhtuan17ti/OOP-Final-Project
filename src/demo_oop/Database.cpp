@@ -23,7 +23,6 @@ QuestionData::QuestionData() {
 		}
 		int nResult;
 		inp >> nResult;
-		std::cout << nResult << '\n';
 		for (int j = 0; j < nResult; j++) {
 			int _result;
 			inp >> _result;
