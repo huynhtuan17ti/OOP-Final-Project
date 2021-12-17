@@ -1,9 +1,8 @@
 # OOP-Final-Project
 Đồ án OOP cuối kì
 
-
-### Format for data
-Tham khảo data của [A1](A1/data.txt)
+### Format of data
+Tham khảo data của [A1](src/demo_oop/A1/data.txt)
 ```python
 N # số câu hỏi
 description1 # nội dung câu hỏi thứ 1
@@ -21,3 +20,17 @@ nameImage # tên của ảnh (nếu có) không thì để None
 description2 # nội dung câu hỏi thứ 2
 ....
 ```
+
+### Link to diagram
+[online visual paradigm](https://online.visual-paradigm.com/share.jsp?id=313732383838342d31)
+
+### UI/UX
+#### Menu User Interface
+![](images/MenuUI.png)
+![](images/MenuUI_2.png)
+
+#### Question database User Interface
+![](images/DataUI.png)
+
+#### Test exem user Interface
+![](images/ExamUI.png)
