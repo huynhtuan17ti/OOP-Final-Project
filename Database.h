@@ -4,11 +4,13 @@
 #include <fstream>
 #include <iostream>
 #include <assert.h>
+#include <codecvt>
+#include <locale>
 #include "Question.h"
 
 class QuestionData{
 private:
-	const char* dataPath = "A1/data_no_accent.txt";
+	const char* dataPath = "A1/data.txt";
 private:
 	std::vector <Question> questions;
 public:

@@ -4,30 +4,30 @@
 
 class Question {
 private:
-	std::string question;
-	std::vector <std::string> answers;
+	std::wstring question;
+	std::vector <std::wstring> answers;
 	std::vector <int> result;
-	std::string pathImage;
+	std::wstring pathImage;
 
 public:
 	Question(){}
-	void setQuestion(std::string srcQuestion) {
+	void setQuestion(std::wstring srcQuestion) {
 		question = srcQuestion;
 	}
-	void setPathImage(std::string srcPathImage) {
+	void setPathImage(std::wstring srcPathImage) {
 		pathImage = srcPathImage;
 	}
-	void addAnswer(std::string srcAnswer) {
+	void addAnswer(std::wstring srcAnswer) {
 		answers.push_back(srcAnswer);
 	}
 	void addResult(int srcResult) {
 		result.push_back(srcResult);
 	}
 public:
-	std::string getDescription() {
+	std::wstring getDescription() {
 		return question;
 	}
-	std::vector <std::string> getAnswers() {
+	std::vector <std::wstring> getAnswers() {
 		return answers;
 	}
 	std::vector <int> getResult() {
@@ -39,7 +39,7 @@ public:
 	int getNumberResult() {
 		return result.size();
 	}
-	std::string getImagePath() {
+	std::wstring getImagePath() {
 		return pathImage;
 	}
 };

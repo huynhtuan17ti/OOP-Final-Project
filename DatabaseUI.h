@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "Database.h"
 
 namespace demooop {
@@ -109,13 +109,13 @@ namespace demooop {
 			// 
 			// backButton
 			// 
-			this->backButton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->backButton->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->backButton->Location = System::Drawing::Point(0, 1);
 			this->backButton->Name = L"backButton";
-			this->backButton->Size = System::Drawing::Size(156, 28);
+			this->backButton->Size = System::Drawing::Size(113, 28);
 			this->backButton->TabIndex = 0;
-			this->backButton->Text = L"Tro ve trang truoc";
+			this->backButton->Text = L"Trang trước";
 			this->backButton->UseVisualStyleBackColor = true;
 			this->backButton->Click += gcnew System::EventHandler(this, &DatabaseUI::backButton_Click);
 			// 
@@ -132,26 +132,26 @@ namespace demooop {
 			// rightButton
 			// 
 			this->rightButton->Dock = System::Windows::Forms::DockStyle::Right;
-			this->rightButton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->rightButton->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->rightButton->Location = System::Drawing::Point(787, 0);
 			this->rightButton->Name = L"rightButton";
 			this->rightButton->Size = System::Drawing::Size(113, 100);
 			this->rightButton->TabIndex = 1;
-			this->rightButton->Text = L"Cau hoi tiep theo";
+			this->rightButton->Text = L"Câu hỏi tiếp theo";
 			this->rightButton->UseVisualStyleBackColor = true;
 			this->rightButton->Click += gcnew System::EventHandler(this, &DatabaseUI::rightButton_Click);
 			// 
 			// leftButton
 			// 
 			this->leftButton->Dock = System::Windows::Forms::DockStyle::Left;
-			this->leftButton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->leftButton->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->leftButton->Location = System::Drawing::Point(0, 0);
 			this->leftButton->Name = L"leftButton";
 			this->leftButton->Size = System::Drawing::Size(113, 100);
 			this->leftButton->TabIndex = 0;
-			this->leftButton->Text = L"Cau hoi truoc";
+			this->leftButton->Text = L"Câu hỏi trước";
 			this->leftButton->UseVisualStyleBackColor = true;
 			this->leftButton->Click += gcnew System::EventHandler(this, &DatabaseUI::leftButton_Click);
 			// 
@@ -169,35 +169,37 @@ namespace demooop {
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(3, 16);
+			this->label1->Location = System::Drawing::Point(3, 13);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(99, 31);
+			this->label1->Size = System::Drawing::Size(93, 29);
 			this->label1->TabIndex = 4;
-			this->label1->Text = L"Dap An";
+			this->label1->Text = L"Đáp án";
+			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(3, 14);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(100, 31);
+			this->label2->Size = System::Drawing::Size(102, 29);
 			this->label2->TabIndex = 5;
-			this->label2->Text = L"Cau hoi";
+			this->label2->Text = L"Câu hỏi";
+			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// qDescription
 			// 
 			this->qDescription->AutoSize = true;
-			this->qDescription->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->qDescription->Font = (gcnew System::Drawing::Font(L"Arial", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->qDescription->Location = System::Drawing::Point(13, 35);
 			this->qDescription->Name = L"qDescription";
-			this->qDescription->Size = System::Drawing::Size(89, 16);
+			this->qDescription->Size = System::Drawing::Size(90, 16);
 			this->qDescription->TabIndex = 6;
-			this->qDescription->Text = L"Cau hoi o day";
+			this->qDescription->Text = L"Câu hỏi ở đây";
 			// 
 			// pictureBox
 			// 
@@ -282,7 +284,7 @@ namespace demooop {
 	
 	private: System::Void DatabaseUI_Load(System::Object^ sender, System::EventArgs^ e) {
 		Question q = questionData->getQuestion(curIndexQuesion);
-		std::string dg = q.getDescription();
+		std::wstring dg = q.getDescription();
 		this->qDescription->Text = gcnew String(fitStringLine(q.getDescription(), maxQueStringOnLine).data());
 		
 		if (firstLoad) {
@@ -293,7 +295,7 @@ namespace demooop {
 				answerUI[i] = gcnew Label();
 				answerUI[i]->AutoSize = true;
 				this->panel2->Controls->Add(answerUI[i]);
-				answerUI[i]->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				answerUI[i]->Font = (gcnew System::Drawing::Font(L"Arial", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				answerUI[i]->Location = System::Drawing::Point(xStartPoint, yStartPoint + i * rowRange);
 				answerUI[i]->Name = L"text";
@@ -302,10 +304,10 @@ namespace demooop {
 			}
 		}
 
-		std::vector <std::string> answers = q.getAnswers();
+		std::vector <std::wstring> answers = q.getAnswers();
 		for (int i = 0; i < maxNAnswer; i++) {
 			if (i < q.getNumberAnswer()) {
-				std::string curAns = std::to_string(i + 1) + ") " + answers[i];
+				std::wstring curAns = std::to_wstring(i + 1) + L") " + answers[i];
 				curAns = fitStringLine(curAns, maxAnsStringOnLine);
 				answerUI[i]->Text = gcnew String(curAns.data());
 				answerUI[i]->ForeColor = System::Drawing::Color::Red;
@@ -321,9 +323,10 @@ namespace demooop {
 			answerUI[id]->ForeColor = System::Drawing::Color::Green;
 		}
 
-		std::string questionPathImage = q.getImagePath();
-		if (questionPathImage != "None") {
-			std::string imagePath = "A1/image/" + questionPathImage;
+		std::wstring questionPathImage = q.getImagePath();
+		
+		if (questionPathImage != L"None") {
+			std::wstring imagePath = L"A1/image/" + questionPathImage;
 			pictureBox->Image = Image::FromFile(gcnew String(imagePath.data()));
 		}
 		else {
@@ -344,14 +347,14 @@ namespace demooop {
 	
 	// Utils goes here
 	private:
-		std::string fitStringLine(std::string s, int lineLimit) {
+		std::wstring fitStringLine(std::wstring s, int lineLimit) {
 			// find the nearest space symbol on the left and replace it by '\n'
 			int q = (int)s.size() / lineLimit;
 			for (int i = 1; i <= q; i++) {
 				int pos = lineLimit * i;
 				while (pos--)
-					if (s[pos] == ' ') break;
-				s.replace(pos, 1, "\n");
+					if (s[pos] == L' ') break;
+				s.replace(pos, 1, L"\n");
 			}
 			return s;
 		}

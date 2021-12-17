@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include "DatabaseUI.h"
 #include <list>
 
@@ -90,37 +90,37 @@ namespace demooop {
 			// 
 			// questionButton
 			// 
-			this->questionButton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->questionButton->Font = (gcnew System::Drawing::Font(L"Arial", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->questionButton->Location = System::Drawing::Point(0, 27);
 			this->questionButton->Name = L"questionButton";
 			this->questionButton->Size = System::Drawing::Size(300, 100);
 			this->questionButton->TabIndex = 0;
-			this->questionButton->Text = L"Bo cau hoi";
+			this->questionButton->Text = L"Bộ câu hỏi\r\n";
 			this->questionButton->UseVisualStyleBackColor = true;
 			this->questionButton->Click += gcnew System::EventHandler(this, &MainMenuUI::questionButton_Click);
 			// 
 			// testButton
 			// 
-			this->testButton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->testButton->Font = (gcnew System::Drawing::Font(L"Arial", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->testButton->Location = System::Drawing::Point(0, 153);
 			this->testButton->Name = L"testButton";
 			this->testButton->Size = System::Drawing::Size(300, 100);
 			this->testButton->TabIndex = 1;
-			this->testButton->Text = L"Thi thu";
+			this->testButton->Text = L"Thi thử";
 			this->testButton->UseVisualStyleBackColor = true;
 			this->testButton->Click += gcnew System::EventHandler(this, &MainMenuUI::testButton_Click);
 			// 
 			// helpButton
 			// 
-			this->helpButton->Font = (gcnew System::Drawing::Font(L"Microsoft Tai Le", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->helpButton->Font = (gcnew System::Drawing::Font(L"Arial", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->helpButton->Location = System::Drawing::Point(0, 280);
 			this->helpButton->Name = L"helpButton";
 			this->helpButton->Size = System::Drawing::Size(300, 100);
 			this->helpButton->TabIndex = 2;
-			this->helpButton->Text = L"Tro Giup";
+			this->helpButton->Text = L"Trợ giúp";
 			this->helpButton->UseVisualStyleBackColor = true;
 			this->helpButton->Click += gcnew System::EventHandler(this, &MainMenuUI::helpButton_Click);
 			// 
@@ -155,9 +155,9 @@ namespace demooop {
 			this->panelData->Controls->Add(this->buttonB1);
 			this->panelData->Controls->Add(this->buttonB2);
 			this->panelData->Controls->Add(this->butonA1);
-			this->panelData->Location = System::Drawing::Point(300, 80);
+			this->panelData->Location = System::Drawing::Point(303, 80);
 			this->panelData->Name = L"panelData";
-			this->panelData->Size = System::Drawing::Size(604, 673);
+			this->panelData->Size = System::Drawing::Size(601, 673);
 			this->panelData->TabIndex = 5;
 			// 
 			// buttonA2
