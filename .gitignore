@@ -6,3 +6,4 @@
 src/.vs
 *.sln
 src/Debug
+*/Release/*
