@@ -1,0 +1,811 @@
+100
+Khái niệm “phương tiện giao thông thô sơ đường bộ” được hiểu thế nào là đúng?
+3
+Gồm xe đạp kể cả xe đạp máy, xe đạp điện, xe xích lô, xe lăn dùng cho người khuyết tật, xe súc vật kéo và các loại xe tương tự.
+Gồm xe đạp kể cả xe đạp máy, xe đạp điện, xe gắn máy, xe cơ giới dùng cho người khuyết tật và xe máy chuyên dùng.
+Gồm xe ô tô, máy kéo, rơ moóc hoặc sơ mi rơ moóc được kéo bởi xe ô tô, máy kéo.
+1
+0
+None
+“Phương tiện tham gia giao thông đường bộ” gồm những loại nào?
+3
+Phương tiện giao thông cơ giới đường bộ.
+Phương tiện giao thông thô sơ đường bộ và xe máy chuyên dùng.
+Cả ý 1 và ý 2.
+1
+2
+None
+Trên đường có nhiều làn đường cho xe đi cùng chiều được phân biệt bằng vạch kẻ phân làn đường, người điều khiển phương tiện phải cho xe đi như thế nào?
+3
+Cho xe đi trên bất kỳ làn đường nào hoặc giữa 02 làn đường nếu không có xe phía trước; khi cần thiết phải chuyển làn đường, người lái xe phải quan sát xe phía trước để bảo đảm an toàn.
+Phải cho xe đi trong một làn đường và chỉ được chuyển làn đường ở những nơi cho phép; khi chuyển làn phải có tín hiệu báo trước và phải bảo đảm an toàn.
+Phải cho xe đi trong một làn đường, khi cần thiết phải chuyển làn đường, người lái xe phải quan sát xe phía trước để bảo đảm an toàn.
+1
+1
+None
+Khi tránh xe đi ngược chiều, các xe phải nhường đường như thế nào là đúng quy tắc giao thông?
+4
+Nơi đường hẹp chỉ đủ cho một xe chạy và có chỗ tránh xe thì xe nào ở gần chỗ tránh hơn phải vào vị trí tránh, nhường đường cho xe kia đi.
+Xe xuống dốc phải nhường đường cho xe đang lên dốc; xe nào có chướng ngại vật phía trước phải nhường đường cho xe không có chướng ngại vật đi trước.
+Xe lên dốc phải nhường đường cho xe xuống dốc; xe nào không có chướng ngại vật phía trước phải nhường đường cho xe có chướng ngại vật đi trước.
+Cả ý 1 và ý 2.
+1
+3
+None
+Tại nơi đường bộ giao nhau cùng mức với đường sắt chỉ có đèn tín hiệu hoặc chuông báo hiệu, khi đèn tín hiệu màu đỏ đã bật sáng hoặc có tiếng chuông báo hiệu, người tham gia giao thông phải dừng lại ngay và giữ khoảng cách tối thiểu bao nhiêu mét tính từ ray gần nhất?
+3
+5 mét.
+3 mét.
+4 mét.
+1
+0
+None
+Người điều khiển phương tiện tham gia giao thông trong hầm đường bộ ngoài việc phải tuân thủ các quy tắc giao thông còn phải thực hiện những quy định nào dưới đây?
+3
+Xe cơ giới, xe máy chuyên dùng phải bật đèn; xe thô sơ phải bật đèn hoặc có vật phát sáng báo hiệu; chỉ được dừng xe, đỗ xe ở nơi quy định
+Xe cơ giới phải bật đèn ngay cả khi đường hầm sáng; phải cho xe chạy trên một làn đường và chỉ chuyển làn ở nơi được phép; được quay đầu xe, lùi xe khi cần thiết.
+Xe máy chuyên dùng phải bật đèn ngay cả khi đường hầm sáng; phải cho xe chạy trên một làn đường và chỉ chuyển làn ở nơi được phép; được quay đầu xe, lùi xe khi cần thiết.
+1
+0
+None
+Trên đoạn đường hai chiều không có giải phân cách giữa, người lái xe không được vượt xe khác trong các trường hợp nào dưới đây?
+4
+Xe bị vượt bất ngờ tăng tốc độ và cố tình không nhường đường.
+Xe bị vượt giảm tốc độ và nhường đường.
+Phát hiện có xe đi ngược chiều.
+Cả ý 1 và ý 3.
+1
+3
+None
+Trên đường bộ ngoài khu vực đông dân cư, đường hai chiều không có dải phân cách giữa; đường một chiều có một làn xe cơ giới trừ đường cao tốc, loại xe nào tham gia giao thông với tốc độ tối đa cho phép là 60 km/h?
+3
+Ô tô kéo rơ moóc, ô tô kéo xe khác, xe gắn máy.
+Ô tô chở người trên 30 chỗ trừ ô tô buýt, ô tô tải có trọng tải trên 3.500 kg.
+Ô tô buýt, ô tô đầu kéo kéo sơ mi rơ moóc, xe mô tô, ô tô chuyên dùng trừ ô tô trộn vữa, ô tô trộn bê tông.
+1
+2
+None
+Để báo hiệu cho xe phía trước biết xe mô tô của bạn muốn vượt, bạn phải có tín hiệu như thế nào dưới đây?
+3
+Ra hiệu bằng tay rồi cho xe vượt qua.
+Tăng ga mạnh để gây sự chú ý rồi cho xe vượt qua.
+Bạn phải có báo hiệu bằng đèn hoặc còi.
+1
+2
+None
+Hành vi nào dưới đây bị nghiêm cấm?
+4
+Đỗ xe trên đường phố.
+Sử dụng xe đạp đi trên các tuyến quốc lộ có tốc độ cao.
+Làm hỏng cố ý cọc tiêu, gương cầu, dải phân cách.
+Sử dụng còi và quay đầu xe trong khu dân cư.
+1
+2
+None
+Hành khách có các quyền gì khi đi trên xe ô tô vận tải khách theo tuyến cố định?
+2
+Được vận chuyển theo đúng hợp đồng vận tải, cam kết của người kinh doanh về chất lượng vận tải; được miễn cước hành lý với trọng lượng không quá 20kg và với kích thước phù hợp với thiết kế của xe; được từ chối chuyến đi trước khi phương tiện khởi hành và được trả lại tiền vé theo quy định của Bộ Giao thông vận tải.
+Được vận chuyển theo hợp đồng vận tải, cam kết của người kinh doanh về vận tải; được miễn cước hành lý với trọng lượng không quá 50 kg và với kích thước không quá cồng kềnh; được từ chối chuyến đi trước khi phương tiện khởi hành và được trả lại tiền vé.
+1
+0
+None
+Việc vận chuyển hàng hóa bằng xe ô tô phải chấp hành các quy định nào dưới đây?
+3
+Hàng vận chuyển trên xe phải được xếp đặt gọn gàng và chằng buộc chắc chắn.
+Khi vận chuyển hàng rời phải che đậy, không để rơi vãi.
+Cả ý 1 và ý 2.
+1
+2
+None
+Người hành nghề lái xe khi thực hiện tốt việc rèn luyện, nâng cao trách nhiệm, đạo đức nghề nghiệp sẽ thu được kết quả như thế nào?
+3
+Được khách hàng, xã hội tôn trọng; được đồng nghiệp quý mến, giúp đỡ; được doanh nghiệp tin dùng và đóng góp nhiều cho xã hội.
+Thu hút được khách hàng, góp phần quan trọng trong xây dựng thương hiệu, kinh doanh có hiệu quả cao.
+Cả ý 1 và ý 2.
+1
+2
+None
+Khi vào số để khởi hành xe ô tô có số tự động, người lái xe phải thực hiện các thao tác nào để đảm bảo an toàn?
+2
+Đạp bàn đạp phanh chân hết hành trình, vào số và nhả phanh tay nếu có, kiểm tra lại xem có bị nhầm số không rồi mới cho xe lăn bánh.
+Đạp bàn đạp để tăng ga với mức độ phù hợp, vào số và kiểm tra lại xem có bị nhầm số không rồi mới cho xe lăn bánh.
+1
+0
+None
+Niên hạn sử dụng của ô tô chở người trên 9 chỗ ngồi tính bắt đầu từ năm sản xuất là bao nhiêu năm?
+3
+5 năm.
+20 năm.
+25 năm.
+1
+1
+None
+Biển nào dưới đây xe gắn máy được phép đi vào?
+3
+Biển 1.
+Biển 2.
+Cả hai biển.
+1
+2
+16.jpg
+Số 50 trên biển báo dưới đây có ý nghĩa gì?
+2
+Tốc độ tối đa các xe cơ giới được phép chạy.
+Tốc độ tối thiểu các xe cơ giới được phép chạy.
+1
+0
+17.jpg
+Biển nào báo hiệu “Giao nhau với đường ưu tiên”?
+3
+Biển 1 và 3.
+Biển 2.
+Biển 3.
+1
+1
+18.jpg
+Biển nào sau đây là biển “Đường trơn”?
+3
+Biển 1.
+Biển 2.
+Biển 3.
+1
+1
+19.jpg
+Biển báo này có ý nghĩa gì?
+3
+Để báo trước gần tới đoạn đường có hiện tượng đất đá từ trên ta luy dương sạt lở bất ngờ gây nguy hiểm cho xe cộ và người đi đường.
+Để báo trước nơi có kết cấu mặt đường rời rạc, khi phương tiện đi qua, làm cho các viên đá, sỏi băng lên gây nguy hiểm và mất an toàn cho người và phương tiện tham gia giao thông.
+Để cảnh báo những đoạn nền đường yếu, đoạn đường đang theo dõi lún mà việc vận hành xe ở tốc độ cao có thể gây nguy hiểm.
+1
+1
+20.jpg
+Biển nào báo hiệu “Đường một chiều”?
+3
+Biển 1.
+Biển 2.
+Cả hai biển.
+1
+1
+21.jpg
+Trong các biển dưới đây biển nào là biển “Hết tốc độ tối thiểu”?
+4
+Biển 1.
+Biển 2.
+Biển 3.
+Cả ba biển.
+1
+2
+22.jpg
+Trong các biển dưới đây biển nào là biển “Hết mọi lệnh cấm”?
+4
+Biển 1.
+Biển 2.
+Biển 3.
+Cả ba biển.
+1
+1
+22.jpg
+Biển nào không cho phép rẽ phải?
+4
+Biển 1.
+Biển 2.
+Biển 3.
+Biển 1 và biển 3.
+1
+0
+24.jpg
+Khi di chuyển trên đường cao tốc, gặp biển nào thì người lái xe đi được cả hai hướng bên trái hoặc bên phải để tránh chướng ngại vật?
+3
+Biển 1.
+Biển 2.
+Biển 3.
+1
+1
+25.jpg
+Xe nào được quyền đi trước trong trường hợp này?
+2
+Xe công an.
+Xe chữa cháy.
+1
+1
+26.jpg
+Theo tín hiệu đèn, xe nào được quyền đi là đúng quy tắc giao thông?
+3
+Xe khách, mô tô.
+Xe con, xe tải.
+Xe tải, mô tô.
+1
+1
+27.jpg
+Thứ tự các xe đi như thế nào là đúng quy tắc giao thông?
+4
+Xe con A, mô tô, xe con B, xe đạp.
+Xe con B, xe đạp, mô tô, xe con A.
+Xe con A, xe con B, mô tô + xe đạp.
+Mô tô + xe đạp, xe con A, xe con B.
+1
+3
+28.jpg
+Những hướng nào ô tô tải được phép đi?
+4
+Cả bốn hướng.
+Trừ hướng 2.
+Hướng 2, 3 và 4.
+Trừ hướng 4.
+1
+1
+29.jpg
+Để điều khiển cho xe đi thẳng, người lái xe phải làm gì là đúng quy tắc giao thông?
+2
+Nhường xe con rẽ trái trước.
+Đi thẳng không nhường.
+1
+0
+30.jpg
+Bạn được dừng xe ở vị trí nào trong tình huống này?
+4
+Được phép dừng ở vị trí A.
+Được phép dừng ở vị trí B.
+Được phép dừng ở vị trí A và B.
+Không được dừng.
+1
+3
+31.jpg
+Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?
+4
+Xe của bạn, xe tải, xe con.
+Xe con, xe tải, xe của bạn.
+Xe tải, xe của bạn, xe con.
+Xe của bạn, xe con, xe tải.
+1
+3
+32.jpg
+Xe nào được đi trước trong trường hợp này?
+2
+Xe con.
+Xe của bạn.
+1
+1
+33.jpg
+Để điều khiển xe rẽ trái, bạn chọn hướng đi nào dưới đây?
+3
+Hướng 1.
+Hướng 2.
+Cả 02 hướng đều được.
+1
+0
+34.jpg
+Xe của bạn đang di chuyển gần đến khu vực giao cắt với đường sắt, khi rào chắn đang dịch chuyển, bạn điều khiển xe như thế nào là đúng quy tắc giao thông?
+3
+Quan sát nếu thấy không có tàu thì tăng tốc cho xe vượt qua đường sắt.
+Dừng lại trước rào chắn một khoảng cách an toàn.
+Ra tín hiệu, yêu cầu người gác chắn tàu kéo chậm Barie để xe bạn qua.
+1
+1
+35.jpg
+Khái niệm “đỗ xe” được hiểu như thế nào là đúng quy tắc giao thông?
+2
+Là trạng thái đứng yên của phương tiện giao thông có giới hạn trong một khoảng thời gian cần thiết đủ để cho người lên, xuống phương tiện đó, xếp dỡ hàng hóa hoặc thực hiện công việc khác.
+Là trạng thái đứng yên của phương tiện giao thông không giới hạn thời gian.
+1
+1
+None
+Khi lái xe trong khu đô thị và đông dân cư trừ các khu vực có biển cấm sử dụng còi, người lái xe được sử dụng còi như thế nào trong các trường hợp dưới đây?
+3
+Từ 22 giờ đêm đến 5 giờ sáng.
+Từ 5 giờ sáng đến 22 giờ tối.
+Từ 23 giờ đêm đến 5 giờ sáng hôm sau.
+1
+1
+None
+Người có giấy phép lái xe mô tô hạng A1 được phép điều khiển loại xe nào dưới đây?
+3
+Xe mô tô có dung tích xi-lanh từ 50 cm3 đến dưới 175 cm3.
+Xe mô tô ba bánh dành cho người khuyết tật.
+Cả ý 1 và ý 2.
+1
+2
+None
+Người có giấy phép lái xe mô tô hạng A2 được phép điều khiển loại xe nào dưới đây?
+3
+Xe mô tô ba bánh.
+Xe mô tô hai bánh có dung tích xi lanh từ 175 cm3 trở lên và các loại xe quy định cho giấy phép lái xe hạng A1.
+Các loại máy kéo nhỏ có trọng tải đến 1.000 kg.
+1
+1
+None
+Khi muốn chuyển hướng, người lái xe phải thực hiện như thế nào để đảm bảo an toàn giao thông?
+3
+Quan sát gương, ra tín hiệu chuyển hướng, quan sát an toàn và chuyển hướng.
+Quan sát gương, giảm tốc độ, ra tín hiệu chuyển hướng, quan sát an toàn và chuyển hướng.
+Quan sát gương, tăng tốc độ, ra tín hiệu và chuyển hướng.
+1
+1
+None
+Khi tránh xe đi ngược chiều, các xe phải nhường đường như thế nào là đúng quy tắc giao thông?
+4
+Nơi đường hẹp chỉ đủ cho một xe chạy và có chỗ tránh xe thì xe nào ở gần chỗ tránh hơn phải vào vị trí tránh, nhường đường cho xe kia đi.
+Xe xuống dốc phải nhường đường cho xe đang lên dốc; xe nào có chướng ngại vật phía trước phải nhường đường cho xe không có chướng ngại vật đi trước.
+Xe lên dốc phải nhường đường cho xe xuống dốc; xe nào không có chướng ngại vật phía trước phải nhường đường cho xe có chướng ngại vật đi trước.
+Cả ý 1 và ý 2.
+1
+3
+None
+Xe ô tô kéo xe khác thế nào là đúng quy tắc giao thông?
+3
+Được kéo theo một xe ô tô hoặc xe máy chuyên dùng khác khi xe này không tự chạy được và phải đảm bảo an toàn; xe được kéo phải có người điều khiển và hệ thống lái của xe đó phải còn hiệu lực; trường hợp hệ thống hãm của xe được kéo không còn hiệu lực thì xe kéo nhau phải nối bằng thanh nối cứng.
+Được kéo theo một xe ô tô và xe máy chuyên dùng khác khi xe này không tự chạy được và phải đảm bảo an toàn; xe được kéo phải có người ngồi trên xe để kịp thời phát hiện các trường hợp mất an toàn.
+Được kéo theo một xe ô tô và xe máy chuyên dùng khác khi xe này không tự chạy được và hệ thống phanh bị hỏng, xe kéo nhau phải nối bằng dây cáp có độ dài phù hợp.
+1
+0
+None
+Trên đường bộ (trừ đường cao tốc) trong khu vực đông dân cư, đường hai chiều không có dải phân cách giữa, xe mô tô hai bánh, ô tô chở người đến 30 chỗ tham gia giao thông với tốc độ tối đa cho phép là bao nhiêu?
+3
+60 km/h.
+50 km/h.
+40 km/h.
+1
+1
+None
+Trên đường bộ ngoài khu vực đông dân cư, đường đôi có dải phân cách giữa (trừ đường cao tốc), loại xe nào tham gia giao thông với tốc độ tối đa cho phép là 80 km/h?
+4
+Ô tô buýt; ô tô đầu kéo kéo sơ mi rơ moóc; ô tô chuyên dùng; xe mô tô.
+Ô tô chở người trên 30 chỗ (trừ ô tô buýt), ô tô tải có trọng tải trên 3.500 kg (trừ ô tô xi téc).
+Ô tô kéo rơ moóc, ô tô kéo xe khác, xe gắn máy.
+Xe ô tô con, xe ô tô chở người đến 30 chỗ (trừ ô tô buýt), ô tô tải có trọng tải đến 3.500 kg.
+1
+1
+None
+Hành vi đưa xe cơ giới, xe máy chuyên dùng không bảo đảm tiêu chuẩn an toàn kỹ thuật và bảo vệ môi trường vào tham gia giao thông đường bộ có bị nghiêm cấm hay không?
+4
+Không nghiêm cấm.
+Bị nghiêm cấm.
+Bị nghiêm cấm tùy theo các tuyến đường.
+Bị nghiêm cấm tuỳ theo loại xe.
+1
+1
+None
+Trong hoạt động vận tải khách, những hành vi nào dưới đây bị nghiêm cấm?
+4
+Cạnh tranh nhau nhằm tăng lợi nhuận.
+Giảm giá để thu hút khách.
+Đe dọa, xúc phạm, tranh giành, lôi kéo hành khách; bắt ép hành khách sử dụng dịch vụ ngoài ý muốn; xuống khách nhằm trốn tránh phát hiện xe chở quá số người quy định.
+Tất cả các ý trên.
+1
+2
+None
+Người nhận hàng có các quyền gì dưới đây?
+3
+Nhận và kiểm tra hàng hóa nhận được theo giấy vận chuyển hoặc chứng từ tương đương khác; yêu cầu người kinh doanh vận tải thanh toán chi phí phát sinh do giao hàng hóa chậm.
+Yêu cầu hoặc thông báo cho người thuê vận tải để yêu cầu người lái xe bồi thường thiệt hại do mất mát, hư hỏng hàng hóa; nhận hàng hóa không theo giấy vận chuyển hoặc chứng từ tương đương khác.
+Cả ý 1 và ý 2.
+1
+0
+None
+Khi xảy ra tai nạn giao thông, có người bị thương nghiêm trọng, người lái xe và người có mặt tại hiện trường vụ tai nạn phải thực hiện các công việc gì?
+3
+Thực hiện sơ cứu ban đầu trong trường hợp khẩn cấp; thông báo vụ tai nạn đến cơ quan thi hành pháp luật.
+Nhanh chóng lái xe gây tai nạn hoặc đi nhờ xe khác ra khỏi hiện trường vụ tai nạn.
+Cả ý 1 và ý 2.
+1
+1
+None
+Khi tránh nhau trên đường hẹp, người lái xe cần phải chú ý những điểm nào để đảm bảo an toàn giao thông?
+4
+Không nên đi cố vào đường hẹp; xe đi ở phía sườn núi nên dừng lại trước để nhường đường; khi dừng xe nhường đường phải đỗ ngay ngắn.
+Trong khi tránh nhau không nên đổi số; khi tránh nhau ban đêm, phải tắt đèn pha bật đèn cốt.
+Khi tránh nhau ban đêm, phải thường xuyên bật đèn pha tắt đèn cốt.
+Cả ý 1 và ý 2.
+1
+3
+None
+Khi động cơ ô tô đã khởi động, bảng đồng hồ xuất hiện ký hiệu như hình vẽ dưới đây, báo hiệu tình trạng như thế nào của xe ô tô?
+4
+Báo hiệu hệ thống chống bó cứng khi phanh bị lỗi.
+Áp suất lốp không đủ.
+Đang hãm phanh tay.
+Cần kiểm tra động cơ.
+1
+3
+50.jpg
+Biển nào cấm xe rẽ trái?
+3
+Biển 1.
+Biển 2.
+Cả hai biển.
+1
+0
+51.jpg
+Biển nào là biển “Cấm đi ngược chiều”?
+3
+Biển 1.
+Biển 2.
+Cả ba biển.
+1
+1
+52.jpg
+Khi gặp các biển này xe ưu tiên theo luật định (có tải trọng hay chiều cao toàn bộ vượt quá chỉ số ghi trên biển) có được phép đi qua hay không?
+2
+Được phép.
+Không được phép.
+1
+1
+53.jpg
+Khi gặp biển này, xe mô tô ba bánh có được phép rẽ trái hoặc rẽ phải hay không?
+2
+Được phép.
+Không được phép.
+1
+1
+54.jpg
+Gặp biển này, xe ô tô sơ mi rơ moóc có chiều dài toàn bộ kể cả xe, moóc và hàng lớn hơn trị số ghi trên biển có được phép đi vào không?
+2
+Không được phép.
+Được phép.
+1
+0
+55.jpg
+Biển nào báo hiệu “Đường dành cho xe thô sơ”?
+3
+Biển 1.
+Biển 2.
+Biển 3.
+1
+0
+56.jpg
+Biển nào báo hiệu “Giao nhau với đường sắt có rào chắn”?
+3
+Biển 1.
+Biển 2 và 3.
+Biển 3.
+1
+0
+57.jpg
+Trong các biển dưới đây biển nào là biển “Hết tốc độ tối đa cho phép”?
+4
+Biển 1.
+Biển 2.
+Biển 3.
+Cả ba biển.
+1
+0
+58.jpg
+Biển nào dưới đây báo hiệu hết cấm vượt?
+4
+Biển 1.
+Biển 2.
+Biển 3.
+Biển 2 và 3.
+1
+3
+59.jpg
+Biển nào chỉ dẫn địa giới hành chính giữa các thành phố, tỉnh, huyện?
+3
+Biển 1.
+Biển 2.
+Biển 3.
+1
+1
+60.jpg
+Theo tín hiệu đèn, xe tải đi theo hướng nào là đúng quy tắc giao thông?
+4
+Hướng 2, 3, 4.
+Chỉ hướng 1.
+Hướng 1 và 2.
+Hướng 3 và 4.
+1
+1
+61.jpg
+Xe nào phải nhường đường trong trường hợp này?
+2
+Xe khách.
+Xe tải.
+1
+0
+62.jpg
+Những hướng nào ô tô tải được phép đi?
+4
+Chỉ hướng 1.
+Hướng 1 và 4.
+Hướng 1 và 5.
+Hướng 1, 4 và 5.
+1
+2
+63.jpg
+Trong hình dưới đây, xe nào chấp hành đúng quy tắc giao thông?
+3
+Chỉ xe khách, mô tô.
+Tất cả các loại xe trên.
+Không xe nào chấp hành đúng quy tắc giao thông.
+1
+1
+64.jpg
+Trong hình dưới, những xe nào vi phạm quy tắc giao thông?
+4
+Xe con (E), mô tô (C).
+Xe tải (A), mô tô (D).
+Xe khách (B), mô tô (C).
+Xe khách (B), mô tô (D).
+1
+0
+65.jpg
+Xe nào phải nhường đường là đúng quy tắc giao thông?
+2
+Xe con (A).
+Xe con (B).
+1
+1
+66.jpg
+Người lái xe có thể quay đầu xe như thế nào là đúng quy tắc giao thông?
+3
+Quay đầu theo hướng A.
+Quay đầu theo hướng B.
+Cấm quay đầu.
+1
+0
+67.jpg
+Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?
+3
+Xe của bạn, mô tô, xe con.
+Xe con, xe của bạn, mô tô.
+Mô tô, xe con, xe của bạn.
+1
+1
+68.jpg
+Bạn xử lý như thế nào trong trường hợp này?
+3
+Tăng tốc độ, rẽ phải trước xe tải và xe đạp.
+Giảm tốc độ, rẽ phải sau xe tải và xe đạp.
+Tăng tốc độ, rẽ phải trước xe đạp.
+1
+1
+69.jpg
+Các xe đi theo thứ tự nào là đúng quy tắc giao thông đường bộ?
+3
+Xe con, xe tải, xe của bạn.
+Xe tải, xe con, xe của bạn.
+Xe tải, xe của bạn, xe con.
+1
+1
+70.jpg
+Bạn đang lái xe trong khu dân cư, có đông xe qua lại, nếu muốn quay đầu xe bạn cần làm gì để tránh ùn tắc và đảm bảo an toàn giao thông?
+4
+Đi tiếp đến điểm giao cắt gần nhất hoặc nơi có biển báo cho phép quay đầu xe.
+Bấm đèn khẩn cấp và quay đầu xe từ từ bảo đảm an toàn.
+Bấm còi liên tục khi quay đầu xe để cảnh báo các xe khác.
+Nhờ một người ra hiệu giao thông trên đường chậm lại trước khi quay đầu.
+1
+0
+None
+Khi người lái xe ô tô dừng, đỗ sát theo lề đường, hè phố phía bên phải theo chiều đi của mình, bánh xe gần nhất không được cách xa lề đường, hè phố quá bao nhiêu mét trong các trường hợp dưới đây để không gây cản trở, nguy hiểm cho giao thông?
+4
+0,25 mét.
+0,3 mét.
+0,4 mét.
+0,5 mét.
+1
+0
+None
+Để báo hiệu cho xe phía trước biết xe mô tô của bạn muốn vượt, bạn phải có tín hiệu như thế nào dưới đây?
+3
+Ra hiệu bằng tay rồi cho xe vượt qua.
+Tăng ga mạnh để gây sự chú ý rồi cho xe vượt qua.
+Bạn phải có báo hiệu bằng đèn hoặc còi.
+1
+2
+None
+Khi tham gia giao thông trên đường cao tốc, người lái xe, người điều khiển xe máy chuyên dùng phải thực hiện các quy định như thế nào là đúng quy tắc giao thông?
+3
+Tuân thủ tốc độ tối đa, tốc độ tối thiểu ghi trên biển báo hiệu đường bộ, sơn kẻ mặt đường trên các làn xe.
+Tuân thủ tốc độ tối đa, tốc độ tối thiểu ghi trên biển báo hiệu đường bộ, sơn kẻ mặt đường trên các làn xe chỉ vào ban ngày.
+Tuân thủ tốc độ tối đa, tốc độ tối thiểu ghi trên biển báo hiệu đường bộ, sơn kẻ mặt đường trên các làn xe chỉ vào ban đêm.
+1
+0
+None
+Khi điều khiển xe chạy với tốc độ dưới 60 km/h, người lái xe phải chủ động điều khiển xe như thế nào để đảm bảo an toàn giao thông?
+3
+Chủ động giữ khoảng cách an toàn phù hợp với xe chạy liền trước xe của mình.
+Đảm bảo khoảng cách an toàn theo mật độ phương tiện, tình hình giao thông thực tế.
+Cả ý 1 và ý 2.
+1
+2
+None
+Khi tham gia giao thông trên đoạn đường không có biển báo “Cự ly tối thiểu giữa hai xe”, với điều kiện mặt đường khô ráo, xe cơ giới đang chạy với tốc độ từ trên 60 km/h đến 80 km/h, người lái xe phải duy trì khoảng cách an toàn với xe đang chạy phía trước tối thiểu là bao nhiêu?
+3
+35 m.
+55 m.
+70 m.
+1
+1
+None
+Cuộc đua xe chỉ được thực hiện khi nào?
+3
+Diễn ra trên đường phố không có người qua lại.
+Được người dân ủng hộ.
+Được cơ quan có thẩm quyền cấp phép.
+1
+2
+None
+Người lái xe khách phải chấp hành những quy định nào dưới đây?
+4
+Đón, trả khách đúng nơi quy định, không chở hành khách trên mui, trong khoang hành lý hoặc để hành khách đu bám bên ngoài xe.
+Không chở hàng nguy hiểm, hàng có mùi hôi thối hoặc động vật, hàng hóa khác có ảnh hưởng đến sức khỏe của hành khách.
+Chở hành khách trên mui; đề hàng hóa trong khoang chở khách, chở quá số người theo quy định.
+Cả ý 1 và ý 2.
+1
+3
+None
+Khái niệm về văn hóa giao thông được hiểu như thế nào là đúng?
+3
+Là sự hiểu biết và chấp hành nghiêm chỉnh pháp luật về giao thông; là ý thức trách nhiệm với cộng đồng khi tham gia giao thông.
+Là ứng xử có văn hóa, có tình yêu thương con người trong các tình huống không may xảy ra khi tham gia giao thông.
+Cả ý 1 và ý 2.
+1
+2
+None
+Khi quay đầu xe, người lái xe cần phải quan sát và thực hiện các thao tác nào để đảm bảo an toàn giao thông?
+2
+Quan sát biển báo hiệu để biết nơi được phép quay đầu; quan sát kỹ địa hình nơi chọn để quay đầu; lựa chọn quỹ đạo quay đầu xe cho thích hợp; quay đầu xe với tốc độ thấp; thường xuyên báo tín hiệu để người, các phương tiện xung quanh được biết; nếu quay đầu xe ở nơi nguy hiểm thì đưa đầu xe về phía nguy hiểm đưa đuôi xe về phía an toàn.
+Quan sát biển báo hiệu để biết nơi được phép quay đầu; quan sát kỹ địa hình nơi chọn để quay đầu; lựa chọn quỹ đạo quay đầu xe; quay đầu xe với tốc độ tối đa; thường xuyên báo tín hiệu để người, các phương tiện xung quanh được biết; nếu quay đầu xe ở nơi nguy hiểm thì đưa đuôi xe về phía nguy hiểm và đầu xe về phía an toàn.
+1
+0
+None
+“Dải phân cách” trên đường bộ gồm những loại nào?
+3
+Dải phân cách gồm loại cố định và loại di động.
+Dải phân cách gồm tường chống ồn, hộ lan cứng và hộ lan mềm.
+Dải phân cách gồm giá long môn và biển báo hiệu đường bộ.
+1
+0
+None
+Người lái xe sử dụng đèn như thế nào khi lái xe trong khu đô thị và đông dân cư vào ban đêm?
+4
+Bất cứ đèn nào miễn là mắt nhìn rõ phía trước.
+Chỉ bật đèn chiếu xa (đèn pha) khi không nhìn rõ đường.
+Đèn chiếu xa (đèn pha) khi đường vắng, đèn pha chiếu gần (đèn cốt) khi có xe đi ngược chiều.
+Đèn chiếu gần (đèn cốt).
+1
+3
+None
+Trong trường hợp đặc biệt, để được lắp đặt, sử dụng còi, đèn khác thiết kế của nhà sản xuất đối với từng loại xe cơ giới bạn phải đảm bảo yêu cầu nào dưới đây?
+3
+Phải đảm bảo phụ tùng do đúng nhà sản xuất đó cung cấp.
+Phải được chấp thuận của cơ quan có thẩm quyền.
+Phải là xe đăng ký và hoạt động tại các khu vực có địa hình phức tạp.
+1
+1
+None
+Trên đường một chiều có vạch kẻ phân làn đường, xe thô sơ và xe cơ giới phải đi như thế nào là đúng quy tắc giao thông?
+3
+Xe thô sơ phải đi trên làn đường bên trái ngoài cùng, xe cơ giới, xe máy chuyên dùng đi trên làn đường bên phải.
+Xe thô sơ phải đi trên làn đường bên phải trong cùng; xe cơ giới, xe máy chuyên dùng đi trên làn đường bên trái.
+Xe thô sơ đi trên làn đường phù hợp không gây cản trở giao thông, xe cơ giới, xe máy chuyên dùng đi trên làn đường bên phải.
+1
+1
+None
+Tại nơi đường giao nhau không có báo hiệu đi theo vòng xuyến, người điều khiển phương tiện phải nhường đường như thế nào là đúng quy tắc giao thông?
+3
+Phải nhường đường cho xe đi đến từ bên phải.
+Xe báo hiệu xin đường trước xe đó được đi trước.
+Phải nhường đường cho xe đi đến từ bên trái.
+1
+0
+None
+Tại ngã ba hoặc ngã tư không có đảo an toàn, người lái xe phải nhường đường như thế nào là đúng trong các trường hợp dưới đây?
+3
+Nhường đường cho người đi bộ đang đi trên phần đường dành cho người đi bộ sang đường; nhường đường cho xe đi trên đường ưu tiên, đường chính từ bất kỳ hướng nào tới; nhường đường cho xe ưu tiên, xe đi từ bên phải đến.
+Nhường đường cho người đi bộ đang đứng chờ đi qua phần đường dành cho người đi bộ sang đường; nhường đường cho xe đi trên đường ngược chiều, đường nhánh từ bất kỳ hướng nào tới; nhường đường cho xe đi từ bên trái đến.
+Không phải nhường đường.
+1
+0
+None
+Người lái xe khách, xe buýt cần thực hiện những nhiệm vụ gì dưới đây?
+2
+Luôn có ý thức về tính tổ chức, kỷ luật, thực hiện nghiêm biểu đồ xe chạy được phân công; thực hiện đúng hành trình, lịch trình, đón trả khách đúng nơi quy định; giúp đỡ hành khách khi đi xe, đặc biệt là những người khuyết tật, người già, trẻ em và phụ nữ có thai, có con nhỏ.
+Luôn có ý thức về tính tổ chức, kỷ luật, thực hiện linh hoạt biểu đồ xe chạy được phân công để tiết kiệm chi phí; thực hiện đúng hành trình, lịch trình khi có khách đi xe, đón trả khách ở những nơi thuận tiện cho hành khách đi xe.
+1
+0
+None
+Người lái xe không được lùi xe ở những khu vực nào dưới đây?
+4
+Ở khu vực cho phép đỗ xe.
+Ở khu vực cấm dừng và trên phần đường dành cho người đi bộ qua đường.
+Nơi đường bộ giao nhau, đường bộ giao nhau cùng mức với đường sắt, nơi tầm nhìn bị che khuất, trong hầm đường bộ, đường cao tốc.
+Cả ý 2 và ý 3.
+1
+3
+None
+Việc sát hạch cấp giấy phép lái xe ô tô phải thực hiện ở đâu và như thế nào?
+3
+Tại các cơ sở đào tạo lái xe có đủ điều kiện và phải bảo đảm công khai, minh bạch.
+Tại sân tập lái của cơ sở đào tạo lái xe và phải đảm bảo công khai, minh bạch.
+Tại các trung tâm sát hạch lái xe có đủ điều kiện hoạt động và phải bảo đảm công khai, minh bạch.
+1
+2
+None
+Khái niệm “đỗ xe” được hiểu như thế nào là đúng quy tắc giao thông?
+2
+Là trạng thái đứng yên của phương tiện giao thông có giới hạn trong một khoảng thời gian cần thiết đủ để cho người lên, xuống phương tiện đó, xếp dỡ hàng hóa hoặc thực hiện công việc khác.
+Là trạng thái đứng yên của phương tiện giao thông không giới hạn thời gian.
+1
+1
+None
+Người có giấy phép lái xe hạng FE được điều khiển loại xe nào dưới đây?
+3
+Các loại xe được quy định tại giấy phép lái xe hạng E có kéo rơ moóc và được điều khiển các loại xe: ô tô chở khách nối toa và các loại xe quy định cho giấy phép lái xe hạng B1, B2, C, D, FB2, FD.
+Các loại xe được quy định tại giấy phép lái xe hạng E có kéo rơ moóc, ô tô đầu kéo kéo sơ mi rơ moóc và được điều khiển các loại xe: ô tô chở khách nối toa và các loại xe quy định cho giấy phép lái xe hạng B1, B2, C, D, FB2, FD.
+Tất cả các loại xe nêu trên.
+1
+0
+None
+Xe vận chuyển hàng nguy hiểm phải chấp hành những quy định nào dưới đây?
+3
+Phải có giấy phép do cơ quan có thẩm quyền cấp, xe vận chuyển hàng nguy hiểm không được dừng, đỗ nơi đông người, những nơi dễ xảy ra nguy hiểm.
+Phải được chuyên chở trên xe chuyên dùng để vận chuyển hàng nguy hiểm; xe vận chuyển hàng nguy hiểm phải chạy liên tục không được dừng, đỗ trong quá trình vận chuyển.
+Cả ý 1 và ý 2.
+1
+0
+None
+Người lái xe kinh doanh vận tải cần thực hiện những công việc gì ghi ở dưới đây để thường xuyên rèn luyện nâng cao đạo đức nghề nghiệp?
+3
+Phải yêu quý xe, quản lý và sử dụng xe tốt; bảo dưỡng xe đúng định kỳ; thực hành tiết kiệm vật tư, nhiên liệu; luôn tu dưỡng bản thân, có lối sống lành mạnh, tác phong làm việc công nghiệp.
+Nắm vững các quy định của pháp luật, tự giác chấp hành pháp luật, lái xe an toàn; coi hành khách như người thân, là đối tác tin cậy; có ý thức tổ chức kỷ luật và xây dựng doanh nghiệp vững mạnh; có tinh thần hợp tác, tương trợ, giúp đỡ đồng nghiệp.
+Cả ý 1 và ý 2.
+1
+2
+None
+Khi vào số để khởi hành xe ô tô có số tự động, người lái xe phải thực hiện các thao tác nào để đảm bảo an toàn?
+2
+Đạp bàn đạp phanh chân hết hành trình, vào số và nhả phanh tay nếu có, kiểm tra lại xem có bị nhầm số không rồi mới cho xe lăn bánh.
+Đạp bàn đạp để tăng ga với mức độ phù hợp, vào số và kiểm tra lại xem có bị nhầm số không rồi mới cho xe lăn bánh.
+1
+0
+None
+Người nhận hàng có các quyền gì dưới đây?
+3
+Nhận và kiểm tra hàng hóa nhận được theo giấy vận chuyển hoặc chứng từ tương đương khác; yêu cầu người kinh doanh vận tải thanh toán chi phí phát sinh do giao hàng hóa chậm.
+Yêu cầu hoặc thông báo cho người thuê vận tải để yêu cầu người lái xe bồi thường thiệt hại do mất mát, hư hỏng hàng hóa; nhận hàng hóa không theo giấy vận chuyển hoặc chứng từ tương đương khác.
+Cả ý 1 và ý 2.
+1
+0
+None
+Khi xảy ra tai nạn giao thông, người lái xe và người có mặt tại hiện trường vụ tai nạn phải thực hiện các công việc gì dưới đây?
+3
+Đặt các biển cảnh báo hoặc vật báo hiệu ở phía trước và phía sau hiện trường xảy ra tai nạn để cảnh báo; kiểm tra khả năng xảy ra hỏa hoạn do nhiên liệu bị rò rỉ; bảo vệ hiện trường vụ tai nạn và cấp cứu người bị thương.
+Đặt các biển cảnh báo hoặc vật báo hiệu ở phía trên nóc xe xảy ra tai nạn để cảnh báo; kiểm tra khả năng xảy ra mất an toàn do nước làm mát bị rò rỉ; di chuyển hiện trường vụ tai nạn để giao thông thông suốt.
+Cả ý 1 và ý 2.
+1
+0
+None
+Chủ phương tiện cơ giới đường bộ có được tự ý thay đổi màu sơn, nhãn hiệu hoặc các đặc tính kỹ thuật của phương tiện so với chứng nhận đăng ký xe hay không?
+3
+Được phép thay đổi bằng cách dán đề can với màu sắc phù hợp.
+Không được phép thay đổi.
+Tùy từng loại phương tiện cơ giới đường bộ.
+1
+1
+None
+“Dải phân cách” trên đường bộ gồm những loại nào?
+3
+Dải phân cách gồm loại cố định và loại di động.
+Dải phân cách gồm tường chống ồn, hộ lan cứng và hộ lan mềm.
+Dải phân cách gồm giá long môn và biển báo hiệu đường bộ.
+1
+0
+None
+Người kinh doanh vận tải hàng hóa có các nghĩa vụ gì dưới đây?
+3
+Cung cấp phương tiện và thực hiện thời gian, địa điểm giao hàng hóa cho người nhận hàng theo điều kiện của người kinh doanh vận tải; chịu trách nhiệm về hậu quả mà người làm công, người đại diện gây ra do thực hiện yêu cầu của người kinh doanh vận tải phù hợp với quy định của pháp luật.
+Bồi thường thiệt hại cho người thuê vận tải do mất mát, hư hỏng hàng hóa xảy ra trong quá trình vận tải từ lúc nhận hàng đến lúc giao hàng; bồi thường thiệt hại do người làm công, người đại diện gây ra trong khi thực hiện công việc được người kinh doanh vận tải giao; chịu trách nhiệm về hậu quả mà người làm công, người đại diện gây ra do thực hiện yêu cầu của người kinh doanh vận tải trái với quy định của pháp luật.
+Cả ý 1 và ý 2.
+1
+1
+None
+Người kinh doanh vận tải hành khách có những quyền hạn nào dưới đây?
+3
+Tự ý thay đổi vị trí đón, trả khách theo hợp đồng vận chuyển hoặc đón thêm người ngoài danh sách hành khách đã ký.
+Từ chối vận chuyển trước khi phương tiện rời bến, rời vị trí đón trả khách theo hợp đồng vận chuyển những người đã có vé hoặc người trong danh sách hợp đồng có hành vi gây rối trật tự công cộng, gây cản trở công việc kinh doanh vận tải, ảnh hưởng đến sức khỏe, tài sản của người khác, gian lận vé hoặc hành khách đang bị dịch bệnh nguy hiểm.
+Cả ý 1 và ý 2.
+1
+1
+None

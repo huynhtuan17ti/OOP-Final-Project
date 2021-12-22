@@ -7,16 +7,28 @@
 #include <codecvt>
 #include <locale>
 #include "Question.h"
+#include <algorithm>
 
 class QuestionData{
 private:
-	const char* dataPath = "A1/data.txt";
+	std::wstring imagePath;
+
 private:
 	std::vector <Question> questions;
+
 public:
-	QuestionData();
+	QuestionData(const std::wstring);
+
 public:
-	int getNQuestion() {
+	std::wstring getImagePath() {
+		return imagePath;
+	}
+
+	void shuffle() { // shuffle the questions
+		std::random_shuffle(questions.begin(), questions.end());
+	}
+
+	virtual int getQuestionAmount() {
 		return questions.size();
 	}
 

@@ -1,9 +1,11 @@
 #include "Database.h"
 
-
-QuestionData::QuestionData() {
+QuestionData::QuestionData(const std::wstring dataPath) {
 	// load data from file
-	std::wifstream inp(dataPath);
+
+	std::wstring txtPath = dataPath + L"/data.txt";
+	imagePath = dataPath + L"/image/";
+	std::wifstream inp(txtPath);
 	inp.imbue(std::locale(inp.getloc(), new std::codecvt_utf8<wchar_t>));
 	int nQuestion;
 	inp >> nQuestion;
@@ -37,4 +39,3 @@ QuestionData::QuestionData() {
 	}
 	inp.close();
 }
-

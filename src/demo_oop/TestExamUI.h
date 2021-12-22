@@ -1,5 +1,6 @@
 ﻿#pragma once
 #include "Database.h"
+#include "ExamData.h"
 
 namespace demooop {
 
@@ -16,9 +17,14 @@ namespace demooop {
 	public ref class TestExamUI : public System::Windows::Forms::Form
 	{
 	public:
-		TestExamUI(System::Windows::Forms::Form^ srcPrevForm)
+		TestExamUI(System::Windows::Forms::Form^ srcPrevForm, ExamSettings srcExamSettings)
 		{
-			questionData = new QuestionData();
+			examSettings = new ExamSettings(srcExamSettings);
+			questionData = new ExamData(examSettings->getCertificateIndex(), 
+										examSettings->getQuestionAmount(), 
+										examSettings->getMaxWrongAnswer());
+			
+			countdownSecond = examSettings->getCountdownSeconds();
 			curIndexQuesion = 0;
 			firstLoad = true;
 			prevForm = srcPrevForm;
@@ -34,6 +40,7 @@ namespace demooop {
 		/// </summary>
 		~TestExamUI()
 		{
+			delete questionData;
 			if (components)
 			{
 				delete components;
@@ -41,14 +48,16 @@ namespace demooop {
 		}
 
 	private:
-		const int maxAnsStringOnLine = 130; // maximum size of a string on a line
-		const int maxQueStringOnLine = 70;
+		const int maxAnsStringOnLine = 100; // maximum size of a string on a line
+		const int maxQueStringOnLine = 80;
 		const int maxNAnswer = 6; // maximum number of answers
 		String^ noImagePath = "assets/no_image.png";
 
 	private:
 		bool firstLoad;
 		int curIndexQuesion;
+		int countdownSecond;
+		ExamSettings* examSettings;
 		QuestionData* questionData;
 	private: cli::array<System::Windows::Forms::Label^>^ answerUI;
 
@@ -60,22 +69,39 @@ namespace demooop {
 
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::Label^ label1;
-	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ questionNumberLabel;
+
 	private: System::Windows::Forms::Label^ qDescription;
 	private: System::Windows::Forms::PictureBox^ pictureBox;
 	private: System::Windows::Forms::Panel^ panel3;
 	private: System::Windows::Forms::Panel^ panel4;
 	private: System::Windows::Forms::Panel^ panel5;
-	private: System::Windows::Forms::Panel^ panel6;
+
+
+
+
+
+	private: System::Windows::Forms::Panel^ panel8;
 	private: System::Windows::Forms::CheckedListBox^ checkedListAnswer;
+
+
+	private: System::Windows::Forms::Panel^ panel9;
+	private: System::Windows::Forms::Label^ label4;
+	private: System::Windows::Forms::Panel^ examPanel;
+	private: System::Windows::Forms::Label^ timer;
 	private: System::Windows::Forms::Panel^ panel7;
 	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ certificateTypeLabel;
+	private: System::Windows::Forms::Label^ userNameLabel;
+	private: System::Windows::Forms::Timer^ timerCountdown;
+	private: System::ComponentModel::IContainer^ components;
+
 
 	private:
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container^ components;
+
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -84,40 +110,52 @@ namespace demooop {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			this->components = (gcnew System::ComponentModel::Container());
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(TestExamUI::typeid));
 			this->backButton = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->rightButton = (gcnew System::Windows::Forms::Button());
 			this->leftButton = (gcnew System::Windows::Forms::Button());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
-			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->questionNumberLabel = (gcnew System::Windows::Forms::Label());
 			this->qDescription = (gcnew System::Windows::Forms::Label());
 			this->pictureBox = (gcnew System::Windows::Forms::PictureBox());
 			this->panel3 = (gcnew System::Windows::Forms::Panel());
 			this->panel4 = (gcnew System::Windows::Forms::Panel());
 			this->panel5 = (gcnew System::Windows::Forms::Panel());
-			this->panel6 = (gcnew System::Windows::Forms::Panel());
+			this->panel8 = (gcnew System::Windows::Forms::Panel());
+			this->checkedListAnswer = (gcnew System::Windows::Forms::CheckedListBox());
+			this->panel9 = (gcnew System::Windows::Forms::Panel());
+			this->label4 = (gcnew System::Windows::Forms::Label());
+			this->examPanel = (gcnew System::Windows::Forms::Panel());
+			this->timer = (gcnew System::Windows::Forms::Label());
 			this->panel7 = (gcnew System::Windows::Forms::Panel());
 			this->label3 = (gcnew System::Windows::Forms::Label());
-			this->checkedListAnswer = (gcnew System::Windows::Forms::CheckedListBox());
+			this->certificateTypeLabel = (gcnew System::Windows::Forms::Label());
+			this->userNameLabel = (gcnew System::Windows::Forms::Label());
+			this->timerCountdown = (gcnew System::Windows::Forms::Timer(this->components));
 			this->panel1->SuspendLayout();
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->BeginInit();
 			this->panel3->SuspendLayout();
 			this->panel4->SuspendLayout();
 			this->panel5->SuspendLayout();
-			this->panel6->SuspendLayout();
+			this->panel8->SuspendLayout();
+			this->panel9->SuspendLayout();
+			this->examPanel->SuspendLayout();
 			this->panel7->SuspendLayout();
 			this->SuspendLayout();
 			// 
 			// backButton
 			// 
+			this->backButton->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"backButton.BackgroundImage")));
+			this->backButton->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->backButton->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->backButton->Location = System::Drawing::Point(0, 1);
+			this->backButton->Location = System::Drawing::Point(0, 0);
 			this->backButton->Name = L"backButton";
-			this->backButton->Size = System::Drawing::Size(113, 28);
+			this->backButton->Size = System::Drawing::Size(55, 54);
 			this->backButton->TabIndex = 0;
-			this->backButton->Text = L"Trang trước";
 			this->backButton->UseVisualStyleBackColor = true;
 			this->backButton->Click += gcnew System::EventHandler(this, &TestExamUI::backButton_Click);
 			// 
@@ -125,20 +163,19 @@ namespace demooop {
 			// 
 			this->panel1->Controls->Add(this->rightButton);
 			this->panel1->Controls->Add(this->leftButton);
-			this->panel1->Dock = System::Windows::Forms::DockStyle::Bottom;
-			this->panel1->Location = System::Drawing::Point(0, 750);
+			this->panel1->Location = System::Drawing::Point(274, 693);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(1100, 100);
+			this->panel1->Size = System::Drawing::Size(1110, 110);
 			this->panel1->TabIndex = 1;
 			// 
 			// rightButton
 			// 
 			this->rightButton->Dock = System::Windows::Forms::DockStyle::Right;
-			this->rightButton->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->rightButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->rightButton->Location = System::Drawing::Point(987, 0);
+			this->rightButton->Location = System::Drawing::Point(997, 0);
 			this->rightButton->Name = L"rightButton";
-			this->rightButton->Size = System::Drawing::Size(113, 100);
+			this->rightButton->Size = System::Drawing::Size(113, 110);
 			this->rightButton->TabIndex = 1;
 			this->rightButton->Text = L"Câu hỏi tiếp theo";
 			this->rightButton->UseVisualStyleBackColor = true;
@@ -147,11 +184,11 @@ namespace demooop {
 			// leftButton
 			// 
 			this->leftButton->Dock = System::Windows::Forms::DockStyle::Left;
-			this->leftButton->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->leftButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->leftButton->Location = System::Drawing::Point(0, 0);
 			this->leftButton->Name = L"leftButton";
-			this->leftButton->Size = System::Drawing::Size(113, 100);
+			this->leftButton->Size = System::Drawing::Size(113, 110);
 			this->leftButton->TabIndex = 0;
 			this->leftButton->Text = L"Câu hỏi trước";
 			this->leftButton->UseVisualStyleBackColor = true;
@@ -159,10 +196,10 @@ namespace demooop {
 			// 
 			// panel2
 			// 
-			this->panel2->BackColor = System::Drawing::Color::Wheat;
-			this->panel2->Location = System::Drawing::Point(0, 449);
+			this->panel2->BackColor = System::Drawing::SystemColors::Control;
+			this->panel2->Location = System::Drawing::Point(274, 391);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(830, 295);
+			this->panel2->Size = System::Drawing::Size(841, 303);
 			this->panel2->TabIndex = 3;
 			// 
 			// label1
@@ -171,42 +208,42 @@ namespace demooop {
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Sitka Text", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(3, 13);
+			this->label1->Location = System::Drawing::Point(3, 8);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(155, 29);
+			this->label1->Size = System::Drawing::Size(142, 30);
 			this->label1->TabIndex = 4;
 			this->label1->Text = L"Trắc nghiệm";
 			this->label1->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
-			// label2
+			// questionNumberLabel
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->questionNumberLabel->AutoSize = true;
+			this->questionNumberLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(3, 14);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(102, 29);
-			this->label2->TabIndex = 5;
-			this->label2->Text = L"Câu hỏi";
-			this->label2->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->questionNumberLabel->Location = System::Drawing::Point(3, 9);
+			this->questionNumberLabel->Name = L"questionNumberLabel";
+			this->questionNumberLabel->Size = System::Drawing::Size(90, 30);
+			this->questionNumberLabel->TabIndex = 5;
+			this->questionNumberLabel->Text = L"Câu hỏi";
+			this->questionNumberLabel->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
 			// 
 			// qDescription
 			// 
 			this->qDescription->AutoSize = true;
-			this->qDescription->Font = (gcnew System::Drawing::Font(L"Arial", 9.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->qDescription->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->qDescription->Location = System::Drawing::Point(13, 35);
 			this->qDescription->Name = L"qDescription";
-			this->qDescription->Size = System::Drawing::Size(90, 16);
+			this->qDescription->Size = System::Drawing::Size(115, 23);
 			this->qDescription->TabIndex = 6;
 			this->qDescription->Text = L"Câu hỏi ở đây";
 			// 
 			// pictureBox
 			// 
 			this->pictureBox->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->pictureBox->Location = System::Drawing::Point(672, 59);
+			this->pictureBox->Location = System::Drawing::Point(957, 1);
 			this->pictureBox->Name = L"pictureBox";
 			this->pictureBox->Size = System::Drawing::Size(427, 308);
 			this->pictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -215,96 +252,172 @@ namespace demooop {
 			// 
 			// panel3
 			// 
-			this->panel3->BackColor = System::Drawing::Color::NavajoWhite;
+			this->panel3->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->panel3->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panel3->Controls->Add(this->label2);
-			this->panel3->Location = System::Drawing::Point(18, 81);
+			this->panel3->Controls->Add(this->questionNumberLabel);
+			this->panel3->Location = System::Drawing::Point(303, 29);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(131, 56);
+			this->panel3->Size = System::Drawing::Size(133, 50);
 			this->panel3->TabIndex = 8;
 			// 
 			// panel4
 			// 
-			this->panel4->BackColor = System::Drawing::Color::NavajoWhite;
+			this->panel4->BackColor = System::Drawing::SystemColors::ControlLight;
 			this->panel4->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
 			this->panel4->Controls->Add(this->label1);
-			this->panel4->Location = System::Drawing::Point(18, 415);
+			this->panel4->Location = System::Drawing::Point(303, 366);
 			this->panel4->Name = L"panel4";
-			this->panel4->Size = System::Drawing::Size(160, 56);
+			this->panel4->Size = System::Drawing::Size(145, 47);
 			this->panel4->TabIndex = 9;
 			// 
 			// panel5
 			// 
-			this->panel5->BackColor = System::Drawing::Color::Wheat;
+			this->panel5->BackColor = System::Drawing::SystemColors::Control;
 			this->panel5->Controls->Add(this->qDescription);
-			this->panel5->Location = System::Drawing::Point(0, 114);
+			this->panel5->Location = System::Drawing::Point(277, 56);
 			this->panel5->Name = L"panel5";
-			this->panel5->Size = System::Drawing::Size(675, 229);
+			this->panel5->Size = System::Drawing::Size(682, 229);
 			this->panel5->TabIndex = 10;
 			// 
-			// panel6
+			// panel8
 			// 
-			this->panel6->BackColor = System::Drawing::Color::MintCream;
-			this->panel6->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->panel6->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panel6->Controls->Add(this->checkedListAnswer);
-			this->panel6->Location = System::Drawing::Point(830, 449);
-			this->panel6->Name = L"panel6";
-			this->panel6->Size = System::Drawing::Size(269, 295);
-			this->panel6->TabIndex = 11;
-			// 
-			// panel7
-			// 
-			this->panel7->BackColor = System::Drawing::Color::NavajoWhite;
-			this->panel7->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-			this->panel7->Controls->Add(this->label3);
-			this->panel7->Location = System::Drawing::Point(854, 415);
-			this->panel7->Name = L"panel7";
-			this->panel7->Size = System::Drawing::Size(139, 56);
-			this->panel7->TabIndex = 10;
-			// 
-			// label3
-			// 
-			this->label3->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
-				| System::Windows::Forms::AnchorStyles::Left)
-				| System::Windows::Forms::AnchorStyles::Right));
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(3, 13);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(133, 29);
-			this->label3->TabIndex = 4;
-			this->label3->Text = L"Câu trả lời";
-			this->label3->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			this->panel8->BackColor = System::Drawing::Color::MintCream;
+			this->panel8->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
+			this->panel8->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->panel8->Controls->Add(this->checkedListAnswer);
+			this->panel8->Location = System::Drawing::Point(1115, 391);
+			this->panel8->Name = L"panel8";
+			this->panel8->Size = System::Drawing::Size(269, 303);
+			this->panel8->TabIndex = 11;
 			// 
 			// checkedListAnswer
 			// 
 			this->checkedListAnswer->BackColor = System::Drawing::Color::MintCream;
 			this->checkedListAnswer->BorderStyle = System::Windows::Forms::BorderStyle::None;
-			this->checkedListAnswer->Font = (gcnew System::Drawing::Font(L"Arial", 9.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->checkedListAnswer->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->checkedListAnswer->FormattingEnabled = true;
-			this->checkedListAnswer->Location = System::Drawing::Point(16, 44);
+			this->checkedListAnswer->Location = System::Drawing::Point(21, 37);
 			this->checkedListAnswer->Name = L"checkedListAnswer";
-			this->checkedListAnswer->Size = System::Drawing::Size(236, 204);
+			this->checkedListAnswer->Size = System::Drawing::Size(236, 184);
 			this->checkedListAnswer->TabIndex = 0;
+			// 
+			// panel9
+			// 
+			this->panel9->BackColor = System::Drawing::SystemColors::ControlLight;
+			this->panel9->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+			this->panel9->Controls->Add(this->label4);
+			this->panel9->Location = System::Drawing::Point(1139, 366);
+			this->panel9->Name = L"panel9";
+			this->panel9->Size = System::Drawing::Size(91, 47);
+			this->panel9->TabIndex = 10;
+			// 
+			// label4
+			// 
+			this->label4->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->label4->AutoSize = true;
+			this->label4->Font = (gcnew System::Drawing::Font(L"Sitka Text", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label4->Location = System::Drawing::Point(3, 8);
+			this->label4->Name = L"label4";
+			this->label4->Size = System::Drawing::Size(84, 30);
+			this->label4->TabIndex = 4;
+			this->label4->Text = L"Trả lời";
+			this->label4->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
+			// 
+			// examPanel
+			// 
+			this->examPanel->BackColor = System::Drawing::SystemColors::ButtonHighlight;
+			this->examPanel->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->examPanel->Controls->Add(this->timer);
+			this->examPanel->Controls->Add(this->panel7);
+			this->examPanel->Controls->Add(this->backButton);
+			this->examPanel->Dock = System::Windows::Forms::DockStyle::Left;
+			this->examPanel->Location = System::Drawing::Point(0, 0);
+			this->examPanel->Name = L"examPanel";
+			this->examPanel->Size = System::Drawing::Size(268, 803);
+			this->examPanel->TabIndex = 12;
+			// 
+			// timer
+			// 
+			this->timer->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->timer->AutoSize = true;
+			this->timer->Font = (gcnew System::Drawing::Font(L"Arial", 36, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->timer->Location = System::Drawing::Point(57, 187);
+			this->timer->Name = L"timer";
+			this->timer->Size = System::Drawing::Size(149, 56);
+			this->timer->TabIndex = 2;
+			this->timer->Text = L"00:00";
+			// 
+			// panel7
+			// 
+			this->panel7->Controls->Add(this->label3);
+			this->panel7->Controls->Add(this->certificateTypeLabel);
+			this->panel7->Controls->Add(this->userNameLabel);
+			this->panel7->Location = System::Drawing::Point(10, 60);
+			this->panel7->Name = L"panel7";
+			this->panel7->Size = System::Drawing::Size(243, 109);
+			this->panel7->TabIndex = 1;
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(3, 77);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(120, 23);
+			this->label3->TabIndex = 4;
+			this->label3->Text = L"Số câu hỏi: 25";
+			// 
+			// certificateTypeLabel
+			// 
+			this->certificateTypeLabel->AutoSize = true;
+			this->certificateTypeLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->certificateTypeLabel->Location = System::Drawing::Point(3, 42);
+			this->certificateTypeLabel->Name = L"certificateTypeLabel";
+			this->certificateTypeLabel->Size = System::Drawing::Size(116, 23);
+			this->certificateTypeLabel->TabIndex = 3;
+			this->certificateTypeLabel->Text = L"Loại bằng: A1";
+			// 
+			// userNameLabel
+			// 
+			this->userNameLabel->AutoSize = true;
+			this->userNameLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->userNameLabel->Location = System::Drawing::Point(3, 9);
+			this->userNameLabel->Name = L"userNameLabel";
+			this->userNameLabel->Size = System::Drawing::Size(193, 23);
+			this->userNameLabel->TabIndex = 2;
+			this->userNameLabel->Text = L"Tên: Huynh Minh Tuan";
+			// 
+			// timerCountdown
+			// 
+			this->timerCountdown->Interval = 1000;
+			this->timerCountdown->Tick += gcnew System::EventHandler(this, &TestExamUI::timerCountdown_Tick);
 			// 
 			// TestExamUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::White;
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->ClientSize = System::Drawing::Size(1100, 850);
-			this->Controls->Add(this->panel7);
-			this->Controls->Add(this->panel6);
+			this->ClientSize = System::Drawing::Size(1385, 803);
+			this->Controls->Add(this->panel9);
+			this->Controls->Add(this->examPanel);
+			this->Controls->Add(this->panel8);
 			this->Controls->Add(this->panel3);
 			this->Controls->Add(this->panel5);
 			this->Controls->Add(this->panel4);
 			this->Controls->Add(this->pictureBox);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
-			this->Controls->Add(this->backButton);
 			this->Name = L"TestExamUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"App thi bang lai xe (Demo)";
@@ -317,7 +430,11 @@ namespace demooop {
 			this->panel4->PerformLayout();
 			this->panel5->ResumeLayout(false);
 			this->panel5->PerformLayout();
-			this->panel6->ResumeLayout(false);
+			this->panel8->ResumeLayout(false);
+			this->panel9->ResumeLayout(false);
+			this->panel9->PerformLayout();
+			this->examPanel->ResumeLayout(false);
+			this->examPanel->PerformLayout();
 			this->panel7->ResumeLayout(false);
 			this->panel7->PerformLayout();
 			this->ResumeLayout(false);
@@ -328,15 +445,31 @@ namespace demooop {
 		this->Hide();
 		prevForm->Show();
 	}
+
 	private: System::Void leftButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		curIndexQuesion--;
 		if (curIndexQuesion == -1) {
-			curIndexQuesion = questionData->getNQuestion() - 1;
+			curIndexQuesion = questionData->getQuestionAmount() - 1;
+		}
+		TestExamUI_Load(sender, e);
+	}
+
+	private: System::Void rightButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		curIndexQuesion++;
+		if (curIndexQuesion == questionData->getQuestionAmount()) {
+			curIndexQuesion = 0;
 		}
 		TestExamUI_Load(sender, e);
 	}
 
 	private: System::Void TestExamUI_Load(System::Object^ sender, System::EventArgs^ e) {
+		// start countdown
+		this->timerCountdown->Enabled = true;
+		
+		// load certificate label
+		LoadCertificateLabel();
+
+		questionNumberLabel->Text = L"Câu hỏi " + (curIndexQuesion + 1).ToString();
 		Question q = questionData->getQuestion(curIndexQuesion);
 		std::wstring dg = q.getDescription();
 		this->qDescription->Text = gcnew String(fitStringLine(q.getDescription(), maxQueStringOnLine).data());
@@ -344,12 +477,12 @@ namespace demooop {
 		if (firstLoad) {
 			answerUI = gcnew array<System::Windows::Forms::Label^>(maxNAnswer);
 			int xStartPoint = 10, yStartPoint = 30;
-			int rowRange = 50; // size between 2 answer lines
+			int rowRange = 65; // size between 2 answer lines
 			for (int i = 0; i < maxNAnswer; i++) {
 				answerUI[i] = gcnew Label();
 				answerUI[i]->AutoSize = true;
 				this->panel2->Controls->Add(answerUI[i]);
-				answerUI[i]->Font = (gcnew System::Drawing::Font(L"Arial", 10, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				answerUI[i]->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				answerUI[i]->Location = System::Drawing::Point(xStartPoint, yStartPoint + i * rowRange);
 				answerUI[i]->Name = L"text";
@@ -377,18 +510,10 @@ namespace demooop {
 			checkedListAnswer->Items->Add(gcnew String(text.data()));
 		}
 
-		/*
-		std::vector <int> results = q.getResult();
-		for (int id : results) {
-			assert(id < q.getNumberAnswer());
-			answerUI[id]->ForeColor = System::Drawing::Color::Green;
-		}
-		*/
-
 		// load Image
 		std::wstring questionPathImage = q.getImagePath();
 		if (questionPathImage != L"None") {
-			std::wstring imagePath = L"A1/image/" + questionPathImage;
+			std::wstring imagePath = questionData->getImagePath() + questionPathImage;
 			pictureBox->Image = Image::FromFile(gcnew String(imagePath.data()));
 		}
 		else {
@@ -399,12 +524,17 @@ namespace demooop {
 			firstLoad = false;
 	}
 
-	private: System::Void rightButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		curIndexQuesion++;
-		if (curIndexQuesion == questionData->getNQuestion()) {
-			curIndexQuesion = 0;
+	private: System::Void timerCountdown_Tick(System::Object^ sender, System::EventArgs^ e) {
+		if (countdownSecond > 0) {
+			countdownSecond--;
+			int minutes = countdownSecond / 60;
+			int seconds = countdownSecond % 60;
+			this->timer->Text = ((minutes < 10)? L"0" : L"") + minutes.ToString() + L":" + ((seconds < 10) ? L"0" : L"") + seconds.ToString();
 		}
-		TestExamUI_Load(sender, e);
+		else {
+			this->timerCountdown->Stop();
+			//MessageBox->Show("Het gio");
+		}
 	}
 
 	// Utils goes here
@@ -419,6 +549,18 @@ namespace demooop {
 				s.replace(pos, 1, L"\n");
 			}
 			return s;
+		}
+
+		void LoadCertificateLabel() {
+			int certificateType = examSettings->getCertificateIndex();
+			if (certificateType == 0)
+				this->certificateTypeLabel->Text = L"Loại bằng: A1";
+			if (certificateType == 1)
+				this->certificateTypeLabel->Text = L"Loại bằng: A2";
+			if (certificateType == 2)
+				this->certificateTypeLabel->Text = L"Loại bằng: B1";
+			if (certificateType == 3)
+				this->certificateTypeLabel->Text = L"Loại bằng: B2";
 		}
 };
 }

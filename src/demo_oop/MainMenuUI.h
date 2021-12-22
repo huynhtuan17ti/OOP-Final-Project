@@ -2,6 +2,7 @@
 #include "DatabaseUI.h"
 #include "TestExamUI.h"
 #include <list>
+#include <tuple>
 
 namespace demooop {
 
@@ -104,16 +105,16 @@ namespace demooop {
 			this->panelData = (gcnew System::Windows::Forms::Panel());
 			this->panelHistory = (gcnew System::Windows::Forms::Panel());
 			this->panelTest = (gcnew System::Windows::Forms::Panel());
-			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->comboBoxTime = (gcnew System::Windows::Forms::ComboBox());
-			this->labelTime = (gcnew System::Windows::Forms::Label());
-			this->labelCertificate = (gcnew System::Windows::Forms::Label());
-			this->comboBoxCertificate = (gcnew System::Windows::Forms::ComboBox());
-			this->labelSaveHistory = (gcnew System::Windows::Forms::Label());
-			this->comboBoxHistory = (gcnew System::Windows::Forms::ComboBox());
+			this->buttonStartTest = (gcnew System::Windows::Forms::Button());
 			this->labelLimitWrong = (gcnew System::Windows::Forms::Label());
 			this->comboBoxLimitWrong = (gcnew System::Windows::Forms::ComboBox());
-			this->buttonStartTest = (gcnew System::Windows::Forms::Button());
+			this->labelSaveHistory = (gcnew System::Windows::Forms::Label());
+			this->comboBoxHistory = (gcnew System::Windows::Forms::ComboBox());
+			this->labelCertificate = (gcnew System::Windows::Forms::Label());
+			this->comboBoxCertificate = (gcnew System::Windows::Forms::ComboBox());
+			this->labelTime = (gcnew System::Windows::Forms::Label());
+			this->comboBoxTime = (gcnew System::Windows::Forms::ComboBox());
+			this->label2 = (gcnew System::Windows::Forms::Label());
 			this->panel2->SuspendLayout();
 			this->panelData->SuspendLayout();
 			this->panelTest->SuspendLayout();
@@ -188,6 +189,13 @@ namespace demooop {
 			this->panel1->Size = System::Drawing::Size(901, 80);
 			this->panel1->TabIndex = 3;
 			// 
+			// panelHelp
+			// 
+			this->panelHelp->Location = System::Drawing::Point(300, 80);
+			this->panelHelp->Name = L"panelHelp";
+			this->panelHelp->Size = System::Drawing::Size(604, 673);
+			this->panelHelp->TabIndex = 1;
+			// 
 			// panel2
 			// 
 			this->panel2->BackColor = System::Drawing::Color::White;
@@ -222,6 +230,7 @@ namespace demooop {
 			this->buttonA2->TabIndex = 1;
 			this->buttonA2->Text = L"A2";
 			this->buttonA2->UseVisualStyleBackColor = true;
+			this->buttonA2->Click += gcnew System::EventHandler(this, &MainMenuUI::buttonA2_Click);
 			// 
 			// buttonB1
 			// 
@@ -233,6 +242,7 @@ namespace demooop {
 			this->buttonB1->TabIndex = 2;
 			this->buttonB1->Text = L"B1";
 			this->buttonB1->UseVisualStyleBackColor = true;
+			this->buttonB1->Click += gcnew System::EventHandler(this, &MainMenuUI::buttonB1_Click);
 			// 
 			// buttonB2
 			// 
@@ -244,6 +254,7 @@ namespace demooop {
 			this->buttonB2->TabIndex = 3;
 			this->buttonB2->Text = L"B2";
 			this->buttonB2->UseVisualStyleBackColor = true;
+			this->buttonB2->Click += gcnew System::EventHandler(this, &MainMenuUI::buttonB2_Click);
 			// 
 			// butonA1
 			// 
@@ -256,23 +267,6 @@ namespace demooop {
 			this->butonA1->Text = L"A1";
 			this->butonA1->UseVisualStyleBackColor = true;
 			this->butonA1->Click += gcnew System::EventHandler(this, &MainMenuUI::butonA1_Click);
-			// 
-			// panelTest
-			// 
-			this->panelTest->Controls->Add(this->buttonStartTest);
-			this->panelTest->Controls->Add(this->labelLimitWrong);
-			this->panelTest->Controls->Add(this->comboBoxLimitWrong);
-			this->panelTest->Controls->Add(this->labelSaveHistory);
-			this->panelTest->Controls->Add(this->comboBoxHistory);
-			this->panelTest->Controls->Add(this->labelCertificate);
-			this->panelTest->Controls->Add(this->comboBoxCertificate);
-			this->panelTest->Controls->Add(this->labelTime);
-			this->panelTest->Controls->Add(this->comboBoxTime);
-			this->panelTest->Controls->Add(this->label2);
-			this->panelTest->Location = System::Drawing::Point(300, 80);
-			this->panelTest->Name = L"panelTest";
-			this->panelTest->Size = System::Drawing::Size(604, 673);
-			this->panelTest->TabIndex = 5;
 			// 
 			// panelData
 			// 
@@ -293,100 +287,34 @@ namespace demooop {
 			this->panelHistory->Size = System::Drawing::Size(604, 673);
 			this->panelHistory->TabIndex = 1;
 			// 
-			// panelHelp
+			// panelTest
 			// 
-			this->panelHelp->Location = System::Drawing::Point(300, 80);
-			this->panelHelp->Name = L"panelHelp";
-			this->panelHelp->Size = System::Drawing::Size(604, 673);
-			this->panelHelp->TabIndex = 1;
+			this->panelTest->Controls->Add(this->buttonStartTest);
+			this->panelTest->Controls->Add(this->labelLimitWrong);
+			this->panelTest->Controls->Add(this->comboBoxLimitWrong);
+			this->panelTest->Controls->Add(this->labelSaveHistory);
+			this->panelTest->Controls->Add(this->comboBoxHistory);
+			this->panelTest->Controls->Add(this->labelCertificate);
+			this->panelTest->Controls->Add(this->comboBoxCertificate);
+			this->panelTest->Controls->Add(this->labelTime);
+			this->panelTest->Controls->Add(this->comboBoxTime);
+			this->panelTest->Controls->Add(this->label2);
+			this->panelTest->Location = System::Drawing::Point(300, 80);
+			this->panelTest->Name = L"panelTest";
+			this->panelTest->Size = System::Drawing::Size(604, 673);
+			this->panelTest->TabIndex = 5;
 			// 
-			// label2
+			// buttonStartTest
 			// 
-			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->buttonStartTest->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(24, 21);
-			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(317, 29);
-			this->label2->TabIndex = 0;
-			this->label2->Text = L"Cài đặt cho làm bài thi thử";
-			// 
-			// comboBoxTime
-			// 
-			this->comboBoxTime->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->comboBoxTime->FormattingEnabled = true;
-			this->comboBoxTime->Location = System::Drawing::Point(256, 129);
-			this->comboBoxTime->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->comboBoxTime->Name = L"comboBoxTime";
-			this->comboBoxTime->Size = System::Drawing::Size(156, 30);
-			this->comboBoxTime->Items->Add(L"20 phút");
-			this->comboBoxTime->Items->Add(L"15 phút");
-			this->comboBoxTime->Items->Add(L"10 phút");
-			this->comboBoxTime->Items->Add(L"5 phút");
-			this->comboBoxTime->Items->Add(L"1 phút");
-			this->comboBoxTime->TabIndex = 1;
-			// 
-			// labelTime
-			// 
-			this->labelTime->AutoSize = true;
-			this->labelTime->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->labelTime->Location = System::Drawing::Point(25, 137);
-			this->labelTime->Name = L"labelTime";
-			this->labelTime->Size = System::Drawing::Size(88, 22);
-			this->labelTime->TabIndex = 2;
-			this->labelTime->Text = L"Thời gian";
-			// 
-			// labelCertificate
-			// 
-			this->labelCertificate->AutoSize = true;
-			this->labelCertificate->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->labelCertificate->Location = System::Drawing::Point(25, 210);
-			this->labelCertificate->Name = L"labelCertificate";
-			this->labelCertificate->Size = System::Drawing::Size(93, 22);
-			this->labelCertificate->TabIndex = 4;
-			this->labelCertificate->Text = L"Loại bằng";
-			// 
-			// comboBoxCertificate
-			// 
-			this->comboBoxCertificate->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->comboBoxCertificate->FormattingEnabled = true;
-			this->comboBoxCertificate->Location = System::Drawing::Point(256, 202);
-			this->comboBoxCertificate->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->comboBoxCertificate->Name = L"comboBoxCertificate";
-			this->comboBoxCertificate->Size = System::Drawing::Size(156, 30);
-			this->comboBoxCertificate->Items->Add("A1");
-			this->comboBoxCertificate->Items->Add("A2");
-			this->comboBoxCertificate->Items->Add("B1");
-			this->comboBoxCertificate->Items->Add("B2");
-			this->comboBoxCertificate->TabIndex = 3;
-			// 
-			// labelSaveHistory
-			// 
-			this->labelSaveHistory->AutoSize = true;
-			this->labelSaveHistory->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->labelSaveHistory->Location = System::Drawing::Point(25, 284);
-			this->labelSaveHistory->Name = L"labelSaveHistory";
-			this->labelSaveHistory->Size = System::Drawing::Size(105, 22);
-			this->labelSaveHistory->TabIndex = 6;
-			this->labelSaveHistory->Text = L"Lưu lịch sử";
-			// 
-			// comboBoxHistory
-			// 
-			this->comboBoxHistory->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->comboBoxHistory->FormattingEnabled = true;
-			this->comboBoxHistory->Location = System::Drawing::Point(256, 276);
-			this->comboBoxHistory->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->comboBoxHistory->Name = L"comboBoxHistory";
-			this->comboBoxHistory->Size = System::Drawing::Size(156, 30);
-			this->comboBoxHistory->Items->Add("Có");
-			this->comboBoxHistory->Items->Add("Không");
-			this->comboBoxHistory->TabIndex = 5;
+			this->buttonStartTest->Location = System::Drawing::Point(202, 452);
+			this->buttonStartTest->Name = L"buttonStartTest";
+			this->buttonStartTest->Size = System::Drawing::Size(162, 57);
+			this->buttonStartTest->TabIndex = 9;
+			this->buttonStartTest->Text = L"Bắt đầu ngay";
+			this->buttonStartTest->UseVisualStyleBackColor = true;
+			this->buttonStartTest->Click += gcnew System::EventHandler(this, &MainMenuUI::startTestButton_Click);
 			// 
 			// labelLimitWrong
 			// 
@@ -401,30 +329,101 @@ namespace demooop {
 			// 
 			// comboBoxLimitWrong
 			// 
+			this->comboBoxLimitWrong->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBoxLimitWrong->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBoxLimitWrong->FormattingEnabled = true;
+			this->comboBoxLimitWrong->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
+				L"0 câu", L"4 câu (chuẩn)", L"10 câu",
+					L"15 câu"
+			});
 			this->comboBoxLimitWrong->Location = System::Drawing::Point(256, 352);
-			this->comboBoxLimitWrong->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBoxLimitWrong->Name = L"comboBoxLimitWrong";
 			this->comboBoxLimitWrong->Size = System::Drawing::Size(156, 30);
-			this->comboBoxLimitWrong->Items->Add("0 câu");
-			this->comboBoxLimitWrong->Items->Add(L"4 câu (chuẩn)");
-			this->comboBoxLimitWrong->Items->Add("10 câu");
-			this->comboBoxLimitWrong->Items->Add("15 câu");
 			this->comboBoxLimitWrong->TabIndex = 7;
 			// 
-			// buttonStartTest
+			// labelSaveHistory
 			// 
-			this->buttonStartTest->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->labelSaveHistory->AutoSize = true;
+			this->labelSaveHistory->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->buttonStartTest->Location = System::Drawing::Point(202, 452);
-			this->buttonStartTest->Name = L"buttonStartTest";
-			this->buttonStartTest->Size = System::Drawing::Size(162, 57);
-			this->buttonStartTest->TabIndex = 9;
-			this->buttonStartTest->Text = L"Bắt đầu ngay";
-			this->buttonStartTest->UseVisualStyleBackColor = true;
-			this->buttonStartTest->Click += gcnew System::EventHandler(this, &MainMenuUI::startTestButton_Click);
+			this->labelSaveHistory->Location = System::Drawing::Point(25, 284);
+			this->labelSaveHistory->Name = L"labelSaveHistory";
+			this->labelSaveHistory->Size = System::Drawing::Size(105, 22);
+			this->labelSaveHistory->TabIndex = 6;
+			this->labelSaveHistory->Text = L"Lưu lịch sử";
+			// 
+			// comboBoxHistory
+			// 
+			this->comboBoxHistory->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBoxHistory->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->comboBoxHistory->FormattingEnabled = true;
+			this->comboBoxHistory->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Có", L"Không" });
+			this->comboBoxHistory->Location = System::Drawing::Point(256, 276);
+			this->comboBoxHistory->Name = L"comboBoxHistory";
+			this->comboBoxHistory->Size = System::Drawing::Size(156, 30);
+			this->comboBoxHistory->TabIndex = 5;
+			// 
+			// labelCertificate
+			// 
+			this->labelCertificate->AutoSize = true;
+			this->labelCertificate->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->labelCertificate->Location = System::Drawing::Point(25, 210);
+			this->labelCertificate->Name = L"labelCertificate";
+			this->labelCertificate->Size = System::Drawing::Size(93, 22);
+			this->labelCertificate->TabIndex = 4;
+			this->labelCertificate->Text = L"Loại bằng";
+			// 
+			// comboBoxCertificate
+			// 
+			this->comboBoxCertificate->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBoxCertificate->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->comboBoxCertificate->FormattingEnabled = true;
+			this->comboBoxCertificate->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"A1", L"A2", L"B1", L"B2" });
+			this->comboBoxCertificate->Location = System::Drawing::Point(256, 202);
+			this->comboBoxCertificate->Name = L"comboBoxCertificate";
+			this->comboBoxCertificate->Size = System::Drawing::Size(156, 30);
+			this->comboBoxCertificate->TabIndex = 3;
+			// 
+			// labelTime
+			// 
+			this->labelTime->AutoSize = true;
+			this->labelTime->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->labelTime->Location = System::Drawing::Point(25, 137);
+			this->labelTime->Name = L"labelTime";
+			this->labelTime->Size = System::Drawing::Size(88, 22);
+			this->labelTime->TabIndex = 2;
+			this->labelTime->Text = L"Thời gian";
+			// 
+			// comboBoxTime
+			// 
+			this->comboBoxTime->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBoxTime->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->comboBoxTime->FormattingEnabled = true;
+			this->comboBoxTime->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
+				L"20 phút", L"15 phút", L"10 phút", L"5 phút",
+					L"1 phút"
+			});
+			this->comboBoxTime->Location = System::Drawing::Point(256, 129);
+			this->comboBoxTime->Name = L"comboBoxTime";
+			this->comboBoxTime->Size = System::Drawing::Size(156, 30);
+			this->comboBoxTime->TabIndex = 1;
+			// 
+			// label2
+			// 
+			this->label2->AutoSize = true;
+			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label2->Location = System::Drawing::Point(24, 21);
+			this->label2->Name = L"label2";
+			this->label2->Size = System::Drawing::Size(317, 29);
+			this->label2->TabIndex = 0;
+			this->label2->Text = L"Cài đặt cho làm bài thi thử";
 			// 
 			// MainMenuUI
 			// 
@@ -468,12 +467,27 @@ namespace demooop {
 	}
 	private: System::Void butonA1_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		DatabaseUI^ databaseUI = gcnew DatabaseUI(this);
+		DatabaseUI^ databaseUI = gcnew DatabaseUI(this, 0);
+		databaseUI->Show();
+	}
+	private: System::Void buttonA2_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		DatabaseUI^ databaseUI = gcnew DatabaseUI(this, 1);
+		databaseUI->Show();
+	}
+	private: System::Void buttonB1_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		DatabaseUI^ databaseUI = gcnew DatabaseUI(this, 2);
+		databaseUI->Show();
+	}
+	private: System::Void buttonB2_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		DatabaseUI^ databaseUI = gcnew DatabaseUI(this, 3);
 		databaseUI->Show();
 	}
 	private: System::Void startTestButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		TestExamUI^ testExamUI = gcnew TestExamUI(this);
+		TestExamUI^ testExamUI = gcnew TestExamUI(this, getSelectedItemInOptionalBoxes());
 		testExamUI->Show();
 	}
 	private: System::Void MainMenuUI_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -489,12 +503,31 @@ namespace demooop {
 		listPanel[3] = panelHelp;
 		showPanel();
 	}
+	// Utils goes here
 	private: 
 		void showPanel() {
 			for (int i = 0; i < 4; i++)
 				if (i == curPanelIndex)
 					listPanel[i]->Show();
 				else listPanel[i]->Hide();
+		}
+		ExamSettings getSelectedItemInOptionalBoxes() {
+			int index1 = this->comboBoxCertificate->SelectedIndex;
+			int index2 = this->comboBoxTime->SelectedIndex;
+			int index3 = this->comboBoxLimitWrong->SelectedIndex;
+			int index4 = this->comboBoxHistory->SelectedIndex;
+
+			int selectedCertificateIndex = index1;
+			
+			int countdownTimeArray[] = {1200, 900, 600, 300, 60};
+			int selectedCountdownTime = countdownTimeArray[index2];
+
+			int maxWrongAnswersArray[] = { 0, 4, 10, 15 };
+			int selectedMaxWrongAnswers = maxWrongAnswersArray[index3];
+
+			bool selectedIsSaveHistory = 1 - index4;
+
+			return { selectedCertificateIndex, selectedCountdownTime, 25, selectedMaxWrongAnswers, selectedIsSaveHistory };
 		}
 };
 }
