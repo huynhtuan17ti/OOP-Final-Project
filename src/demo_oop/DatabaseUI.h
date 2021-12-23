@@ -23,7 +23,6 @@ namespace demooop {
 			questionData = new QuestionData(certificatPathArray[certificateType]);
 
 			curIndexQuesion = 0;
-			firstLoad = true;
 			prevForm = srcPrevForm;
 			InitializeComponent();
 			//
@@ -51,7 +50,6 @@ namespace demooop {
 		String^ noImagePath = "assets/no_image.png";
 
 	private: 
-		bool firstLoad;
 		int certificateType; // A1: 0, A2: 1, B1: 2, B2: 3
 		int curIndexQuesion;
 		QuestionData* questionData;
@@ -315,65 +313,28 @@ namespace demooop {
 		if (curIndexQuesion == -1) {
 			curIndexQuesion = questionData->getQuestionAmount() - 1;
 		}
-		DatabaseUI_Load(sender, e);
+		updateUI();
 	}
 	
 	private: System::Void DatabaseUI_Load(System::Object^ sender, System::EventArgs^ e) {
 		LoadCertificateLabel();
-		std::wstring questionNumberText = L"Câu hỏi " + std::to_wstring(curIndexQuesion + 1);
-		this->questionNumberLabel->Text = gcnew String(questionNumberText.data());
-		Question q = questionData->getQuestion(curIndexQuesion);
-		std::wstring dg = q.getDescription();
-		this->qDescription->Text = gcnew String(fitStringLine(q.getDescription(), maxQueStringOnLine).data());
 		
-		if (firstLoad) {
-			answerUI = gcnew array<System::Windows::Forms::Label^>(maxNAnswer);
-			int xStartPoint = 10, yStartPoint = 30;
-			int rowRange = 65; // size between 2 answer lines
-			for (int i = 0; i < maxNAnswer; i++) {
-				answerUI[i] = gcnew Label();
-				answerUI[i]->AutoSize = true;
-				this->panel2->Controls->Add(answerUI[i]);
-				answerUI[i]->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-				answerUI[i]->Location = System::Drawing::Point(xStartPoint, yStartPoint + i * rowRange);
-				answerUI[i]->Name = L"text";
-				answerUI[i]->Size = System::Drawing::Size(75, 21);
-				answerUI[i]->TabIndex = i;
-			}
-		}
-
-		std::vector <std::wstring> answers = q.getAnswers();
+		answerUI = gcnew array<System::Windows::Forms::Label^>(maxNAnswer);
+		int xStartPoint = 10, yStartPoint = 30;
+		int rowRange = 65; // size between 2 answer lines
 		for (int i = 0; i < maxNAnswer; i++) {
-			if (i < q.getNumberAnswer()) {
-				std::wstring curAns = std::to_wstring(i + 1) + L") " + answers[i];
-				curAns = fitStringLine(curAns, maxAnsStringOnLine);
-				answerUI[i]->Text = gcnew String(curAns.data());
-				answerUI[i]->ForeColor = System::Drawing::Color::Red;
-			}
-			else {
-				answerUI[i]->Text = "";
-			}
+			answerUI[i] = gcnew Label();
+			answerUI[i]->AutoSize = true;
+			this->panel2->Controls->Add(answerUI[i]);
+			answerUI[i]->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			answerUI[i]->Location = System::Drawing::Point(xStartPoint, yStartPoint + i * rowRange);
+			answerUI[i]->Name = L"text";
+			answerUI[i]->Size = System::Drawing::Size(75, 21);
+			answerUI[i]->TabIndex = i;
 		}
 
-		std::vector <int> results = q.getResult();
-		for (int id : results) {
-			assert(id < q.getNumberAnswer());
-			answerUI[id]->ForeColor = System::Drawing::Color::Green;
-		}
-
-		std::wstring questionPathImage = q.getImagePath();
-		//std::wcerr << questionPathImage << '\n';
-		if (questionPathImage != L"None") {
-			std::wstring imagePath = questionData->getImagePath() + questionPathImage;
-			pictureBox->Image = Image::FromFile(gcnew String(imagePath.data()));
-		}
-		else {
-			pictureBox->Image = Image::FromFile(noImagePath);
-		}
-
-		if (firstLoad)
-			firstLoad = false;
+		updateUI();
 	}
 
 	private: System::Void rightButton_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -381,7 +342,7 @@ namespace demooop {
 		if (curIndexQuesion == questionData->getQuestionAmount()) {
 			curIndexQuesion = 0;
 		}
-		DatabaseUI_Load(sender, e);
+		updateUI();
 	}
 	
 	private: void LoadCertificateLabel() {
@@ -407,6 +368,43 @@ namespace demooop {
 				s.replace(pos, 1, L"\n");
 			}
 			return s;
+		}
+
+		void updateUI() {
+			std::wstring questionNumberText = L"Câu hỏi " + std::to_wstring(curIndexQuesion + 1);
+			this->questionNumberLabel->Text = gcnew String(questionNumberText.data());
+			Question q = questionData->getQuestion(curIndexQuesion);
+			std::wstring dg = q.getDescription();
+			this->qDescription->Text = gcnew String(fitStringLine(q.getDescription(), maxQueStringOnLine).data());
+
+			std::vector <std::wstring> answers = q.getAnswers();
+			for (int i = 0; i < maxNAnswer; i++) {
+				if (i < q.getNumberAnswer()) {
+					std::wstring curAns = std::to_wstring(i + 1) + L") " + answers[i];
+					curAns = fitStringLine(curAns, maxAnsStringOnLine);
+					answerUI[i]->Text = gcnew String(curAns.data());
+					answerUI[i]->ForeColor = System::Drawing::Color::Red;
+				}
+				else {
+					answerUI[i]->Text = "";
+				}
+			}
+
+			std::vector <int> results = q.getResult();
+			for (int id : results) {
+				assert(id < q.getNumberAnswer());
+				answerUI[id]->ForeColor = System::Drawing::Color::Green;
+			}
+
+			std::wstring questionPathImage = q.getImagePath();
+			//std::wcerr << questionPathImage << '\n';
+			if (questionPathImage != L"None") {
+				std::wstring imagePath = questionData->getImagePath() + questionPathImage;
+				pictureBox->Image = Image::FromFile(gcnew String(imagePath.data()));
+			}
+			else {
+				pictureBox->Image = Image::FromFile(noImagePath);
+			}
 		}
 };
 }

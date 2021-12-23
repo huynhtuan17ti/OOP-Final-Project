@@ -27,10 +27,10 @@ namespace demooop {
 			examResult = new ExamResult(questionData, examSettings);
 			std::vector <AnswerState*> answerState = AnswerState::createAnswerStateList(questionData);
 			examResult->addAnswerStateList(answerState);
-
 			countdownSecond = examSettings->getCountdownSeconds();
+
+			isExamFinish = false;
 			curIndexQuestion = 0;
-			firstLoad = true;
 			prevForm = srcPrevForm;
 			InitializeComponent();
 		}
@@ -57,9 +57,9 @@ namespace demooop {
 		String^ noImagePath = "assets/no_image.png";
 
 	private:
-		bool firstLoad;
 		int curIndexQuestion;
 		int countdownSecond;
+		bool isExamFinish;
 		ExamSettings* examSettings;
 		ExamData* questionData;
 		ExamResult* examResult;
@@ -98,6 +98,15 @@ namespace demooop {
 	private: System::Windows::Forms::Label^ certificateTypeLabel;
 	private: System::Windows::Forms::Label^ userNameLabel;
 	private: System::Windows::Forms::Timer^ timerCountdown;
+	private: System::Windows::Forms::FlowLayoutPanel^ questionStateFlowPanel;
+
+
+
+
+
+	private: System::Windows::Forms::Button^ submitButton;
+
+
 	private: System::ComponentModel::IContainer^ components;
 
 
@@ -133,6 +142,8 @@ namespace demooop {
 			this->panel9 = (gcnew System::Windows::Forms::Panel());
 			this->label4 = (gcnew System::Windows::Forms::Label());
 			this->examPanel = (gcnew System::Windows::Forms::Panel());
+			this->questionStateFlowPanel = (gcnew System::Windows::Forms::FlowLayoutPanel());
+			this->submitButton = (gcnew System::Windows::Forms::Button());
 			this->timer = (gcnew System::Windows::Forms::Label());
 			this->panel7 = (gcnew System::Windows::Forms::Panel());
 			this->questionAmountLabel = (gcnew System::Windows::Forms::Label());
@@ -336,6 +347,8 @@ namespace demooop {
 			// 
 			this->examPanel->BackColor = System::Drawing::SystemColors::ButtonHighlight;
 			this->examPanel->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+			this->examPanel->Controls->Add(this->questionStateFlowPanel);
+			this->examPanel->Controls->Add(this->submitButton);
 			this->examPanel->Controls->Add(this->timer);
 			this->examPanel->Controls->Add(this->panel7);
 			this->examPanel->Controls->Add(this->backButton);
@@ -344,6 +357,30 @@ namespace demooop {
 			this->examPanel->Name = L"examPanel";
 			this->examPanel->Size = System::Drawing::Size(268, 803);
 			this->examPanel->TabIndex = 12;
+			// 
+			// questionStateFlowPanel
+			// 
+			this->questionStateFlowPanel->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
+				| System::Windows::Forms::AnchorStyles::Left)
+				| System::Windows::Forms::AnchorStyles::Right));
+			this->questionStateFlowPanel->AutoScroll = true;
+			this->questionStateFlowPanel->Location = System::Drawing::Point(10, 246);
+			this->questionStateFlowPanel->Name = L"questionStateFlowPanel";
+			this->questionStateFlowPanel->Size = System::Drawing::Size(243, 446);
+			this->questionStateFlowPanel->TabIndex = 4;
+			// 
+			// submitButton
+			// 
+			this->submitButton->BackColor = System::Drawing::SystemColors::ButtonFace;
+			this->submitButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->submitButton->Location = System::Drawing::Point(42, 707);
+			this->submitButton->Name = L"submitButton";
+			this->submitButton->Size = System::Drawing::Size(183, 72);
+			this->submitButton->TabIndex = 3;
+			this->submitButton->Text = L"Nộp bài";
+			this->submitButton->UseVisualStyleBackColor = false;
+			this->submitButton->Click += gcnew System::EventHandler(this, &TestExamUI::submitButton_Click);
 			// 
 			// timer
 			// 
@@ -447,26 +484,37 @@ namespace demooop {
 		}
 #pragma endregion
 	private: System::Void backButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->Hide();
 		prevForm->Show();
+		this->Hide();
 	}
 
 	private: System::Void leftButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		examResult->updateAnswerStateAtIndex(curIndexQuestion, getStateFromCheckedList());
+		updateAnswerStateInExam();
 		curIndexQuestion--;
 		if (curIndexQuestion == -1) {
 			curIndexQuestion = questionData->getQuestionAmount() - 1;
 		}
-		TestExamUI_Load(sender, e);
+		updateUI();
+		//TestExamUI_Load(sender, e);
 	}
 
 	private: System::Void rightButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		examResult->updateAnswerStateAtIndex(curIndexQuestion, getStateFromCheckedList());
+		updateAnswerStateInExam();
 		curIndexQuestion++;
 		if (curIndexQuestion == questionData->getQuestionAmount()) {
 			curIndexQuestion = 0;
 		}
-		TestExamUI_Load(sender, e);
+		updateUI();
+		//TestExamUI_Load(sender, e);
+	}
+
+	private: System::Void questionStateButton_OnClick(System::Object^ sender, System::EventArgs^ e) {
+		System::Windows::Forms::Button^ button = (System::Windows::Forms::Button^)sender;
+		updateAnswerStateInExam();
+		int curIndex = Convert::ToInt32(button->Text) - 1;
+		curIndexQuestion = curIndex;
+		updateUI();
+		//TestExamUI_Load(sender, e);
 	}
 
 	private: System::Void TestExamUI_Load(System::Object^ sender, System::EventArgs^ e) {
@@ -476,68 +524,33 @@ namespace demooop {
 		// load exam information
 		loadCertificateLabel();
 		loadQuestionAmount();
-
-		// load question description
-		questionNumberLabel->Text = L"Câu hỏi " + (curIndexQuestion + 1).ToString();
-		Question q = questionData->getQuestion(curIndexQuestion);
-		std::wstring dg = q.getDescription();
-		this->qDescription->Text = gcnew String(fitStringLine(q.getDescription(), maxQueStringOnLine).data());
+		loadQuestionStateFlow();
 
 		// if firstLoad, initialize UI features
-		if (firstLoad) {
-			answerUI = gcnew array<System::Windows::Forms::Label^>(maxNAnswer);
-			int xStartPoint = 10, yStartPoint = 30;
-			int rowRange = 65; // size between 2 answer lines
-			for (int i = 0; i < maxNAnswer; i++) {
-				answerUI[i] = gcnew Label();
-				answerUI[i]->AutoSize = true;
-				this->panel2->Controls->Add(answerUI[i]);
-				answerUI[i]->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
-					static_cast<System::Byte>(0)));
-				answerUI[i]->Location = System::Drawing::Point(xStartPoint, yStartPoint + i * rowRange);
-				answerUI[i]->Name = L"text";
-				answerUI[i]->Size = System::Drawing::Size(75, 21);
-				answerUI[i]->TabIndex = i;
-			}
-		}
-
-		// load multi-answers
-		std::vector <std::wstring> answers = q.getAnswers();
+		answerUI = gcnew array<System::Windows::Forms::Label^>(maxNAnswer);
+		int xStartPoint = 10, yStartPoint = 30;
+		int rowRange = 65; // size between 2 answer lines
 		for (int i = 0; i < maxNAnswer; i++) {
-			if (i < q.getNumberAnswer()) {
-				std::wstring curAns = std::to_wstring(i + 1) + L") " + answers[i];
-				curAns = fitStringLine(curAns, maxAnsStringOnLine);
-				answerUI[i]->Text = gcnew String(curAns.data());
-				answerUI[i]->ForeColor = System::Drawing::Color::Black;
-			}
-			else {
-				answerUI[i]->Text = "";
-			}
+			answerUI[i] = gcnew Label();
+			answerUI[i]->AutoSize = true;
+			this->panel2->Controls->Add(answerUI[i]);
+			answerUI[i]->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			answerUI[i]->Location = System::Drawing::Point(xStartPoint, yStartPoint + i * rowRange);
+			answerUI[i]->Name = L"text";
+			answerUI[i]->Size = System::Drawing::Size(75, 21);
+			answerUI[i]->TabIndex = i;
 		}
 
-		// load checked list answer
-		checkedListAnswer->Items->Clear();
-		for (int i = 1; i <= q.getNumberAnswer(); i++) {
-			std::wstring text = L"Đáp án " + std::to_wstring(i);
-			checkedListAnswer->Items->Add(gcnew String(text.data()));
-		}
+		updateUI();
+	}
 
-		// fill checkedList by state
-		fillCheckedListFromState(examResult->getAnswerStateAtIndex(curIndexQuestion));
-
-		// load image
-		std::wstring questionPathImage = q.getImagePath();
-		if (questionPathImage != L"None") {
-			std::wstring imagePath = questionData->getImagePath() + questionPathImage;
-			pictureBox->Image = Image::FromFile(gcnew String(imagePath.data()));
-		}
-		else {
-			pictureBox->Image = Image::FromFile(noImagePath);
-		}
-
-		// if firstLoad, negative it
-		if (firstLoad)
-			firstLoad = false;
+	private: System::Void submitButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->timerCountdown->Stop();
+		isExamFinish = true;
+		MessageBox::Show(L"Bạn đã nộp bài, điểm số " + examResult->getScore().ToString() + " / " + questionData->getQuestionAmount().ToString(),
+			L"Thông báo");
+		disableActiveAndShowResult();
 	}
 
 	private: System::Void timerCountdown_Tick(System::Object^ sender, System::EventArgs^ e) {
@@ -549,7 +562,10 @@ namespace demooop {
 		}
 		else {
 			this->timerCountdown->Stop();
-			//MessageBox->Show("Het gio");
+			isExamFinish = true;
+			MessageBox::Show(L"Hết giờ làm bài, điểm số " + examResult->getScore().ToString() + "/" + questionData->getQuestionAmount().ToString(), 
+							 L"Thông báo");
+			disableActiveAndShowResult();
 		}
 	}
 
@@ -594,6 +610,107 @@ namespace demooop {
 			for (int i = 0; i < this->checkedListAnswer->Items->Count; i++)
 				if ((state >> i) & 1)
 					this->checkedListAnswer->SetItemChecked(i, true);
+		}
+
+		void loadQuestionStateFlow() {
+			for (int i = 0; i < questionData->getQuestionAmount(); i++) {
+				System::Windows::Forms::Button^ questionStateButton = (gcnew System::Windows::Forms::Button());
+				questionStateButton->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+					
+				questionStateButton->Size = System::Drawing::Size(66, 66);
+				questionStateButton->Text = (i + 1).ToString();
+				questionStateButton->UseVisualStyleBackColor = false;
+				questionStateButton->ForeColor = System::Drawing::Color::Black;
+				questionStateButton->BackColor = System::Drawing::Color::Gainsboro;
+
+				this->questionStateFlowPanel->Controls->Add(questionStateButton);
+				questionStateButton->Click += gcnew System::EventHandler(this, &TestExamUI::questionStateButton_OnClick);
+			}
+		}
+
+		void updateAnswerStateInExam() {
+			if (isExamFinish)
+				return;
+			examResult->updateAnswerStateAtIndex(curIndexQuestion, getStateFromCheckedList());
+			updateQuestionStateFlow(curIndexQuestion);
+		}
+
+		void updateQuestionStateFlow(int index) {
+			int curQuestionState = examResult->getAnswerStateAtIndex(index);
+			if (curQuestionState > 0) {
+				this->questionStateFlowPanel->Controls[index]->ForeColor = System::Drawing::Color::White;
+				this->questionStateFlowPanel->Controls[index]->BackColor = System::Drawing::Color::MediumPurple;
+			}
+			else {
+				this->questionStateFlowPanel->Controls[index]->ForeColor = System::Drawing::Color::Black;
+				this->questionStateFlowPanel->Controls[index]->BackColor = System::Drawing::Color::Gainsboro;
+			}
+		}
+
+		void updateUI() {
+			// load question description
+			questionNumberLabel->Text = L"Câu hỏi " + (curIndexQuestion + 1).ToString();
+			Question q = questionData->getQuestion(curIndexQuestion);
+			std::wstring dg = q.getDescription();
+			this->qDescription->Text = gcnew String(fitStringLine(q.getDescription(), maxQueStringOnLine).data());
+
+			// load multi-answers
+			std::vector <std::wstring> answers = q.getAnswers();
+			for (int i = 0; i < maxNAnswer; i++) {
+				if (i < q.getNumberAnswer()) {
+					std::wstring curAns = std::to_wstring(i + 1) + L") " + answers[i];
+					curAns = fitStringLine(curAns, maxAnsStringOnLine);
+					answerUI[i]->Text = gcnew String(curAns.data());
+					answerUI[i]->ForeColor = System::Drawing::Color::Black;
+				}
+				else {
+					answerUI[i]->Text = "";
+				}
+			}
+
+			if (isExamFinish) {
+				std::vector <int> results = q.getResult();
+				for (int id : results) {
+					assert(id < q.getNumberAnswer());
+					answerUI[id]->ForeColor = System::Drawing::Color::Green;
+				}
+			}
+
+			// load checked list answer
+			checkedListAnswer->Items->Clear();
+			for (int i = 1; i <= q.getNumberAnswer(); i++) {
+				std::wstring text = L"Đáp án " + std::to_wstring(i);
+				checkedListAnswer->Items->Add(gcnew String(text.data()));
+			}
+
+			// fill checkedList by state
+			fillCheckedListFromState(examResult->getAnswerStateAtIndex(curIndexQuestion));
+
+			// load image
+			std::wstring questionPathImage = q.getImagePath();
+			if (questionPathImage != L"None") {
+				std::wstring imagePath = questionData->getImagePath() + questionPathImage;
+				pictureBox->Image = Image::FromFile(gcnew String(imagePath.data()));
+			}
+			else {
+				pictureBox->Image = Image::FromFile(noImagePath);
+			}
+		}
+
+		void disableActiveAndShowResult() {
+			checkedListAnswer->Enabled = false;
+			for (int index = 0; index < questionData->getQuestionAmount(); index++) {
+				int s = examResult->getSingleScoreAtIndex(index);
+				if (s == 1) {
+					this->questionStateFlowPanel->Controls[index]->ForeColor = System::Drawing::Color::White;
+					this->questionStateFlowPanel->Controls[index]->BackColor = System::Drawing::Color::Green;
+				}
+				else {
+					this->questionStateFlowPanel->Controls[index]->ForeColor = System::Drawing::Color::White;
+					this->questionStateFlowPanel->Controls[index]->BackColor = System::Drawing::Color::Red;
+				}
+			}
 		}
 };
 }

@@ -12,6 +12,6 @@ const std::wstring B2_path = L"data/B2";
 const std::wstring certificatPathArray[4] = {A1_path, A2_path, B1_path, B2_path};
 
 // option for test exam
-const int countdownTimeArray[] = {1200, 900, 600, 300, 60};
+const int countdownTimeArray[] = {1200, 900, 600, 300, 5};
 const int maxWrongAnswersArray[] = {0, 4, 10, 15};
 const int questionAmountArray[] = { 15, 25, 50, 100 };

@@ -119,5 +119,8 @@ public:
 	int getCorrectStateAtIndex(int index) {
 		return answerStateList[index]->getCorrectState();
 	}
+	int getSingleScoreAtIndex(int index) {
+		return answerStateList[index]->compare();
+	}
 	int getScore();
 };
