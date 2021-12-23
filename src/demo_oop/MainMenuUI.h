@@ -3,6 +3,7 @@
 #include "TestExamUI.h"
 #include <list>
 #include <tuple>
+#include "Constants.h"
 
 namespace demooop {
 
@@ -65,8 +66,8 @@ namespace demooop {
 	private: System::Windows::Forms::Button^ buttonStartTest;
 	private: System::Windows::Forms::Label^ labelLimitWrong;
 	private: System::Windows::Forms::ComboBox^ comboBoxLimitWrong;
-	private: System::Windows::Forms::Label^ labelSaveHistory;
-	private: System::Windows::Forms::ComboBox^ comboBoxHistory;
+	private: System::Windows::Forms::Label^ labelQuestionAmount;
+	private: System::Windows::Forms::ComboBox^ comboBoxQuestionAmount;
 	private: System::Windows::Forms::Label^ labelCertificate;
 	private: System::Windows::Forms::ComboBox^ comboBoxCertificate;
 	private: System::Windows::Forms::Label^ labelTime;
@@ -108,8 +109,8 @@ namespace demooop {
 			this->buttonStartTest = (gcnew System::Windows::Forms::Button());
 			this->labelLimitWrong = (gcnew System::Windows::Forms::Label());
 			this->comboBoxLimitWrong = (gcnew System::Windows::Forms::ComboBox());
-			this->labelSaveHistory = (gcnew System::Windows::Forms::Label());
-			this->comboBoxHistory = (gcnew System::Windows::Forms::ComboBox());
+			this->labelQuestionAmount = (gcnew System::Windows::Forms::Label());
+			this->comboBoxQuestionAmount = (gcnew System::Windows::Forms::ComboBox());
 			this->labelCertificate = (gcnew System::Windows::Forms::Label());
 			this->comboBoxCertificate = (gcnew System::Windows::Forms::ComboBox());
 			this->labelTime = (gcnew System::Windows::Forms::Label());
@@ -292,8 +293,8 @@ namespace demooop {
 			this->panelTest->Controls->Add(this->buttonStartTest);
 			this->panelTest->Controls->Add(this->labelLimitWrong);
 			this->panelTest->Controls->Add(this->comboBoxLimitWrong);
-			this->panelTest->Controls->Add(this->labelSaveHistory);
-			this->panelTest->Controls->Add(this->comboBoxHistory);
+			this->panelTest->Controls->Add(this->labelQuestionAmount);
+			this->panelTest->Controls->Add(this->comboBoxQuestionAmount);
 			this->panelTest->Controls->Add(this->labelCertificate);
 			this->panelTest->Controls->Add(this->comboBoxCertificate);
 			this->panelTest->Controls->Add(this->labelTime);
@@ -306,7 +307,7 @@ namespace demooop {
 			// 
 			// buttonStartTest
 			// 
-			this->buttonStartTest->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->buttonStartTest->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->buttonStartTest->Location = System::Drawing::Point(202, 452);
 			this->buttonStartTest->Name = L"buttonStartTest";
@@ -344,26 +345,26 @@ namespace demooop {
 			// 
 			// labelSaveHistory
 			// 
-			this->labelSaveHistory->AutoSize = true;
-			this->labelSaveHistory->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->labelQuestionAmount->AutoSize = true;
+			this->labelQuestionAmount->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->labelSaveHistory->Location = System::Drawing::Point(25, 284);
-			this->labelSaveHistory->Name = L"labelSaveHistory";
-			this->labelSaveHistory->Size = System::Drawing::Size(105, 22);
-			this->labelSaveHistory->TabIndex = 6;
-			this->labelSaveHistory->Text = L"Lưu lịch sử";
+			this->labelQuestionAmount->Location = System::Drawing::Point(25, 284);
+			this->labelQuestionAmount->Name = L"labelQuestionAmount";
+			this->labelQuestionAmount->Size = System::Drawing::Size(105, 22);
+			this->labelQuestionAmount->TabIndex = 6;
+			this->labelQuestionAmount->Text = L"Số câu hỏi";
 			// 
 			// comboBoxHistory
 			// 
-			this->comboBoxHistory->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->comboBoxHistory->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->comboBoxQuestionAmount->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
+			this->comboBoxQuestionAmount->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->comboBoxHistory->FormattingEnabled = true;
-			this->comboBoxHistory->Items->AddRange(gcnew cli::array< System::Object^  >(2) { L"Có", L"Không" });
-			this->comboBoxHistory->Location = System::Drawing::Point(256, 276);
-			this->comboBoxHistory->Name = L"comboBoxHistory";
-			this->comboBoxHistory->Size = System::Drawing::Size(156, 30);
-			this->comboBoxHistory->TabIndex = 5;
+			this->comboBoxQuestionAmount->FormattingEnabled = true;
+			this->comboBoxQuestionAmount->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"15 câu", L"25 câu (chuẩn)", L"50 câu", L"Hết"});
+			this->comboBoxQuestionAmount->Location = System::Drawing::Point(256, 276);
+			this->comboBoxQuestionAmount->Name = L"comboBoxQuestionAmount";
+			this->comboBoxQuestionAmount->Size = System::Drawing::Size(156, 30);
+			this->comboBoxQuestionAmount->TabIndex = 5;
 			// 
 			// labelCertificate
 			// 
@@ -417,7 +418,7 @@ namespace demooop {
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(24, 21);
 			this->label2->Name = L"label2";
@@ -493,7 +494,7 @@ namespace demooop {
 	private: System::Void MainMenuUI_Load(System::Object^ sender, System::EventArgs^ e) {
 		comboBoxTime->SelectedItem = NULL;
 		comboBoxCertificate->SelectedItem = NULL;
-		comboBoxHistory->SelectedItem = NULL;
+		comboBoxQuestionAmount->SelectedItem = NULL;
 		comboBoxLimitWrong->SelectedItem = NULL;
 
 		listPanel = gcnew array<System::Windows::Forms::Panel^>(4);
@@ -515,19 +516,14 @@ namespace demooop {
 			int index1 = this->comboBoxCertificate->SelectedIndex;
 			int index2 = this->comboBoxTime->SelectedIndex;
 			int index3 = this->comboBoxLimitWrong->SelectedIndex;
-			int index4 = this->comboBoxHistory->SelectedIndex;
+			int index4 = this->comboBoxQuestionAmount->SelectedIndex;
 
 			int selectedCertificateIndex = index1;
-			
-			int countdownTimeArray[] = {1200, 900, 600, 300, 60};
 			int selectedCountdownTime = countdownTimeArray[index2];
-
-			int maxWrongAnswersArray[] = { 0, 4, 10, 15 };
 			int selectedMaxWrongAnswers = maxWrongAnswersArray[index3];
+			int selectedQuestionAmount = questionAmountArray[index4];
 
-			bool selectedIsSaveHistory = 1 - index4;
-
-			return { selectedCertificateIndex, selectedCountdownTime, 25, selectedMaxWrongAnswers, selectedIsSaveHistory };
+			return { selectedCertificateIndex, selectedCountdownTime, selectedQuestionAmount, selectedMaxWrongAnswers};
 		}
 };
 }

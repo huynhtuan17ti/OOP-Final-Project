@@ -39,3 +39,8 @@ QuestionData::QuestionData(const std::wstring dataPath) {
 	}
 	inp.close();
 }
+
+QuestionData::QuestionData(const QuestionData* q) {
+	imagePath = q->imagePath;
+	questions = q->questions;
+}

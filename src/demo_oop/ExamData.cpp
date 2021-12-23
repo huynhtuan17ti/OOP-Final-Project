@@ -8,5 +8,29 @@ ExamData::ExamData(int scrCertiType, int srcExamQuestionAmount, int srcMaxWrongA
 	this->maxWrongAnswer = srcMaxWrongAnswer;
 
 	this->shuffle();
-	assert(this->examQuestionAmount <= this->questionData->getQuestionAmount());
+}
+
+std::vector <AnswerState*> AnswerState::createAnswerStateList(QuestionData* questionData) {
+	std::vector <AnswerState*> answerStateList;
+	for (int i = 0; i < questionData->getQuestionAmount(); i++) {
+		Question q = questionData->getQuestion(i);
+		answerStateList.push_back(new AnswerState(q.getResult()));
+	}
+	return answerStateList;
+}
+
+ExamResult::ExamResult(ExamData* srcExamData, ExamSettings* srcExamSettings){
+	examData = srcExamData;
+	examSettings = srcExamSettings;
+};
+
+void ExamResult::addAnswerStateList(std::vector <AnswerState*> srcList) {
+	answerStateList = srcList;
+}
+
+int ExamResult::getScore() {
+	int totalScore = 0;
+	for (auto& x : answerStateList)
+		totalScore += x->compare();
+	return totalScore;
 }

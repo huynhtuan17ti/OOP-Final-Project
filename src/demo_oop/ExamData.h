@@ -10,6 +10,10 @@ private:
 
 public:
 	ExamData(int, int, int);
+	ExamData(const ExamData* examData): QuestionData(examData){
+		examQuestionAmount = examData->examQuestionAmount;
+		maxWrongAnswer = examData->maxWrongAnswer;
+	}
 	
 public:
 	int getQuestionAmount() {
@@ -23,15 +27,19 @@ private:
 	int countdownSeconds;
 	int questionAmount;
 	int maxWrongAnswer;
-	bool isSaveHistory;
 
 public:
-	ExamSettings(int srcCertificateIndex, int srcCountdownSeconds, int srcQuestionAmount, int srcMaxWrongAnswer, bool srcIsSaveHistory) {
+	ExamSettings(int srcCertificateIndex, int srcCountdownSeconds, int srcQuestionAmount, int srcMaxWrongAnswer) {
 		certificateIndex = srcCertificateIndex;
 		countdownSeconds = srcCountdownSeconds;
 		questionAmount = srcQuestionAmount;
 		maxWrongAnswer = srcMaxWrongAnswer;
-		isSaveHistory = srcIsSaveHistory;
+	}
+	ExamSettings(const ExamSettings* examSettings) {
+		certificateIndex = examSettings->certificateIndex;
+		countdownSeconds = examSettings->countdownSeconds;
+		questionAmount = examSettings->questionAmount;
+		maxWrongAnswer = examSettings->maxWrongAnswer;
 	}
 
 public:
@@ -50,8 +58,66 @@ public:
 	int getMaxWrongAnswer() {
 		return maxWrongAnswer;
 	}
+};
 
-	bool getIsSaveHistory() {
-		return isSaveHistory;
+class AnswerState {
+private:
+	int state;
+	int correctState;
+public:
+	AnswerState(int srcCorrectState) {
+		state = 0;
+		correctState = srcCorrectState;
 	}
+	AnswerState(std::vector <int> results) {
+		correctState = state = 0;
+		for (int u : results)
+			correctState += (1 << u);
+	}
+	AnswerState(const AnswerState* answerState) {
+		state = answerState->state;
+		correctState = answerState->correctState;
+	}
+	int getCorrectState() {
+		return correctState;
+	}
+	int getAnswerState() {
+		return state;
+	}
+	void setAnswerState(int answerState) {
+		state = answerState;
+	}
+	// check if the answer is right
+	bool compare() { 
+		return (state == correctState);
+	}
+public:
+	// create an AnswerState List from questionData
+	static std::vector <AnswerState*> createAnswerStateList(QuestionData* questionData);
+};
+
+class ExamResult {
+private:
+	ExamData* examData;
+	ExamSettings* examSettings;
+	std::vector <AnswerState*>  answerStateList;
+
+public:
+	ExamResult(ExamData*, ExamSettings*);
+	~ExamResult() {
+		delete examData, examSettings;
+		for (auto& x : answerStateList)
+			delete x;
+	}
+	void addAnswerStateList(std::vector <AnswerState*>);
+	void updateAnswerStateAtIndex(int index, int state) {
+		answerStateList[index]->setAnswerState(state);
+	}
+	int getAnswerStateAtIndex(int index) {
+		return answerStateList[index]->getAnswerState();
+	}
+	int getCorrectStateAtIndex(int index) {
+		return answerStateList[index]->getCorrectState();
+	}
+	int getScore();
 };

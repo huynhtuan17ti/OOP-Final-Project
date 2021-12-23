@@ -24,14 +24,15 @@ namespace demooop {
 										examSettings->getQuestionAmount(), 
 										examSettings->getMaxWrongAnswer());
 			
+			examResult = new ExamResult(questionData, examSettings);
+			std::vector <AnswerState*> answerState = AnswerState::createAnswerStateList(questionData);
+			examResult->addAnswerStateList(answerState);
+
 			countdownSecond = examSettings->getCountdownSeconds();
-			curIndexQuesion = 0;
+			curIndexQuestion = 0;
 			firstLoad = true;
 			prevForm = srcPrevForm;
 			InitializeComponent();
-			//
-			//TODO: Add the constructor code here
-			//
 		}
 
 	protected:
@@ -41,6 +42,8 @@ namespace demooop {
 		~TestExamUI()
 		{
 			delete questionData;
+			delete examSettings;
+			delete examResult;
 			if (components)
 			{
 				delete components;
@@ -55,10 +58,13 @@ namespace demooop {
 
 	private:
 		bool firstLoad;
-		int curIndexQuesion;
+		int curIndexQuestion;
 		int countdownSecond;
 		ExamSettings* examSettings;
-		QuestionData* questionData;
+		ExamData* questionData;
+		ExamResult* examResult;
+		
+
 	private: cli::array<System::Windows::Forms::Label^>^ answerUI;
 
 	private: System::Windows::Forms::Form^ prevForm;
@@ -78,9 +84,6 @@ namespace demooop {
 	private: System::Windows::Forms::Panel^ panel5;
 
 
-
-
-
 	private: System::Windows::Forms::Panel^ panel8;
 	private: System::Windows::Forms::CheckedListBox^ checkedListAnswer;
 
@@ -90,7 +93,8 @@ namespace demooop {
 	private: System::Windows::Forms::Panel^ examPanel;
 	private: System::Windows::Forms::Label^ timer;
 	private: System::Windows::Forms::Panel^ panel7;
-	private: System::Windows::Forms::Label^ label3;
+	private: System::Windows::Forms::Label^ questionAmountLabel;
+
 	private: System::Windows::Forms::Label^ certificateTypeLabel;
 	private: System::Windows::Forms::Label^ userNameLabel;
 	private: System::Windows::Forms::Timer^ timerCountdown;
@@ -131,7 +135,7 @@ namespace demooop {
 			this->examPanel = (gcnew System::Windows::Forms::Panel());
 			this->timer = (gcnew System::Windows::Forms::Label());
 			this->panel7 = (gcnew System::Windows::Forms::Panel());
-			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->questionAmountLabel = (gcnew System::Windows::Forms::Label());
 			this->certificateTypeLabel = (gcnew System::Windows::Forms::Label());
 			this->userNameLabel = (gcnew System::Windows::Forms::Label());
 			this->timerCountdown = (gcnew System::Windows::Forms::Timer(this->components));
@@ -294,6 +298,7 @@ namespace demooop {
 			// 
 			this->checkedListAnswer->BackColor = System::Drawing::Color::MintCream;
 			this->checkedListAnswer->BorderStyle = System::Windows::Forms::BorderStyle::None;
+			this->checkedListAnswer->CheckOnClick = true;
 			this->checkedListAnswer->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->checkedListAnswer->FormattingEnabled = true;
@@ -356,7 +361,7 @@ namespace demooop {
 			// 
 			// panel7
 			// 
-			this->panel7->Controls->Add(this->label3);
+			this->panel7->Controls->Add(this->questionAmountLabel);
 			this->panel7->Controls->Add(this->certificateTypeLabel);
 			this->panel7->Controls->Add(this->userNameLabel);
 			this->panel7->Location = System::Drawing::Point(10, 60);
@@ -364,16 +369,16 @@ namespace demooop {
 			this->panel7->Size = System::Drawing::Size(243, 109);
 			this->panel7->TabIndex = 1;
 			// 
-			// label3
+			// questionAmountLabel
 			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->questionAmountLabel->AutoSize = true;
+			this->questionAmountLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(3, 77);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(120, 23);
-			this->label3->TabIndex = 4;
-			this->label3->Text = L"Số câu hỏi: 25";
+			this->questionAmountLabel->Location = System::Drawing::Point(3, 77);
+			this->questionAmountLabel->Name = L"questionAmountLabel";
+			this->questionAmountLabel->Size = System::Drawing::Size(120, 23);
+			this->questionAmountLabel->TabIndex = 4;
+			this->questionAmountLabel->Text = L"Số câu hỏi: 25";
 			// 
 			// certificateTypeLabel
 			// 
@@ -447,17 +452,19 @@ namespace demooop {
 	}
 
 	private: System::Void leftButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		curIndexQuesion--;
-		if (curIndexQuesion == -1) {
-			curIndexQuesion = questionData->getQuestionAmount() - 1;
+		examResult->updateAnswerStateAtIndex(curIndexQuestion, getStateFromCheckedList());
+		curIndexQuestion--;
+		if (curIndexQuestion == -1) {
+			curIndexQuestion = questionData->getQuestionAmount() - 1;
 		}
 		TestExamUI_Load(sender, e);
 	}
 
 	private: System::Void rightButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		curIndexQuesion++;
-		if (curIndexQuesion == questionData->getQuestionAmount()) {
-			curIndexQuesion = 0;
+		examResult->updateAnswerStateAtIndex(curIndexQuestion, getStateFromCheckedList());
+		curIndexQuestion++;
+		if (curIndexQuestion == questionData->getQuestionAmount()) {
+			curIndexQuestion = 0;
 		}
 		TestExamUI_Load(sender, e);
 	}
@@ -466,14 +473,17 @@ namespace demooop {
 		// start countdown
 		this->timerCountdown->Enabled = true;
 		
-		// load certificate label
-		LoadCertificateLabel();
+		// load exam information
+		loadCertificateLabel();
+		loadQuestionAmount();
 
-		questionNumberLabel->Text = L"Câu hỏi " + (curIndexQuesion + 1).ToString();
-		Question q = questionData->getQuestion(curIndexQuesion);
+		// load question description
+		questionNumberLabel->Text = L"Câu hỏi " + (curIndexQuestion + 1).ToString();
+		Question q = questionData->getQuestion(curIndexQuestion);
 		std::wstring dg = q.getDescription();
 		this->qDescription->Text = gcnew String(fitStringLine(q.getDescription(), maxQueStringOnLine).data());
 
+		// if firstLoad, initialize UI features
 		if (firstLoad) {
 			answerUI = gcnew array<System::Windows::Forms::Label^>(maxNAnswer);
 			int xStartPoint = 10, yStartPoint = 30;
@@ -491,6 +501,7 @@ namespace demooop {
 			}
 		}
 
+		// load multi-answers
 		std::vector <std::wstring> answers = q.getAnswers();
 		for (int i = 0; i < maxNAnswer; i++) {
 			if (i < q.getNumberAnswer()) {
@@ -504,13 +515,17 @@ namespace demooop {
 			}
 		}
 
+		// load checked list answer
 		checkedListAnswer->Items->Clear();
 		for (int i = 1; i <= q.getNumberAnswer(); i++) {
 			std::wstring text = L"Đáp án " + std::to_wstring(i);
 			checkedListAnswer->Items->Add(gcnew String(text.data()));
 		}
 
-		// load Image
+		// fill checkedList by state
+		fillCheckedListFromState(examResult->getAnswerStateAtIndex(curIndexQuestion));
+
+		// load image
 		std::wstring questionPathImage = q.getImagePath();
 		if (questionPathImage != L"None") {
 			std::wstring imagePath = questionData->getImagePath() + questionPathImage;
@@ -520,6 +535,7 @@ namespace demooop {
 			pictureBox->Image = Image::FromFile(noImagePath);
 		}
 
+		// if firstLoad, negative it
 		if (firstLoad)
 			firstLoad = false;
 	}
@@ -551,7 +567,7 @@ namespace demooop {
 			return s;
 		}
 
-		void LoadCertificateLabel() {
+		void loadCertificateLabel() {
 			int certificateType = examSettings->getCertificateIndex();
 			if (certificateType == 0)
 				this->certificateTypeLabel->Text = L"Loại bằng: A1";
@@ -561,6 +577,23 @@ namespace demooop {
 				this->certificateTypeLabel->Text = L"Loại bằng: B1";
 			if (certificateType == 3)
 				this->certificateTypeLabel->Text = L"Loại bằng: B2";
+		}
+
+		void loadQuestionAmount() {
+			this->questionAmountLabel->Text = L"Số câu hỏi: " + examSettings->getQuestionAmount();
+		}
+
+		int getStateFromCheckedList() {
+			int state = 0;
+			for (int i = 0; i < this->checkedListAnswer->CheckedIndices->Count; i++)
+				state += (1 << this->checkedListAnswer->CheckedIndices[i]);
+			return state;
+		}
+
+		void fillCheckedListFromState(int state) {
+			for (int i = 0; i < this->checkedListAnswer->Items->Count; i++)
+				if ((state >> i) & 1)
+					this->checkedListAnswer->SetItemChecked(i, true);
 		}
 };
 }
