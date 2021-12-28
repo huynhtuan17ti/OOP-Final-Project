@@ -671,6 +671,11 @@ namespace demooop {
 			}
 
 			if (isExamFinish) {
+				int state = examResult->getAnswerStateAtIndex(curIndexQuestion);
+				for(int id = 0; id < q.getNumberAnswer(); id++)
+					if((state>>id)&1)
+						answerUI[id]->ForeColor = System::Drawing::Color::Red;
+
 				std::vector <int> results = q.getResult();
 				for (int id : results) {
 					assert(id < q.getNumberAnswer());
