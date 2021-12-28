@@ -18,3 +18,6 @@ const int questionAmountArray[] = { 15, 25, 50, 100 };
 
 // history storing
 const std::wstring history_path = L"data/history.txt";
+
+// users storing
+const std::wstring account_path = L"data/users.txt";
