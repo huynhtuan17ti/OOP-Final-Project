@@ -7,7 +7,6 @@
 using namespace std;
 
 
-
 class HelperDatabase {
 protected:
 	vector<string> data;

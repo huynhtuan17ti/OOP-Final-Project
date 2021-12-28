@@ -73,6 +73,12 @@ namespace demooop {
 	private: System::Windows::Forms::Label^ labelTime;
 	private: System::Windows::Forms::ComboBox^ comboBoxTime;
 	private: System::Windows::Forms::Label^ label2;
+	private: System::Windows::Forms::Label^ historyLabel;
+	private: System::Windows::Forms::FlowLayoutPanel^ flowHistoryPanel;
+	private: System::Windows::Forms::Button^ resetHistoryButton;
+
+
+
 	protected:
 
 	protected:
@@ -90,6 +96,7 @@ namespace demooop {
 		/// </summary>
 		void InitializeComponent(void)
 		{
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(MainMenuUI::typeid));
 			this->questionButton = (gcnew System::Windows::Forms::Button());
 			this->testButton = (gcnew System::Windows::Forms::Button());
 			this->helpButton = (gcnew System::Windows::Forms::Button());
@@ -105,6 +112,8 @@ namespace demooop {
 			this->butonA1 = (gcnew System::Windows::Forms::Button());
 			this->panelData = (gcnew System::Windows::Forms::Panel());
 			this->panelHistory = (gcnew System::Windows::Forms::Panel());
+			this->historyLabel = (gcnew System::Windows::Forms::Label());
+			this->flowHistoryPanel = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->panelTest = (gcnew System::Windows::Forms::Panel());
 			this->buttonStartTest = (gcnew System::Windows::Forms::Button());
 			this->labelLimitWrong = (gcnew System::Windows::Forms::Label());
@@ -116,8 +125,10 @@ namespace demooop {
 			this->labelTime = (gcnew System::Windows::Forms::Label());
 			this->comboBoxTime = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->resetHistoryButton = (gcnew System::Windows::Forms::Button());
 			this->panel2->SuspendLayout();
 			this->panelData->SuspendLayout();
+			this->panelHistory->SuspendLayout();
 			this->panelTest->SuspendLayout();
 			this->SuspendLayout();
 			// 
@@ -283,10 +294,35 @@ namespace demooop {
 			// 
 			// panelHistory
 			// 
+			this->panelHistory->Controls->Add(this->resetHistoryButton);
+			this->panelHistory->Controls->Add(this->historyLabel);
+			this->panelHistory->Controls->Add(this->flowHistoryPanel);
 			this->panelHistory->Location = System::Drawing::Point(300, 80);
 			this->panelHistory->Name = L"panelHistory";
 			this->panelHistory->Size = System::Drawing::Size(604, 673);
 			this->panelHistory->TabIndex = 1;
+			// 
+			// historyLabel
+			// 
+			this->historyLabel->AutoSize = true;
+			this->historyLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->historyLabel->Location = System::Drawing::Point(209, 31);
+			this->historyLabel->Name = L"historyLabel";
+			this->historyLabel->Size = System::Drawing::Size(200, 35);
+			this->historyLabel->TabIndex = 1;
+			this->historyLabel->Text = L"Lịch sử làm bài";
+			// 
+			// flowHistoryPanel
+			// 
+			this->flowHistoryPanel->AutoScroll = true;
+			this->flowHistoryPanel->BackColor = System::Drawing::SystemColors::ControlLightLight;
+			this->flowHistoryPanel->Location = System::Drawing::Point(24, 89);
+			this->flowHistoryPanel->Margin = System::Windows::Forms::Padding(10);
+			this->flowHistoryPanel->Name = L"flowHistoryPanel";
+			this->flowHistoryPanel->Padding = System::Windows::Forms::Padding(10);
+			this->flowHistoryPanel->Size = System::Drawing::Size(556, 561);
+			this->flowHistoryPanel->TabIndex = 0;
 			// 
 			// panelTest
 			// 
@@ -343,24 +379,27 @@ namespace demooop {
 			this->comboBoxLimitWrong->Size = System::Drawing::Size(156, 30);
 			this->comboBoxLimitWrong->TabIndex = 7;
 			// 
-			// labelSaveHistory
+			// labelQuestionAmount
 			// 
 			this->labelQuestionAmount->AutoSize = true;
 			this->labelQuestionAmount->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->labelQuestionAmount->Location = System::Drawing::Point(25, 284);
 			this->labelQuestionAmount->Name = L"labelQuestionAmount";
-			this->labelQuestionAmount->Size = System::Drawing::Size(105, 22);
+			this->labelQuestionAmount->Size = System::Drawing::Size(99, 22);
 			this->labelQuestionAmount->TabIndex = 6;
 			this->labelQuestionAmount->Text = L"Số câu hỏi";
 			// 
-			// comboBoxHistory
+			// comboBoxQuestionAmount
 			// 
 			this->comboBoxQuestionAmount->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
 			this->comboBoxQuestionAmount->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBoxQuestionAmount->FormattingEnabled = true;
-			this->comboBoxQuestionAmount->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"15 câu", L"25 câu (chuẩn)", L"50 câu", L"Hết"});
+			this->comboBoxQuestionAmount->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
+				L"15 câu", L"25 câu (chuẩn)", L"50 câu",
+					L"Hết"
+			});
 			this->comboBoxQuestionAmount->Location = System::Drawing::Point(256, 276);
 			this->comboBoxQuestionAmount->Name = L"comboBoxQuestionAmount";
 			this->comboBoxQuestionAmount->Size = System::Drawing::Size(156, 30);
@@ -422,18 +461,30 @@ namespace demooop {
 				static_cast<System::Byte>(0)));
 			this->label2->Location = System::Drawing::Point(24, 21);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(317, 29);
+			this->label2->Size = System::Drawing::Size(335, 35);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Cài đặt cho làm bài thi thử";
+			// 
+			// resetHistoryButton
+			// 
+			this->resetHistoryButton->BackColor = System::Drawing::SystemColors::Control;
+			this->resetHistoryButton->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"resetHistoryButton.BackgroundImage")));
+			this->resetHistoryButton->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->resetHistoryButton->Location = System::Drawing::Point(410, 30);
+			this->resetHistoryButton->Name = L"resetHistoryButton";
+			this->resetHistoryButton->Size = System::Drawing::Size(40, 40);
+			this->resetHistoryButton->TabIndex = 2;
+			this->resetHistoryButton->UseVisualStyleBackColor = false;
+			this->resetHistoryButton->Click += gcnew System::EventHandler(this, &MainMenuUI::resetHistoryButton_Click);
 			// 
 			// MainMenuUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(900, 750);
+			this->Controls->Add(this->panelHistory);
 			this->Controls->Add(this->panelData);
 			this->Controls->Add(this->panelTest);
-			this->Controls->Add(this->panelHistory);
 			this->Controls->Add(this->panelHelp);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
@@ -444,6 +495,8 @@ namespace demooop {
 			this->panel2->ResumeLayout(false);
 			this->panelData->ResumeLayout(false);
 			this->panelData->PerformLayout();
+			this->panelHistory->ResumeLayout(false);
+			this->panelHistory->PerformLayout();
 			this->panelTest->ResumeLayout(false);
 			this->panelTest->PerformLayout();
 			this->ResumeLayout(false);
@@ -491,11 +544,15 @@ namespace demooop {
 		TestExamUI^ testExamUI = gcnew TestExamUI(this, getSelectedItemInOptionalBoxes());
 		testExamUI->Show();
 	}
+	private: System::Void resetHistoryButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		loadHistory();
+	}
 	private: System::Void MainMenuUI_Load(System::Object^ sender, System::EventArgs^ e) {
 		comboBoxTime->SelectedItem = NULL;
 		comboBoxCertificate->SelectedItem = NULL;
 		comboBoxQuestionAmount->SelectedItem = NULL;
 		comboBoxLimitWrong->SelectedItem = NULL;
+		loadHistory();
 
 		listPanel = gcnew array<System::Windows::Forms::Panel^>(4);
 		listPanel[0] = panelTest;
@@ -512,6 +569,7 @@ namespace demooop {
 					listPanel[i]->Show();
 				else listPanel[i]->Hide();
 		}
+
 		ExamSettings getSelectedItemInOptionalBoxes() {
 			int index1 = this->comboBoxCertificate->SelectedIndex;
 			int index2 = this->comboBoxTime->SelectedIndex;
@@ -524,6 +582,53 @@ namespace demooop {
 			int selectedQuestionAmount = questionAmountArray[index4];
 
 			return { selectedCertificateIndex, selectedCountdownTime, selectedQuestionAmount, selectedMaxWrongAnswers};
+		}
+
+		void loadHistory() {
+			std::ifstream inp(history_path);
+			std::string date;
+			int correctAns, totalAns;
+			bool isPass;
+			this->flowHistoryPanel->Controls->Clear();
+			while (inp >> date) {
+				inp >> correctAns >> totalAns >> isPass;
+				
+				System::Windows::Forms::Panel^ containPanel = (gcnew System::Windows::Forms::Panel());
+				containPanel->BackColor = System::Drawing::SystemColors::Control;
+				containPanel->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
+				containPanel->Size = System::Drawing::Size(527, 80);
+
+				System::Windows::Forms::Panel^ passState = (gcnew System::Windows::Forms::Panel());
+				if (isPass)
+					passState->BackColor = System::Drawing::Color::Green;
+				else
+					passState->BackColor = System::Drawing::Color::Red;
+				passState->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+				passState->Location = System::Drawing::Point(480, 25);
+				passState->Size = System::Drawing::Size(30, 30);
+
+				System::Windows::Forms::Label^ dateLabel = (gcnew System::Windows::Forms::Label());
+				dateLabel->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+				dateLabel->Location = System::Drawing::Point(13, 28);
+				dateLabel->Size = System::Drawing::Size(191, 22);
+				dateLabel->Text = gcnew String(date.data());
+
+				System::Windows::Forms::Label^ ansLabel = (gcnew System::Windows::Forms::Label());
+				ansLabel->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+				ansLabel->Location = System::Drawing::Point(320, 28);
+				ansLabel->Size = System::Drawing::Size(150, 22);
+				ansLabel->Text = L"Kết quả: " + correctAns.ToString() + L'/' + totalAns.ToString();
+
+				containPanel->Controls->Add(dateLabel);
+				containPanel->Controls->Add(ansLabel);
+				containPanel->Controls->Add(passState);
+
+				this->flowHistoryPanel->Controls->Add(containPanel);
+			}
+
+			inp.close();
 		}
 };
 }

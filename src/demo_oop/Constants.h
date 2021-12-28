@@ -15,3 +15,6 @@ const std::wstring certificatPathArray[4] = {A1_path, A2_path, B1_path, B2_path}
 const int countdownTimeArray[] = {1200, 900, 600, 300, 5};
 const int maxWrongAnswersArray[] = {0, 4, 10, 15};
 const int questionAmountArray[] = { 15, 25, 50, 100 };
+
+// history storing
+const std::wstring history_path = L"data/history.txt";

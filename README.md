@@ -2,7 +2,7 @@
 Đồ án OOP cuối kì
 
 ### Format of data
-Tham khảo data của [A1](src/demo_oop/A1/data.txt)
+Tham khảo data của [A1](src/demo_oop/data/A1/data.txt)
 ```python
 N # số câu hỏi
 description1 # nội dung câu hỏi thứ 1
@@ -27,10 +27,15 @@ description2 # nội dung câu hỏi thứ 2
 ### UI/UX
 #### Menu User Interface
 ![](images/MenuUI.png)
+![](images/MenuUI_Exam.png)
 ![](images/MenuUI_2.png)
+
+#### Test Exam User Interface
+![](images/ExamUI.png)
+![](images/ExamUI_result.png)
 
 #### Question database User Interface
 ![](images/DataUI.png)
 
-#### Test exem user Interface
-![](images/ExamUI.png)
+#### History User Interface
+![](images/historyUI.png)

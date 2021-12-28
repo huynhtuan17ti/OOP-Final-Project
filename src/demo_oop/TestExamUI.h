@@ -100,12 +100,7 @@ namespace demooop {
 	private: System::Windows::Forms::Timer^ timerCountdown;
 	private: System::Windows::Forms::FlowLayoutPanel^ questionStateFlowPanel;
 
-
-
-
-
 	private: System::Windows::Forms::Button^ submitButton;
-
 
 	private: System::ComponentModel::IContainer^ components;
 
@@ -548,8 +543,11 @@ namespace demooop {
 	private: System::Void submitButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->timerCountdown->Stop();
 		isExamFinish = true;
-		MessageBox::Show(L"Bạn đã nộp bài, điểm số " + examResult->getScore().ToString() + " / " + questionData->getQuestionAmount().ToString(),
-			L"Thông báo");
+		bool isPass = (questionData->getQuestionAmount() - examResult->getScore() <= examSettings->getMaxWrongAnswer());
+		MessageBox::Show(L"Bạn đã nộp bài, điểm số " + examResult->getScore().ToString() + " / " + questionData->getQuestionAmount().ToString()
+						 + L"\n" + (isPass? L"Bạn đã đậu!" : L"Bạn đã trượt"),
+						 L"Thông báo");
+		examResult->saveExamResult();
 		disableActiveAndShowResult();
 	}
 
@@ -563,8 +561,11 @@ namespace demooop {
 		else {
 			this->timerCountdown->Stop();
 			isExamFinish = true;
-			MessageBox::Show(L"Hết giờ làm bài, điểm số " + examResult->getScore().ToString() + "/" + questionData->getQuestionAmount().ToString(), 
+			bool isPass = (questionData->getQuestionAmount() - examResult->getScore() <= examSettings->getMaxWrongAnswer());
+			MessageBox::Show(L"Hết giờ làm bài, điểm số " + examResult->getScore().ToString() + "/" + questionData->getQuestionAmount().ToString()
+							 + L"\n" + (isPass? L"Bạn đã đậu!": L"Bạn đã trượt"),
 							 L"Thông báo");
+			examResult->saveExamResult();
 			disableActiveAndShowResult();
 		}
 	}
@@ -572,7 +573,7 @@ namespace demooop {
 	// Utils goes here
 	private:
 		std::wstring fitStringLine(std::wstring s, int lineLimit) {
-			// find the nearest space symbol on the left and replace it by '\n'
+			// find the nearest space symbol on the right and replace it by '\n'
 			int q = (int)s.size() / lineLimit;
 			for (int i = 1; i <= q; i++) {
 				int pos = lineLimit * i;

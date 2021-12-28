@@ -1,6 +1,7 @@
 #pragma once
 #include "Database.h"
 #include "Constants.h"
+#include "Date.h"
 #include <assert.h>
 
 class ExamData: public QuestionData{
@@ -101,11 +102,13 @@ private:
 	ExamData* examData;
 	ExamSettings* examSettings;
 	std::vector <AnswerState*>  answerStateList;
+	Date* date;
 
 public:
 	ExamResult(ExamData*, ExamSettings*);
 	~ExamResult() {
 		delete examData, examSettings;
+		delete date;
 		for (auto& x : answerStateList)
 			delete x;
 	}
@@ -123,4 +126,5 @@ public:
 		return answerStateList[index]->compare();
 	}
 	int getScore();
+	void saveExamResult();
 };
