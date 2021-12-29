@@ -26,8 +26,8 @@ description2 # nội dung câu hỏi thứ 2
 
 ### UI/UX
 #### Login/Register User Interface
-![](images/LoginUI.png)
-![](images/RegisterUI.png)
+![](images/LoginUI.PNG)
+![](images/RegisterUI.PNG)
 
 #### Menu User Interface
 ![](images/MenuUI.png)
