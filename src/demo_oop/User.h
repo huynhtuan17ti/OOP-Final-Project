@@ -18,6 +18,7 @@ public:
 	~User() {
 	}
 	bool Match(const std::string& username, const std::string& password);
+	bool MatchUsername(const std::string& username);
 	bool Save(std::ofstream& os);
 	bool Load(std::ifstream& is);
 };
@@ -34,6 +35,7 @@ public:
 			delete x;
 	}
 	void addUser(User* user);
+	bool isHaveSameUsername(const std::string& username);
 	bool isHaveAccount(const std::string& username, const std::string& password);
 	bool Save();
 	bool Load();

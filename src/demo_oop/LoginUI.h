@@ -2,6 +2,7 @@
 #include "MainMenuUI.h"
 #include "User.h"
 #include <msclr\marshal_cppstd.h>
+#include "RegisterUI.h"
 
 namespace demooop {
 
@@ -173,6 +174,7 @@ namespace demooop {
 			this->registerButton->TabIndex = 5;
 			this->registerButton->Text = L"Đăng kí";
 			this->registerButton->UseVisualStyleBackColor = true;
+			this->registerButton->Click += gcnew System::EventHandler(this, &LoginUI::registerButton_Click);
 			// 
 			// LoginUI
 			// 
@@ -187,7 +189,7 @@ namespace demooop {
 			this->Controls->Add(this->panel1);
 			this->Name = L"LoginUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Dang nhap";
+			this->Text = L"Đăng nhập";
 			this->Load += gcnew System::EventHandler(this, &LoginUI::LoginUI_Load);
 			this->Click += gcnew System::EventHandler(this, &LoginUI::other_Click);
 			this->panel2->ResumeLayout(false);
@@ -200,7 +202,7 @@ namespace demooop {
 		}
 #pragma endregion
 	private: System::Void LoginUI_Load(System::Object^ sender, System::EventArgs^ e) {
-		
+		reloadUsers();
 	}
 	
 	private: System::Void userText_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -213,6 +215,12 @@ namespace demooop {
 		if (passText->Text == "Mat khau") {
 			passText->Text = "";
 		}
+	}
+
+	private: System::Void registerButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		RegisterUI^ registerUI = gcnew RegisterUI(gcnew LoginUI());
+		registerUI->Show();
 	}
 
 	private: System::Void loginButton_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -229,10 +237,17 @@ namespace demooop {
 		}
 	}
 	private: System::Void other_Click(System::Object^ sender, System::EventArgs^ e) {
-		if(userText->Text == "")
+		if (userText->Text == "")
 			userText->Text = L"Tên đăng nhập";
-		if(passText->Text == "")
+		if (passText->Text == "")
 			passText->Text = "Mat khau";
 	}
+
+	public:
+		void reloadUsers() {
+			if (userAccounts != NULL)
+				delete userAccounts;
+			userAccounts = new Users();
+		}
 };
 }

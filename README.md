@@ -25,6 +25,10 @@ description2 # nội dung câu hỏi thứ 2
 [online visual paradigm](https://online.visual-paradigm.com/share.jsp?id=313732383838342d31)
 
 ### UI/UX
+#### Login/Register User Interface
+![](images/LoginUI.png)
+![](images/RegisterUI.png)
+
 #### Menu User Interface
 ![](images/MenuUI.png)
 ![](images/MenuUI_Exam.png)

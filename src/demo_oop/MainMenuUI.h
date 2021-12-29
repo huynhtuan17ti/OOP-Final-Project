@@ -446,7 +446,7 @@ namespace demooop {
 				static_cast<System::Byte>(0)));
 			this->comboBoxTime->FormattingEnabled = true;
 			this->comboBoxTime->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
-				L"20 phút", L"15 phút", L"10 phút", L"5 phút",
+				L"20 phút (chuẩn)", L"15 phút", L"10 phút", L"5 phút",
 					L"1 phút"
 			});
 			this->comboBoxTime->Location = System::Drawing::Point(256, 129);
@@ -548,10 +548,10 @@ namespace demooop {
 		loadHistory();
 	}
 	private: System::Void MainMenuUI_Load(System::Object^ sender, System::EventArgs^ e) {
-		comboBoxTime->SelectedItem = NULL;
-		comboBoxCertificate->SelectedItem = NULL;
-		comboBoxQuestionAmount->SelectedItem = NULL;
-		comboBoxLimitWrong->SelectedItem = NULL;
+		comboBoxTime->SelectedIndex = 0;
+		comboBoxCertificate->SelectedIndex = 0;
+		comboBoxQuestionAmount->SelectedIndex = 1;
+		comboBoxLimitWrong->SelectedIndex = 1;
 		loadHistory();
 
 		listPanel = gcnew array<System::Windows::Forms::Panel^>(4);
@@ -571,6 +571,7 @@ namespace demooop {
 		}
 
 		ExamSettings getSelectedItemInOptionalBoxes() {
+
 			int index1 = this->comboBoxCertificate->SelectedIndex;
 			int index2 = this->comboBoxTime->SelectedIndex;
 			int index3 = this->comboBoxLimitWrong->SelectedIndex;

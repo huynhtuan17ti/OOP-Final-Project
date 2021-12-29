@@ -18,6 +18,10 @@ bool User::Match(const std::string& username, const std::string& password){
 	return true;
 }
 
+bool User::MatchUsername(const std::string& username) {
+	return username == _userName;
+}
+
 bool User::Save(std::ofstream& os) {
 	if (!os) return false;
 
@@ -84,6 +88,13 @@ bool Users::Load() {
 bool Users::isHaveAccount(const std::string& username, const std::string& password) {
 	for (auto& x : _users)
 		if (x->Match(username, password))
+			return true;
+	return false;
+}
+
+bool Users::isHaveSameUsername(const std::string& username) {
+	for (auto& x : _users)
+		if (x->MatchUsername(username))
 			return true;
 	return false;
 }
