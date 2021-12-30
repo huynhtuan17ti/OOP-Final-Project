@@ -1,9 +1,11 @@
 ﻿#pragma once
 #include "DatabaseUI.h"
 #include "TestExamUI.h"
+#include "HistoryUI.h"
 #include <list>
 #include <tuple>
 #include "Constants.h"
+#include "User.h"
 
 namespace demooop {
 
@@ -20,8 +22,10 @@ namespace demooop {
 	public ref class MainMenuUI : public System::Windows::Forms::Form
 	{
 	public:
-		MainMenuUI(void)
+		MainMenuUI(User* srcCurUser)
 		{
+			curUser = srcCurUser;
+			historyStoringList = new HistoryStoringList();
 			curPanelIndex = 0;
 			InitializeComponent();
 			//
@@ -35,12 +39,16 @@ namespace demooop {
 		/// </summary>
 		~MainMenuUI()
 		{
+			delete historyStoringList;
+			delete curUser;
 			if (components)
 			{
 				delete components;
 			}
 		}
 	private:
+		User* curUser;
+		HistoryStoringList* historyStoringList;
 		int curPanelIndex;
 		cli::array < System::Windows::Forms::Panel^>^ listPanel;
 
@@ -76,6 +84,7 @@ namespace demooop {
 	private: System::Windows::Forms::Label^ historyLabel;
 	private: System::Windows::Forms::FlowLayoutPanel^ flowHistoryPanel;
 	private: System::Windows::Forms::Button^ resetHistoryButton;
+	private: System::Windows::Forms::Label^ nameShowingLabel;
 
 
 
@@ -103,6 +112,7 @@ namespace demooop {
 			this->historyButton = (gcnew System::Windows::Forms::Button());
 			this->exitButton = (gcnew System::Windows::Forms::Button());
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
+			this->nameShowingLabel = (gcnew System::Windows::Forms::Label());
 			this->panelHelp = (gcnew System::Windows::Forms::Panel());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
@@ -112,6 +122,7 @@ namespace demooop {
 			this->butonA1 = (gcnew System::Windows::Forms::Button());
 			this->panelData = (gcnew System::Windows::Forms::Panel());
 			this->panelHistory = (gcnew System::Windows::Forms::Panel());
+			this->resetHistoryButton = (gcnew System::Windows::Forms::Button());
 			this->historyLabel = (gcnew System::Windows::Forms::Label());
 			this->flowHistoryPanel = (gcnew System::Windows::Forms::FlowLayoutPanel());
 			this->panelTest = (gcnew System::Windows::Forms::Panel());
@@ -125,7 +136,7 @@ namespace demooop {
 			this->labelTime = (gcnew System::Windows::Forms::Label());
 			this->comboBoxTime = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->resetHistoryButton = (gcnew System::Windows::Forms::Button());
+			this->panel1->SuspendLayout();
 			this->panel2->SuspendLayout();
 			this->panelData->SuspendLayout();
 			this->panelHistory->SuspendLayout();
@@ -196,10 +207,23 @@ namespace demooop {
 			// panel1
 			// 
 			this->panel1->BackColor = System::Drawing::Color::MediumSeaGreen;
+			this->panel1->Controls->Add(this->nameShowingLabel);
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
 			this->panel1->Size = System::Drawing::Size(901, 80);
 			this->panel1->TabIndex = 3;
+			// 
+			// nameShowingLabel
+			// 
+			this->nameShowingLabel->AutoSize = true;
+			this->nameShowingLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->nameShowingLabel->ForeColor = System::Drawing::Color::White;
+			this->nameShowingLabel->Location = System::Drawing::Point(12, 45);
+			this->nameShowingLabel->Name = L"nameShowingLabel";
+			this->nameShowingLabel->Size = System::Drawing::Size(58, 23);
+			this->nameShowingLabel->TabIndex = 0;
+			this->nameShowingLabel->Text = L"Chào, ";
 			// 
 			// panelHelp
 			// 
@@ -228,7 +252,7 @@ namespace demooop {
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(82, 20);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(435, 29);
+			this->label1->Size = System::Drawing::Size(449, 35);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Hãy chọn loại bằng lái xe tương ứng";
 			// 
@@ -302,12 +326,24 @@ namespace demooop {
 			this->panelHistory->Size = System::Drawing::Size(604, 673);
 			this->panelHistory->TabIndex = 1;
 			// 
+			// resetHistoryButton
+			// 
+			this->resetHistoryButton->BackColor = System::Drawing::SystemColors::Control;
+			this->resetHistoryButton->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"resetHistoryButton.BackgroundImage")));
+			this->resetHistoryButton->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->resetHistoryButton->Location = System::Drawing::Point(397, 30);
+			this->resetHistoryButton->Name = L"resetHistoryButton";
+			this->resetHistoryButton->Size = System::Drawing::Size(40, 40);
+			this->resetHistoryButton->TabIndex = 2;
+			this->resetHistoryButton->UseVisualStyleBackColor = false;
+			this->resetHistoryButton->Click += gcnew System::EventHandler(this, &MainMenuUI::resetHistoryButton_Click);
+			// 
 			// historyLabel
 			// 
 			this->historyLabel->AutoSize = true;
 			this->historyLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->historyLabel->Location = System::Drawing::Point(209, 31);
+			this->historyLabel->Location = System::Drawing::Point(196, 31);
 			this->historyLabel->Name = L"historyLabel";
 			this->historyLabel->Size = System::Drawing::Size(200, 35);
 			this->historyLabel->TabIndex = 1;
@@ -446,8 +482,8 @@ namespace demooop {
 				static_cast<System::Byte>(0)));
 			this->comboBoxTime->FormattingEnabled = true;
 			this->comboBoxTime->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
-				L"20 phút (chuẩn)", L"15 phút", L"10 phút", L"5 phút",
-					L"1 phút"
+				L"20 phút (chuẩn)", L"15 phút", L"10 phút",
+					L"5 phút", L"1 phút"
 			});
 			this->comboBoxTime->Location = System::Drawing::Point(256, 129);
 			this->comboBoxTime->Name = L"comboBoxTime";
@@ -465,18 +501,6 @@ namespace demooop {
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Cài đặt cho làm bài thi thử";
 			// 
-			// resetHistoryButton
-			// 
-			this->resetHistoryButton->BackColor = System::Drawing::SystemColors::Control;
-			this->resetHistoryButton->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"resetHistoryButton.BackgroundImage")));
-			this->resetHistoryButton->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->resetHistoryButton->Location = System::Drawing::Point(410, 30);
-			this->resetHistoryButton->Name = L"resetHistoryButton";
-			this->resetHistoryButton->Size = System::Drawing::Size(40, 40);
-			this->resetHistoryButton->TabIndex = 2;
-			this->resetHistoryButton->UseVisualStyleBackColor = false;
-			this->resetHistoryButton->Click += gcnew System::EventHandler(this, &MainMenuUI::resetHistoryButton_Click);
-			// 
 			// MainMenuUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -492,6 +516,8 @@ namespace demooop {
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"App thi bang lai xe (Demo)";
 			this->Load += gcnew System::EventHandler(this, &MainMenuUI::MainMenuUI_Load);
+			this->panel1->ResumeLayout(false);
+			this->panel1->PerformLayout();
 			this->panel2->ResumeLayout(false);
 			this->panelData->ResumeLayout(false);
 			this->panelData->PerformLayout();
@@ -541,11 +567,17 @@ namespace demooop {
 	}
 	private: System::Void startTestButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		TestExamUI^ testExamUI = gcnew TestExamUI(this, getSelectedItemInOptionalBoxes());
+		TestExamUI^ testExamUI = gcnew TestExamUI(this, getSelectedItemInOptionalBoxes(), curUser);
 		testExamUI->Show();
 	}
 	private: System::Void resetHistoryButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		loadHistory();
+	}
+	private: System::Void containPanelButton_OnClick(System::Object^ sender, System::EventArgs^ e) {
+		System::Windows::Forms::Button^ button = (System::Windows::Forms::Button^)sender;
+		int curHistoryIndex = Convert::ToInt32(button->Tag) - 1;
+		HistoryUI^ historyUI = gcnew HistoryUI(historyStoringList->getAtIndex(curHistoryIndex));
+		historyUI->Show();
 	}
 	private: System::Void MainMenuUI_Load(System::Object^ sender, System::EventArgs^ e) {
 		comboBoxTime->SelectedIndex = 0;
@@ -553,6 +585,9 @@ namespace demooop {
 		comboBoxQuestionAmount->SelectedIndex = 1;
 		comboBoxLimitWrong->SelectedIndex = 1;
 		loadHistory();
+
+		// load user's name
+		nameShowingLabel->Text = L"Chào, " + gcnew String(curUser->getUsername().data());
 
 		listPanel = gcnew array<System::Windows::Forms::Panel^>(4);
 		listPanel[0] = panelTest;
@@ -586,60 +621,65 @@ namespace demooop {
 		}
 
 		void loadHistory() {
-			std::ifstream inp(history_path);
-			std::string timestamp;
-			int correctAns, totalAns;
-			bool isPass;
+			std::ifstream inp(history_path, std::ios::in);
+			
 			this->flowHistoryPanel->Controls->Clear();
+			HistoryStoring* historyStoringItem;
 			std::string line;
 			while (getline(inp, line)) {
-				
-				std::istringstream ss(line);
-				
-				std::vector <std::string> tokens;
-				std::string token;
-				while (std::getline(ss, token, ',')) {
-					tokens.push_back(token);
-				}
+				historyStoringItem = new HistoryStoring(line);
 
-				timestamp = tokens[0];
-				correctAns = std::stoi(tokens[1]);
-				totalAns = std::stoi(tokens[2]);
-				isPass = std::stoi(tokens[3]);
+				std::string username = historyStoringItem->getUsername();
+				std::string date = historyStoringItem->getTimestamp()->getDate().toString();
+				int correctAnswer = historyStoringItem->getCorrectAnswer();
+				int totalQuestion = historyStoringItem->getExamSettings()->getQuestionAmount();
+				bool isPass = historyStoringItem->isPass();
+
+				historyStoringList->add(historyStoringItem);
 
 				System::Windows::Forms::Panel^ containPanel = (gcnew System::Windows::Forms::Panel());
 				containPanel->BackColor = System::Drawing::SystemColors::Control;
 				containPanel->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 				containPanel->Size = System::Drawing::Size(527, 80);
 
-				System::Windows::Forms::Panel^ passState = (gcnew System::Windows::Forms::Panel());
+				System::Windows::Forms::Button^ passState = (gcnew System::Windows::Forms::Button());
 				if (isPass)
 					passState->BackColor = System::Drawing::Color::Green;
 				else
 					passState->BackColor = System::Drawing::Color::Red;
-				passState->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-				passState->Location = System::Drawing::Point(480, 25);
-				passState->Size = System::Drawing::Size(30, 30);
+				//passState->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
+				passState->Location = System::Drawing::Point(490, 23);
+				passState->Size = System::Drawing::Size(25, 25);
+				passState->Tag = historyStoringList->getAmount().ToString();
 
 				System::Windows::Forms::Label^ dateLabel = (gcnew System::Windows::Forms::Label());
 				dateLabel->Font = (gcnew System::Drawing::Font(L"Arial", 12.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				dateLabel->Location = System::Drawing::Point(13, 28);
-				dateLabel->Size = System::Drawing::Size(250, 22);
-				dateLabel->Text = gcnew String(timestamp.data());
+				dateLabel->Size = System::Drawing::Size(130, 22);
+				dateLabel->Text = gcnew String(date.data());
+
+				System::Windows::Forms::Label^ usernameLabel = (gcnew System::Windows::Forms::Label());
+				usernameLabel->Font = (gcnew System::Drawing::Font(L"Arial", 12.5F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+					static_cast<System::Byte>(0)));
+				usernameLabel->Location = System::Drawing::Point(190, 28);
+				usernameLabel->Size = System::Drawing::Size(130, 22);
+				usernameLabel->Text = gcnew String(username.data());
 
 				System::Windows::Forms::Label^ ansLabel = (gcnew System::Windows::Forms::Label());
-				ansLabel->Font = (gcnew System::Drawing::Font(L"Arial", 14.0F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				ansLabel->Font = (gcnew System::Drawing::Font(L"Arial", 12.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				ansLabel->Location = System::Drawing::Point(320, 28);
-				ansLabel->Size = System::Drawing::Size(150, 22);
-				ansLabel->Text = L"Kết quả: " + correctAns.ToString() + L'/' + totalAns.ToString();
+				ansLabel->Location = System::Drawing::Point(360, 28);
+				ansLabel->Size = System::Drawing::Size(130, 22);
+				ansLabel->Text = L"Kết quả: " + correctAnswer.ToString() + L'/' + totalQuestion.ToString();
 
 				containPanel->Controls->Add(dateLabel);
+				containPanel->Controls->Add(usernameLabel);
 				containPanel->Controls->Add(ansLabel);
 				containPanel->Controls->Add(passState);
 
 				this->flowHistoryPanel->Controls->Add(containPanel);
+				passState->Click += gcnew System::EventHandler(this, &MainMenuUI::containPanelButton_OnClick);
 			}
 
 			inp.close();

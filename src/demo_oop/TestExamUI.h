@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Database.h"
 #include "ExamData.h"
+#include "HistoryData.h"
 
 namespace demooop {
 
@@ -17,8 +18,9 @@ namespace demooop {
 	public ref class TestExamUI : public System::Windows::Forms::Form
 	{
 	public:
-		TestExamUI(System::Windows::Forms::Form^ srcPrevForm, ExamSettings srcExamSettings)
+		TestExamUI(System::Windows::Forms::Form^ srcPrevForm, ExamSettings srcExamSettings, User* srcCurUser)
 		{
+			curUser = srcCurUser;
 			examSettings = new ExamSettings(srcExamSettings);
 			questionData = new ExamData(examSettings->getCertificateIndex(), 
 										examSettings->getQuestionAmount(), 
@@ -41,6 +43,7 @@ namespace demooop {
 		/// </summary>
 		~TestExamUI()
 		{
+			delete curUser;
 			delete questionData;
 			delete examSettings;
 			delete examResult;
@@ -60,6 +63,7 @@ namespace demooop {
 		int curIndexQuestion;
 		int countdownSecond;
 		bool isExamFinish;
+		User* curUser;
 		ExamSettings* examSettings;
 		ExamData* questionData;
 		ExamResult* examResult;
@@ -548,7 +552,12 @@ namespace demooop {
 		MessageBox::Show(L"Bạn đã nộp bài, điểm số " + examResult->getScore().ToString() + " / " + questionData->getQuestionAmount().ToString()
 						 + L"\n" + (isPass? L"Bạn đã đậu!" : L"Bạn đã trượt"),
 						 L"Thông báo");
-		examResult->saveExamResult();
+		HistoryStoring* historyStoring = new HistoryStoring(curUser->getUsername(), 
+															examSettings, 
+															examSettings->getCountdownSeconds() - countdownSecond,
+															examResult->getScore());
+		historyStoring->storing();
+		delete historyStoring;
 		disableActiveAndShowResult();
 	}
 
@@ -566,7 +575,12 @@ namespace demooop {
 			MessageBox::Show(L"Hết giờ làm bài, điểm số " + examResult->getScore().ToString() + "/" + questionData->getQuestionAmount().ToString()
 							 + L"\n" + (isPass? L"Bạn đã đậu!": L"Bạn đã trượt"),
 							 L"Thông báo");
-			examResult->saveExamResult();
+			HistoryStoring* historyStoring = new HistoryStoring(curUser->getUsername(),
+																examSettings,
+																examSettings->getCountdownSeconds() - countdownSecond,
+																examResult->getScore());
+			historyStoring->storing();
+			delete historyStoring;
 			disableActiveAndShowResult();
 		}
 	}

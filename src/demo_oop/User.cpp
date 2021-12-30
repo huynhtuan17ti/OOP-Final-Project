@@ -85,11 +85,13 @@ bool Users::Load() {
 	return true;
 }
 
-bool Users::isHaveAccount(const std::string& username, const std::string& password) {
+// searching account base on input username and password, 
+// if it exists return User* else NULL
+User* Users::accountSearching(const std::string& username, const std::string& password) {
 	for (auto& x : _users)
 		if (x->Match(username, password))
-			return true;
-	return false;
+			return x;
+	return NULL;
 }
 
 bool Users::isHaveSameUsername(const std::string& username) {

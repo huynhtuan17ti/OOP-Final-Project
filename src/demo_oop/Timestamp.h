@@ -49,5 +49,6 @@ public:
 	Date getDate();
 
 public:
-	std::string toString();
+	std::string toString(); // for interface
+	std::string toStringv2(); // for storing
 };

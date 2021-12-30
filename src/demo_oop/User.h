@@ -15,7 +15,20 @@ class User {
 public:
 	User();
 	User(std::string, std::string, std::string, Date, bool);
+	User(const User*& other) {
+		_userName = other->_userName;
+		_passWord = other->_passWord;
+		_name = other->_name;
+		_birth = other->_birth;
+		_sex = other->_sex;
+	}
 	~User() {
+	}
+	std::string getName(){
+		return _name;
+	}
+	std::string getUsername() {
+		return _userName;
 	}
 	bool Match(const std::string& username, const std::string& password);
 	bool MatchUsername(const std::string& username);
@@ -36,7 +49,7 @@ public:
 	}
 	void addUser(User* user);
 	bool isHaveSameUsername(const std::string& username);
-	bool isHaveAccount(const std::string& username, const std::string& password);
+	User* accountSearching(const std::string& username, const std::string& password);
 	bool Save();
 	bool Load();
 };

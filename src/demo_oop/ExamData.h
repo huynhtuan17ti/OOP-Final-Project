@@ -2,6 +2,7 @@
 #include "Database.h"
 #include "Constants.h"
 #include "Timestamp.h"
+#include "User.h"
 #include <assert.h>
 
 class ExamData: public QuestionData{
@@ -42,6 +43,8 @@ public:
 		questionAmount = examSettings->questionAmount;
 		maxWrongAnswer = examSettings->maxWrongAnswer;
 	}
+	// for storing
+	std::string toString() const;
 
 public:
 	int getCertificateIndex() {
@@ -102,17 +105,16 @@ private:
 	ExamData* examData;
 	ExamSettings* examSettings;
 	std::vector <AnswerState*>  answerStateList;
-	Timestamp* timestamp;
 
 public:
 	ExamResult(ExamData*, ExamSettings*);
 	~ExamResult() {
 		delete examData, examSettings;
-		delete timestamp;
 		for (auto& x : answerStateList)
 			delete x;
 	}
 	void addAnswerStateList(std::vector <AnswerState*>);
+
 	void updateAnswerStateAtIndex(int index, int state) {
 		answerStateList[index]->setAnswerState(state);
 	}
@@ -126,5 +128,4 @@ public:
 		return answerStateList[index]->compare();
 	}
 	int getScore();
-	void saveExamResult();
 };

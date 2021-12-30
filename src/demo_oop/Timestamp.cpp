@@ -107,3 +107,7 @@ Time Timestamp::getTime() {
 std::string Timestamp::toString() {
 	return date.toString() + " - " + time.toString();
 }
+
+std::string Timestamp::toStringv2() {
+	return date.toString() + "," + time.toString();
+}

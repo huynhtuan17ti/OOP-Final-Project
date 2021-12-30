@@ -226,9 +226,10 @@ namespace demooop {
 	private: System::Void loginButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		std::string curUserName = msclr::interop::marshal_as<std::string>(userText->Text);
 		std::string curPassword = msclr::interop::marshal_as<std::string>(passText->Text);
-		if (userAccounts->isHaveAccount(curUserName, curPassword)) {
+		User* curUser = userAccounts->accountSearching(curUserName, curPassword);
+		if (curUser != NULL) {
 			this->Hide();
-			MainMenuUI^ mainMenuUI = gcnew MainMenuUI();
+			MainMenuUI^ mainMenuUI = gcnew MainMenuUI(curUser);
 			mainMenuUI->Show();
 		}
 		else {

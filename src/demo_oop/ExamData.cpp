@@ -10,6 +10,13 @@ ExamData::ExamData(int scrCertiType, int srcExamQuestionAmount, int srcMaxWrongA
 	this->shuffle();
 }
 
+std::string ExamSettings::toString() const {
+	return  std::to_string(certificateIndex) + "," +
+			std::to_string(countdownSeconds) + "," +
+			std::to_string(questionAmount) + "," +
+			std::to_string(maxWrongAnswer);
+}
+
 std::vector <AnswerState*> AnswerState::createAnswerStateList(QuestionData* questionData) {
 	std::vector <AnswerState*> answerStateList;
 	for (int i = 0; i < questionData->getQuestionAmount(); i++) {
@@ -22,7 +29,6 @@ std::vector <AnswerState*> AnswerState::createAnswerStateList(QuestionData* ques
 ExamResult::ExamResult(ExamData* srcExamData, ExamSettings* srcExamSettings){
 	examData = srcExamData;
 	examSettings = srcExamSettings;
-	timestamp = new Timestamp();
 };
 
 void ExamResult::addAnswerStateList(std::vector <AnswerState*> srcList) {
@@ -36,9 +42,11 @@ int ExamResult::getScore() {
 	return totalScore;
 }
 
+/*
 void ExamResult::saveExamResult() {
 	std::ofstream out(history_path, std::ios_base::app);
 	bool isPass = (examData->getQuestionAmount() - this->getScore() <= examSettings->getMaxWrongAnswer());
 	out << this->timestamp->toString() << "," << this->getScore() << "," << this->examData->getQuestionAmount() << "," << isPass << '\n';
 	out.close();
 }
+*/
