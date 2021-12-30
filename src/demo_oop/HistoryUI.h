@@ -214,13 +214,13 @@ namespace demooop {
 
 	void loadCertificateLabel(int certificateType) {
 		if (certificateType == 0)
-			this->certificateIndexLabel->Text = L"Loại bằng: A1";
+			this->certificateIndexLabel->Text = L"A1";
 		if (certificateType == 1)
-				this->certificateIndexLabel->Text = L"Loại bằng: A2";
+				this->certificateIndexLabel->Text = L"A2";
 		if (certificateType == 2)
-			this->certificateIndexLabel->Text = L"Loại bằng: B1";
+			this->certificateIndexLabel->Text = L"B1";
 		if (certificateType == 3)
-			this->certificateIndexLabel->Text = L"Loại bằng: B2";
+			this->certificateIndexLabel->Text = L"B2";
 	}
 };
 }
