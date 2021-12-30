@@ -25,7 +25,7 @@ bool User::MatchUsername(const std::string& username) {
 bool User::Save(std::ofstream& os) {
 	if (!os) return false;
 
-	os << _userName << ',' << _passWord << ',' << _name << ',' << _birth.ToString() << ',' << _sex << std::endl;
+	os << _userName << ',' << _passWord << ',' << _name << ',' << _birth.toString() << ',' << _sex << std::endl;
 	return true;
 }
 

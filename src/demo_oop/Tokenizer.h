@@ -1,9 +1,6 @@
 #pragma once
-#include <string>
 #include <vector>
-#include <ctime>
-#include <iomanip> 
-#include <sstream> 
+#include <string>
 
 class Tokenizer {
 public:
@@ -30,17 +27,4 @@ public:
 
 		return tokens;
 	}
-};
-
-class Date {
-private:
-	int _day;
-	int _mon;
-	int _year;
-public:
-	Date();
-	Date(int day, int mon, int year);
-public:
-	std::string ToString() const;
-	static Date Parse(std::string line);
 };

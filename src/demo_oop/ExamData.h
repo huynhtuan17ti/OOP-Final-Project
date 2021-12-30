@@ -1,7 +1,7 @@
 #pragma once
 #include "Database.h"
 #include "Constants.h"
-#include "Date.h"
+#include "Timestamp.h"
 #include <assert.h>
 
 class ExamData: public QuestionData{
@@ -102,13 +102,13 @@ private:
 	ExamData* examData;
 	ExamSettings* examSettings;
 	std::vector <AnswerState*>  answerStateList;
-	Date* date;
+	Timestamp* timestamp;
 
 public:
 	ExamResult(ExamData*, ExamSettings*);
 	~ExamResult() {
 		delete examData, examSettings;
-		delete date;
+		delete timestamp;
 		for (auto& x : answerStateList)
 			delete x;
 	}

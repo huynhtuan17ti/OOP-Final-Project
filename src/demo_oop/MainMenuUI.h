@@ -587,13 +587,26 @@ namespace demooop {
 
 		void loadHistory() {
 			std::ifstream inp(history_path);
-			std::string date;
+			std::string timestamp;
 			int correctAns, totalAns;
 			bool isPass;
 			this->flowHistoryPanel->Controls->Clear();
-			while (inp >> date) {
-				inp >> correctAns >> totalAns >> isPass;
+			std::string line;
+			while (getline(inp, line)) {
 				
+				std::istringstream ss(line);
+				
+				std::vector <std::string> tokens;
+				std::string token;
+				while (std::getline(ss, token, ',')) {
+					tokens.push_back(token);
+				}
+
+				timestamp = tokens[0];
+				correctAns = std::stoi(tokens[1]);
+				totalAns = std::stoi(tokens[2]);
+				isPass = std::stoi(tokens[3]);
+
 				System::Windows::Forms::Panel^ containPanel = (gcnew System::Windows::Forms::Panel());
 				containPanel->BackColor = System::Drawing::SystemColors::Control;
 				containPanel->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
@@ -609,14 +622,14 @@ namespace demooop {
 				passState->Size = System::Drawing::Size(30, 30);
 
 				System::Windows::Forms::Label^ dateLabel = (gcnew System::Windows::Forms::Label());
-				dateLabel->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				dateLabel->Font = (gcnew System::Drawing::Font(L"Arial", 12.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				dateLabel->Location = System::Drawing::Point(13, 28);
-				dateLabel->Size = System::Drawing::Size(191, 22);
-				dateLabel->Text = gcnew String(date.data());
+				dateLabel->Size = System::Drawing::Size(250, 22);
+				dateLabel->Text = gcnew String(timestamp.data());
 
 				System::Windows::Forms::Label^ ansLabel = (gcnew System::Windows::Forms::Label());
-				ansLabel->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				ansLabel->Font = (gcnew System::Drawing::Font(L"Arial", 14.0F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				ansLabel->Location = System::Drawing::Point(320, 28);
 				ansLabel->Size = System::Drawing::Size(150, 22);

@@ -22,7 +22,7 @@ std::vector <AnswerState*> AnswerState::createAnswerStateList(QuestionData* ques
 ExamResult::ExamResult(ExamData* srcExamData, ExamSettings* srcExamSettings){
 	examData = srcExamData;
 	examSettings = srcExamSettings;
-	date = new Date();
+	timestamp = new Timestamp();
 };
 
 void ExamResult::addAnswerStateList(std::vector <AnswerState*> srcList) {
@@ -39,6 +39,6 @@ int ExamResult::getScore() {
 void ExamResult::saveExamResult() {
 	std::ofstream out(history_path, std::ios_base::app);
 	bool isPass = (examData->getQuestionAmount() - this->getScore() <= examSettings->getMaxWrongAnswer());
-	out << this->date->ToString() << ' ' << this->getScore() << ' ' << this->examData->getQuestionAmount() << ' ' << isPass << '\n';
+	out << this->timestamp->toString() << "," << this->getScore() << "," << this->examData->getQuestionAmount() << "," << isPass << '\n';
 	out.close();
 }

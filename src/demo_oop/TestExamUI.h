@@ -479,6 +479,7 @@ namespace demooop {
 		}
 #pragma endregion
 	private: System::Void backButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		prevForm->Refresh();
 		prevForm->Show();
 		this->Hide();
 	}
