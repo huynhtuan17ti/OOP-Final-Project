@@ -43,3 +43,7 @@ description2 # nội dung câu hỏi thứ 2
 
 #### History User Interface
 ![](images/historyUI.png)
+
+#### Helper User Interface
+![](images/HelperUI.png)
+![](images/HelperUI_Click.png)
