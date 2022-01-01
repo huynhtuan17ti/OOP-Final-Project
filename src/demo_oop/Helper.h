@@ -1,4 +1,4 @@
-﻿#pragma once
+#pragma once
 #include <string>
 #include <vector>
 #include <fstream>
@@ -38,7 +38,7 @@ public:
 		std::wifstream fi(path);
 		fi.imbue(std::locale(fi.getloc(), new std::codecvt_utf8<wchar_t>));
 		if (!fi)
-			throw "Can't not open file!";
+			throw "Cannot open file!";
 
 		std::wstring line;
 		while (getline(fi, line)) {
@@ -47,7 +47,7 @@ public:
 			std::getline(iss, curTitle, L',');
 			std::wstring curUrl;
 			std::getline(iss, curUrl, L',');
-			
+
 			titleList.push_back(curTitle);
 			urlList.push_back(curUrl);
 		}
@@ -70,7 +70,7 @@ public:
 	void readData() {
 		std::wifstream fi(path);
 		if (!fi)
-			throw "Can't not open file!";
+			throw "Cannot open file!";
 
 		std::wstring line;
 		while (getline(fi, line)) {
@@ -98,29 +98,87 @@ public:
 // data[2]: B2
 class RegisterHelper : public VideoHelperDatabase {
 public:
+	void readData() {
+		std::wifstream fi(path);
+		if (!fi)
+			throw "Cannot open file!";
+
+		std::wstring line;
+		while (getline(fi, line)) {
+			std::wistringstream iss(line);
+			std::wstring curTitle;
+			std::getline(iss, curTitle, L',');
+			std::wstring curUrl;
+			std::getline(iss, curUrl, L',');
+
+			titleList.push_back(curTitle);
+			urlList.push_back(curUrl);
+		}
+
+		fi.close();
+	}
 	RegisterHelper() {
 		path = L"data/Helper/RegisterHelperDatabase.txt";
-		//HelperDatabase::readData(path, data);
+		dataName = L"Hướng dẫn thủ tục đăng ký thi bằng lái";
 	}
 };
 
-// Sau khi hoan thanh ung dung, lam clip huong dan up len Youtube
-// roi doc link giong nhu nhung cai o tren
+// Cau truc file: <Mo ta anh>,<url anh>
+// titleList: Luu cac mo ta anh
+// urlList: Luu url anh tuong ung
 class AppHelper : public VideoHelperDatabase {
 public:
+	void readData() {
+		std::wifstream fi(path);
+		if (!fi)
+			throw "Cannot open file!";
+
+		std::wstring line;
+		while (getline(fi, line)) {
+			std::wistringstream iss(line);
+			std::wstring curTitle;
+			std::getline(iss, curTitle, L',');
+			std::wstring curUrl;
+			std::getline(iss, curUrl, L',');
+
+			titleList.push_back(curTitle);
+			urlList.push_back(curUrl);
+		}
+
+		fi.close();
+	}
 	AppHelper() {
-		/*
-		path = "AppHelperDatabase.txt";
-		HelperDatabase::readData(path, data);
-		*/
+		dataName = L"Hướng dẫn sử dụng phần mềm";
+		path = L"data/Helper/AppHelperDatabase.txt";
 	}
 };
 
 // Du lieu lay tu So GTVT TP HCM
+// titleList: Ten cac trung tam sat hach
+// urlList: Dia chi cua trung tam tuong ung
 class LocateHelper : public VideoHelperDatabase {
 public:
+	void readData() {
+		std::wifstream fi(path);
+		if (!fi)
+			throw "Cannot open file!";
+
+		std::wstring line;
+		while (getline(fi, line)) {
+			std::wistringstream iss(line);
+			std::wstring curTitle;
+			std::getline(iss, curTitle, L',');
+			std::wstring curUrl;
+			std::getline(iss, curUrl, L'\n');
+
+			titleList.push_back(curTitle);
+			urlList.push_back(curUrl);
+		}
+
+		fi.close();
+	}
 	LocateHelper() {
 		path = L"data/Helper/LocateHelperDatabase.txt";
-		//HelperDatabase::readData(path, data);
+		dataName = L"Địa điểm sát hạch bằng lái";
 	}
 };
