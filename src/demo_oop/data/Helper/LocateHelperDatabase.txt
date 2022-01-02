@@ -1,11 +1,44 @@
-Trung tâm sát hạch lái xe Trường Cao đẳng GTVT Trung ương III,73 Văn Cao, Phú Thọ Hoà, Tân Phú, Thành phố Hồ Chí Minh
-Trung tâm sát hạch lái xe Củ Chi - Trường Trung cấp nghề giao thông Tiến Bộ,111 Đường Tân Sơn Nhì, Tân Sơn Nhì, Tân Phú, Thành phố Hồ Chí Minh
-Trung tâm sát hạch lái xe Thành Công,91L Nguyễn Kim, Cư xá, Quận 10, Thành phố Hồ Chí Minh
-Trung tâm sát hạch lái xe Hiệp Phát,ấp 3, Xã Hiệp Phước, Huyện Nhà Bè, TP Hồ Chí Minh
-Trung tâm sát hạch lái xe - Trường Cao đẳng GTVT Thành phố,464 Lý Thái Tổ, Phường 10, Quận 10, Thành phố Hồ Chí Minh
-Trung tâm sát hạch lái xe Miền Đông,37 Hẻm 3, Linh Tây, Thủ Đức, Thành phố Hồ Chí Minh
-Trung tâm sát hạch lái xe Trường Đại học An ninh nhân dân,16 QL1A, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh
-Trung tâm sát hạch lái xe Hoàng Gia,Ấp 2, An Phú Tây, Bình Chánh, Thành phố Hồ Chí Minh
-Trung tâm sát hạch lái xe Hóc Môn,387 Đường An Nhơn Tây, An Nhơn Tây, Củ Chi, Thành phố Hồ Chí Minh
-Trung tâm sát hạch lái xe Trường Cao đẳng nghề Số 22,Khu CN Sóng Thần, Đường số 10, Dĩ An, Bình Dương
-Trung tâm sát hạch lái xe Miền Tây,310 Kinh Dương Vương, An Lạc, Bình Tân, Thành phố Hồ Chí Minh
+Trung tâm sát hạch lái xe Trường Cao đẳng GTVT Trung ương III
+73 Văn Cao, Phú Thọ Hoà, Tân Phú, Thành phố Hồ Chí Minh
+8h-16h, T2 - T6
+https://goo.gl/maps/wLWTewG6pVqB1iPk8
+Trung tâm sát hạch lái xe Củ Chi - Trường Trung cấp nghề giao thông Tiến Bộ
+111 Đường Tân Sơn Nhì, Tân Sơn Nhì, Tân Phú, Thành phố Hồ Chí Minh
+8h-16h, T2 - T6
+https://goo.gl/maps/wLWTewG6pVqB1iPk8
+Trung tâm sát hạch lái xe Thành Công
+91L Nguyễn Kim, Cư xá, Quận 10, Thành phố Hồ Chí Minh
+8h-16h, T2 - T6
+https://goo.gl/maps/wLWTewG6pVqB1iPk8
+Trung tâm sát hạch lái xe Hiệp Phát
+ấp 3, Xã Hiệp Phước, Huyện Nhà Bè, TP Hồ Chí Minh
+8h-16h, T2 - T6
+https://goo.gl/maps/wLWTewG6pVqB1iPk8
+Trung tâm sát hạch lái xe - Trường Cao đẳng GTVT Thành phố
+464 Lý Thái Tổ, Phường 10, Quận 10, Thành phố Hồ Chí Minh
+8h-16h, T2 - T6
+https://goo.gl/maps/wLWTewG6pVqB1iPk8
+Trung tâm sát hạch lái xe Miền Đông
+37 Hẻm 3, Linh Tây, Thủ Đức, Thành phố Hồ Chí Minh
+8h-16h, T2 - T6
+https://goo.gl/maps/wLWTewG6pVqB1iPk8
+Trung tâm sát hạch lái xe Trường Đại học An ninh nhân dân
+16 QL1A, Long Thạnh Mỹ, Quận 9, Thành phố Hồ Chí Minh
+8h-16h, T2 - T6
+https://goo.gl/maps/wLWTewG6pVqB1iPk8
+Trung tâm sát hạch lái xe Hoàng Gia
+Ấp 2, An Phú Tây, Bình Chánh, Thành phố Hồ Chí Minh
+8h-16h, T2 - T6
+https://goo.gl/maps/wLWTewG6pVqB1iPk8
+Trung tâm sát hạch lái xe Hóc Môn
+387 Đường An Nhơn Tây, An Nhơn Tây, Củ Chi, Thành phố Hồ Chí Minh
+8h-16h, T2 - T6
+https://goo.gl/maps/wLWTewG6pVqB1iPk8
+Trung tâm sát hạch lái xe Trường Cao đẳng nghề Số 22
+Khu CN Sóng Thần, Đường số 10, Dĩ An, Bình Dương
+8h-16h, T2 - T6
+https://goo.gl/maps/wLWTewG6pVqB1iPk8
+Trung tâm sát hạch lái xe Miền Tây
+310 Kinh Dương Vương, An Lạc, Bình Tân, Thành phố Hồ Chí Minh
+8h-16h, T2 - T6
+https://goo.gl/maps/wLWTewG6pVqB1iPk8

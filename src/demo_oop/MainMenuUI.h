@@ -2,7 +2,8 @@
 #include "DatabaseUI.h"
 #include "TestExamUI.h"
 #include "HistoryUI.h"
-#include "HelperVideoUI.h"
+#include "VideoHelperUI.h"
+#include "LocateHelperUI.h"
 #include <list>
 #include <tuple>
 #include "Constants.h"
@@ -91,6 +92,8 @@ namespace demooop {
 	private: System::Windows::Forms::Button^ locateButton;
 	private: System::Windows::Forms::Button^ praticeButton;
 	private: System::Windows::Forms::Button^ theoryButton;
+	private: System::Windows::Forms::Button^ registerHelper;
+
 
 
 
@@ -120,6 +123,12 @@ namespace demooop {
 			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->nameShowingLabel = (gcnew System::Windows::Forms::Label());
 			this->panelHelp = (gcnew System::Windows::Forms::Panel());
+			this->registerHelper = (gcnew System::Windows::Forms::Button());
+			this->label3 = (gcnew System::Windows::Forms::Label());
+			this->appButton = (gcnew System::Windows::Forms::Button());
+			this->locateButton = (gcnew System::Windows::Forms::Button());
+			this->praticeButton = (gcnew System::Windows::Forms::Button());
+			this->theoryButton = (gcnew System::Windows::Forms::Button());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->buttonA2 = (gcnew System::Windows::Forms::Button());
@@ -142,11 +151,6 @@ namespace demooop {
 			this->labelTime = (gcnew System::Windows::Forms::Label());
 			this->comboBoxTime = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->theoryButton = (gcnew System::Windows::Forms::Button());
-			this->praticeButton = (gcnew System::Windows::Forms::Button());
-			this->locateButton = (gcnew System::Windows::Forms::Button());
-			this->appButton = (gcnew System::Windows::Forms::Button());
-			this->label3 = (gcnew System::Windows::Forms::Label());
 			this->panel1->SuspendLayout();
 			this->panelHelp->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -239,6 +243,7 @@ namespace demooop {
 			// 
 			// panelHelp
 			// 
+			this->panelHelp->Controls->Add(this->registerHelper);
 			this->panelHelp->Controls->Add(this->label3);
 			this->panelHelp->Controls->Add(this->appButton);
 			this->panelHelp->Controls->Add(this->locateButton);
@@ -248,6 +253,76 @@ namespace demooop {
 			this->panelHelp->Name = L"panelHelp";
 			this->panelHelp->Size = System::Drawing::Size(604, 673);
 			this->panelHelp->TabIndex = 1;
+			// 
+			// registerHelper
+			// 
+			this->registerHelper->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->registerHelper->Location = System::Drawing::Point(176, 360);
+			this->registerHelper->Name = L"registerHelper";
+			this->registerHelper->Size = System::Drawing::Size(236, 57);
+			this->registerHelper->TabIndex = 5;
+			this->registerHelper->Text = L"Đăng kí thi";
+			this->registerHelper->UseVisualStyleBackColor = true;
+			this->registerHelper->Click += gcnew System::EventHandler(this, &MainMenuUI::registerHelper_Click);
+			// 
+			// label3
+			// 
+			this->label3->AutoSize = true;
+			this->label3->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->label3->Location = System::Drawing::Point(123, 91);
+			this->label3->Name = L"label3";
+			this->label3->Size = System::Drawing::Size(336, 35);
+			this->label3->TabIndex = 4;
+			this->label3->Text = L"Hãy chọn mục cần trợ giúp";
+			// 
+			// appButton
+			// 
+			this->appButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->appButton->Location = System::Drawing::Point(176, 541);
+			this->appButton->Name = L"appButton";
+			this->appButton->Size = System::Drawing::Size(236, 57);
+			this->appButton->TabIndex = 3;
+			this->appButton->Text = L"Cách sử dụng";
+			this->appButton->UseVisualStyleBackColor = true;
+			// 
+			// locateButton
+			// 
+			this->locateButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->locateButton->Location = System::Drawing::Point(176, 452);
+			this->locateButton->Name = L"locateButton";
+			this->locateButton->Size = System::Drawing::Size(236, 57);
+			this->locateButton->TabIndex = 2;
+			this->locateButton->Text = L"Địa điểm thi";
+			this->locateButton->UseVisualStyleBackColor = true;
+			this->locateButton->Click += gcnew System::EventHandler(this, &MainMenuUI::locateButton_Click);
+			// 
+			// praticeButton
+			// 
+			this->praticeButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->praticeButton->Location = System::Drawing::Point(176, 270);
+			this->praticeButton->Name = L"praticeButton";
+			this->praticeButton->Size = System::Drawing::Size(236, 57);
+			this->praticeButton->TabIndex = 1;
+			this->praticeButton->Text = L"Thi thực hành";
+			this->praticeButton->UseVisualStyleBackColor = true;
+			this->praticeButton->Click += gcnew System::EventHandler(this, &MainMenuUI::praticeButton_Click);
+			// 
+			// theoryButton
+			// 
+			this->theoryButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				static_cast<System::Byte>(0)));
+			this->theoryButton->Location = System::Drawing::Point(176, 175);
+			this->theoryButton->Name = L"theoryButton";
+			this->theoryButton->Size = System::Drawing::Size(236, 57);
+			this->theoryButton->TabIndex = 0;
+			this->theoryButton->Text = L"Thi lý thuyết";
+			this->theoryButton->UseVisualStyleBackColor = true;
+			this->theoryButton->Click += gcnew System::EventHandler(this, &MainMenuUI::theoryButton_Click);
 			// 
 			// panel2
 			// 
@@ -518,62 +593,6 @@ namespace demooop {
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Cài đặt cho làm bài thi thử";
 			// 
-			// theoryButton
-			// 
-			this->theoryButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->theoryButton->Location = System::Drawing::Point(176, 175);
-			this->theoryButton->Name = L"theoryButton";
-			this->theoryButton->Size = System::Drawing::Size(236, 57);
-			this->theoryButton->TabIndex = 0;
-			this->theoryButton->Text = L"Thi lý thuyết";
-			this->theoryButton->UseVisualStyleBackColor = true;
-			this->theoryButton->Click += gcnew System::EventHandler(this, &MainMenuUI::theoryButton_Click);
-			// 
-			// praticeButton
-			// 
-			this->praticeButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->praticeButton->Location = System::Drawing::Point(176, 270);
-			this->praticeButton->Name = L"praticeButton";
-			this->praticeButton->Size = System::Drawing::Size(236, 57);
-			this->praticeButton->TabIndex = 1;
-			this->praticeButton->Text = L"Thi thực hành";
-			this->praticeButton->UseVisualStyleBackColor = true;
-			// 
-			// locateButton
-			// 
-			this->locateButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->locateButton->Location = System::Drawing::Point(176, 360);
-			this->locateButton->Name = L"locateButton";
-			this->locateButton->Size = System::Drawing::Size(236, 57);
-			this->locateButton->TabIndex = 2;
-			this->locateButton->Text = L"Địa điểm thi";
-			this->locateButton->UseVisualStyleBackColor = true;
-			// 
-			// appButton
-			// 
-			this->appButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->appButton->Location = System::Drawing::Point(176, 453);
-			this->appButton->Name = L"appButton";
-			this->appButton->Size = System::Drawing::Size(236, 57);
-			this->appButton->TabIndex = 3;
-			this->appButton->Text = L"Cách sử dụng";
-			this->appButton->UseVisualStyleBackColor = true;
-			// 
-			// label3
-			// 
-			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
-				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(126, 56);
-			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(336, 35);
-			this->label3->TabIndex = 4;
-			this->label3->Text = L"Hãy chọn mục cần trợ giúp";
-			// 
 			// MainMenuUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
@@ -656,8 +675,23 @@ namespace demooop {
 	}
 	private: System::Void theoryButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		HelperVideoUI^ helperVideoUI = gcnew HelperVideoUI(this);
-		helperVideoUI->Show();
+		VideoHelperUI^ videoHelperUI = gcnew VideoHelperUI(this, 0);
+		videoHelperUI->Show();
+	}
+	private: System::Void praticeButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		VideoHelperUI^ videoHelperUI = gcnew VideoHelperUI(this, 1);
+		videoHelperUI->Show();
+	}
+	private: System::Void registerHelper_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		VideoHelperUI^ videoHelperUI = gcnew VideoHelperUI(this, 2);
+		videoHelperUI->Show();
+	}
+	private: System::Void locateButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		LocateHelperUI^ locateHelperUI = gcnew LocateHelperUI(this);
+		locateHelperUI->Show();
 	}
 	private: System::Void MainMenuUI_Load(System::Object^ sender, System::EventArgs^ e) {
 		comboBoxTime->SelectedIndex = 0;

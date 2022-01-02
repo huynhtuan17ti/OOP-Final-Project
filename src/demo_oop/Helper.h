@@ -7,15 +7,18 @@
 #include <codecvt>
 #include <locale>
 
-class VideoHelperDatabase {
+class UrlHelperDatabase {
 protected:
 	std::vector<std::wstring> titleList;
 	std::vector<std::wstring> urlList;
 	std::wstring dataName;
 	std::wstring path;
 public:
-	std::wstring getDataName() {
+	std::wstring getDataName() const{
 		return dataName;
+	}
+	void setDataName(std::wstring srcDataName) {
+		dataName = srcDataName;
 	}
 	int getLength() {
 		return titleList.size();
@@ -32,7 +35,7 @@ public:
 };
 
 
-class TheoryHelper : public VideoHelperDatabase {
+class TheoryHelper : public UrlHelperDatabase {
 public:
 	void readData() {
 		std::wifstream fi(path);
@@ -65,10 +68,11 @@ public:
 // data[1]: A2
 // data[2]: B1
 // data[3]: B2
-class PracticeHelper : public VideoHelperDatabase {
+class PracticeHelper : public UrlHelperDatabase {
 public:
 	void readData() {
 		std::wifstream fi(path);
+		fi.imbue(std::locale(fi.getloc(), new std::codecvt_utf8<wchar_t>));
 		if (!fi)
 			throw "Cannot open file!";
 
@@ -96,10 +100,11 @@ public:
 // data[0]: A1
 // data[1]: A2
 // data[2]: B2
-class RegisterHelper : public VideoHelperDatabase {
+class RegisterHelper : public UrlHelperDatabase {
 public:
 	void readData() {
 		std::wifstream fi(path);
+		fi.imbue(std::locale(fi.getloc(), new std::codecvt_utf8<wchar_t>));
 		if (!fi)
 			throw "Cannot open file!";
 
@@ -126,10 +131,11 @@ public:
 // Cau truc file: <Mo ta anh>,<url anh>
 // titleList: Luu cac mo ta anh
 // urlList: Luu url anh tuong ung
-class AppHelper : public VideoHelperDatabase {
+class AppHelper : public UrlHelperDatabase {
 public:
 	void readData() {
 		std::wifstream fi(path);
+		fi.imbue(std::locale(fi.getloc(), new std::codecvt_utf8<wchar_t>));
 		if (!fi)
 			throw "Cannot open file!";
 
@@ -156,26 +162,51 @@ public:
 // Du lieu lay tu So GTVT TP HCM
 // titleList: Ten cac trung tam sat hach
 // urlList: Dia chi cua trung tam tuong ung
-class LocateHelper : public VideoHelperDatabase {
+class LocateHelper: UrlHelperDatabase {
+private:
+	std::vector<std::wstring> locateList;
+	std::vector<std::wstring> activeTimeList;
 public:
 	void readData() {
 		std::wifstream fi(path);
+		fi.imbue(std::locale(fi.getloc(), new std::codecvt_utf8<wchar_t>));
 		if (!fi)
 			throw "Cannot open file!";
 
 		std::wstring line;
+		int turn = 0;
 		while (getline(fi, line)) {
-			std::wistringstream iss(line);
-			std::wstring curTitle;
-			std::getline(iss, curTitle, L',');
-			std::wstring curUrl;
-			std::getline(iss, curUrl, L'\n');
-
-			titleList.push_back(curTitle);
-			urlList.push_back(curUrl);
+			if(turn == 0)
+				titleList.push_back(line);
+			if(turn == 1)
+				locateList.push_back(line);
+			if (turn == 2)
+				activeTimeList.push_back(line);
+			if(turn == 3)
+				urlList.push_back(line);
+			turn = (turn + 1)%4;
 		}
 
 		fi.close();
+	}
+
+	int getLength() {
+		return UrlHelperDatabase::getLength();
+	}
+
+	std::wstring getTitleAtIndex(int index) {
+		return UrlHelperDatabase::getTitleAtIndex(index);
+	}
+
+	std::wstring getUrlAtIndex(int index) {
+		return UrlHelperDatabase::getUrlAtIndex(index);
+	}
+
+	std::wstring getLocateAtIndex(int index) {
+		return locateList[index];
+	}
+	std::wstring getActiveTimeAtIndex(int index) {
+		return activeTimeList[index];
 	}
 	LocateHelper() {
 		path = L"data/Helper/LocateHelperDatabase.txt";

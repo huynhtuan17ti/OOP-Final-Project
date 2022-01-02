@@ -13,13 +13,24 @@ namespace demooop {
 	/// <summary>
 	/// Summary for HelperVideoUI
 	/// </summary>
-	public ref class HelperVideoUI : public System::Windows::Forms::Form
+	public ref class VideoHelperUI : public System::Windows::Forms::Form
 	{
 	public:
-		HelperVideoUI(System::Windows::Forms::Form^ srcPrevForm)
+		VideoHelperUI(System::Windows::Forms::Form^ srcPrevForm, int helperType)
 		{
 			prevForm = srcPrevForm;
-			helperDatabase = new TheoryHelper();
+			if (helperType == 0) {
+				helperDatabase = new TheoryHelper();
+				helperDatabase->setDataName(L"Trợ giúp thi lý thuyết");
+			}
+			if (helperType == 1) {
+				helperDatabase = new PracticeHelper();
+				helperDatabase->setDataName(L"Trợ giúp thi thực hành");
+			}
+			if (helperType == 2) {
+				helperDatabase = new RegisterHelper();
+				helperDatabase->setDataName(L"Trợ giúp đăng kí thi");
+			}
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -30,17 +41,17 @@ namespace demooop {
 		/// <summary>
 		/// Clean up any resources being used.
 		/// </summary>
-		~HelperVideoUI()
+		~VideoHelperUI()
 		{
 			if (components)
 			{
 				delete components;
 			}
 		}
-	private: 
+	private:
 		System::Windows::Forms::Form^ prevForm;
 	private:
-		VideoHelperDatabase* helperDatabase;
+		UrlHelperDatabase* helperDatabase;
 	private: System::Windows::Forms::Label^ helperTitle;
 	private: System::Windows::Forms::Button^ backButton;
 	protected:
@@ -54,7 +65,7 @@ namespace demooop {
 		/// <summary>
 		/// Required designer variable.
 		/// </summary>
-		System::ComponentModel::Container ^components;
+		System::ComponentModel::Container^ components;
 
 #pragma region Windows Form Designer generated code
 		/// <summary>
@@ -63,7 +74,7 @@ namespace demooop {
 		/// </summary>
 		void InitializeComponent(void)
 		{
-			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(HelperVideoUI::typeid));
+			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(VideoHelperUI::typeid));
 			this->helperTitle = (gcnew System::Windows::Forms::Label());
 			this->backButton = (gcnew System::Windows::Forms::Button());
 			this->SuspendLayout();
@@ -91,19 +102,19 @@ namespace demooop {
 			this->backButton->Size = System::Drawing::Size(55, 54);
 			this->backButton->TabIndex = 1;
 			this->backButton->UseVisualStyleBackColor = true;
-			this->backButton->Click += gcnew System::EventHandler(this, &HelperVideoUI::backButton_Click);
+			this->backButton->Click += gcnew System::EventHandler(this, &VideoHelperUI::backButton_Click);
 			// 
-			// HelperVideoUI
+			// VideoHelperUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(700, 700);
 			this->Controls->Add(this->backButton);
 			this->Controls->Add(this->helperTitle);
-			this->Name = L"HelperVideoUI";
+			this->Name = L"VideoHelperUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"HelperVideoUI";
-			this->Load += gcnew System::EventHandler(this, &HelperVideoUI::HelperVideoUI_Load);
+			this->Load += gcnew System::EventHandler(this, &VideoHelperUI::HelperVideoUI_Load);
 			this->ResumeLayout(false);
 
 		}
@@ -120,7 +131,8 @@ namespace demooop {
 	}
 	private: System::Void HelperVideoUI_Load(System::Object^ sender, System::EventArgs^ e) {
 		helperDatabase->readData();
-		this->helperTitle->Text = gcnew String(helperDatabase->getDataName().data());
+		std::wstring text = helperDatabase->getDataName();
+		this->helperTitle->Text = gcnew String(text.data());
 
 		int spaceDist = 50;
 		std::cout << helperDatabase->getLength() << '\n';
@@ -131,15 +143,15 @@ namespace demooop {
 			linkLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			linkLabel->LinkColor = System::Drawing::Color::Blue;
-			linkLabel->Location = System::Drawing::Point(70, 80 + spaceDist*i);
+			linkLabel->Location = System::Drawing::Point(70, 80 + spaceDist * i);
 			linkLabel->AutoSize = true;
 			linkLabel->Text = gcnew String(title.data());
 			linkLabel->Tag = i.ToString();
 
-			linkLabel->Click += gcnew System::EventHandler(this, &HelperVideoUI::ClickLink);
+			linkLabel->Click += gcnew System::EventHandler(this, &VideoHelperUI::ClickLink);
 
 			this->Controls->Add(linkLabel);
 		}
 	}
-};
+	};
 }
