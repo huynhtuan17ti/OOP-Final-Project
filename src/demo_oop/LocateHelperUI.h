@@ -154,7 +154,7 @@ namespace demooop {
 			this->urlLinkLabel->AutoSize = true;
 			this->urlLinkLabel->Font = (gcnew System::Drawing::Font(L"Arial", 11.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->urlLinkLabel->Location = System::Drawing::Point(145, 162);
+			this->urlLinkLabel->Location = System::Drawing::Point(84, 162);
 			this->urlLinkLabel->Name = L"urlLinkLabel";
 			this->urlLinkLabel->Size = System::Drawing::Size(72, 17);
 			this->urlLinkLabel->TabIndex = 12;
@@ -191,9 +191,9 @@ namespace demooop {
 				static_cast<System::Byte>(0)));
 			this->label3->Location = System::Drawing::Point(12, 158);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(136, 23);
+			this->label3->Size = System::Drawing::Size(70, 23);
 			this->label3->TabIndex = 9;
-			this->label3->Text = L"Địa chỉ điện tử:";
+			this->label3->Text = L"Bản đồ:";
 			// 
 			// label2
 			// 
@@ -242,7 +242,7 @@ namespace demooop {
 			this->Controls->Add(this->helperTitle);
 			this->Name = L"LocateHelperUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"LocateHelperUI";
+			this->Text = L"Trợ giúp";
 			this->Load += gcnew System::EventHandler(this, &LocateHelperUI::LocateHelperUI_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();

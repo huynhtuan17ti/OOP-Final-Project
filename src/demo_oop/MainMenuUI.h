@@ -4,6 +4,7 @@
 #include "HistoryUI.h"
 #include "VideoHelperUI.h"
 #include "LocateHelperUI.h"
+#include "AppHelperUI.h"
 #include <list>
 #include <tuple>
 #include "Constants.h"
@@ -24,8 +25,9 @@ namespace demooop {
 	public ref class MainMenuUI : public System::Windows::Forms::Form
 	{
 	public:
-		MainMenuUI(User* srcCurUser)
+		MainMenuUI(User* srcCurUser, System::Windows::Forms::Form^ srcPrevForm)
 		{
+			prevForm = srcPrevForm;
 			curUser = srcCurUser;
 			historyStoringList = new HistoryStoringList();
 			curPanelIndex = 0;
@@ -51,6 +53,7 @@ namespace demooop {
 	private:
 		User* curUser;
 		HistoryStoringList* historyStoringList;
+		System::Windows::Forms::Form^ prevForm;
 		int curPanelIndex;
 		cli::array < System::Windows::Forms::Panel^>^ listPanel;
 
@@ -217,8 +220,9 @@ namespace demooop {
 			this->exitButton->Name = L"exitButton";
 			this->exitButton->Size = System::Drawing::Size(280, 85);
 			this->exitButton->TabIndex = 1;
-			this->exitButton->Text = L"Thoát";
+			this->exitButton->Text = L"Đăng xuất";
 			this->exitButton->UseVisualStyleBackColor = true;
+			this->exitButton->Click += gcnew System::EventHandler(this, &MainMenuUI::exitButton_Click);
 			// 
 			// panel1
 			// 
@@ -258,7 +262,7 @@ namespace demooop {
 			// 
 			this->registerHelper->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->registerHelper->Location = System::Drawing::Point(176, 360);
+			this->registerHelper->Location = System::Drawing::Point(176, 339);
 			this->registerHelper->Name = L"registerHelper";
 			this->registerHelper->Size = System::Drawing::Size(236, 57);
 			this->registerHelper->TabIndex = 5;
@@ -271,7 +275,7 @@ namespace demooop {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(123, 91);
+			this->label3->Location = System::Drawing::Point(123, 70);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(336, 35);
 			this->label3->TabIndex = 4;
@@ -281,18 +285,19 @@ namespace demooop {
 			// 
 			this->appButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->appButton->Location = System::Drawing::Point(176, 541);
+			this->appButton->Location = System::Drawing::Point(176, 520);
 			this->appButton->Name = L"appButton";
 			this->appButton->Size = System::Drawing::Size(236, 57);
 			this->appButton->TabIndex = 3;
 			this->appButton->Text = L"Cách sử dụng";
 			this->appButton->UseVisualStyleBackColor = true;
+			this->appButton->Click += gcnew System::EventHandler(this, &MainMenuUI::appButton_Click);
 			// 
 			// locateButton
 			// 
 			this->locateButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->locateButton->Location = System::Drawing::Point(176, 452);
+			this->locateButton->Location = System::Drawing::Point(176, 431);
 			this->locateButton->Name = L"locateButton";
 			this->locateButton->Size = System::Drawing::Size(236, 57);
 			this->locateButton->TabIndex = 2;
@@ -304,7 +309,7 @@ namespace demooop {
 			// 
 			this->praticeButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->praticeButton->Location = System::Drawing::Point(176, 270);
+			this->praticeButton->Location = System::Drawing::Point(176, 249);
 			this->praticeButton->Name = L"praticeButton";
 			this->praticeButton->Size = System::Drawing::Size(236, 57);
 			this->praticeButton->TabIndex = 1;
@@ -316,7 +321,7 @@ namespace demooop {
 			// 
 			this->theoryButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->theoryButton->Location = System::Drawing::Point(176, 175);
+			this->theoryButton->Location = System::Drawing::Point(176, 154);
 			this->theoryButton->Name = L"theoryButton";
 			this->theoryButton->Size = System::Drawing::Size(236, 57);
 			this->theoryButton->TabIndex = 0;
@@ -606,7 +611,7 @@ namespace demooop {
 			this->Controls->Add(this->panel1);
 			this->Name = L"MainMenuUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"App thi bang lai xe (Demo)";
+			this->Text = L"Phần mềm thi bằng lái xe v0.1.1";
 			this->Load += gcnew System::EventHandler(this, &MainMenuUI::MainMenuUI_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
@@ -660,9 +665,20 @@ namespace demooop {
 		databaseUI->Show();
 	}
 	private: System::Void startTestButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->Hide();
-		TestExamUI^ testExamUI = gcnew TestExamUI(this, getSelectedItemInOptionalBoxes(), curUser);
-		testExamUI->Show();
+		ExamSettings curExamSettings = getSelectedItemInOptionalBoxes();
+		System::Windows::Forms::DialogResult dialogResult;
+		if(curExamSettings.isSaveHistory())
+			dialogResult = MessageBox::Show(L"Bài làm của bạn sẽ được lưu lại lịch sử!\nĐể tiếp tục vào làm bài, ấn Yes", 
+							L"Thông báo", MessageBoxButtons::YesNo);
+		else
+			dialogResult = MessageBox::Show(L"Bài làm của bạn sẽ không được lưu lại lịch sử, do nó không phải tiêu chuẩn của một bài thi thật!\nĐể tiếp tục vào làm bài, nhấn Yes",
+							L"Thông báo", MessageBoxButtons::YesNo);
+
+		if (dialogResult == System::Windows::Forms::DialogResult::Yes) {
+			this->Hide();
+			TestExamUI^ testExamUI = gcnew TestExamUI(this, curExamSettings, curUser);
+			testExamUI->Show();
+		}
 	}
 	private: System::Void resetHistoryButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		loadHistory();
@@ -692,6 +708,15 @@ namespace demooop {
 		this->Hide();
 		LocateHelperUI^ locateHelperUI = gcnew LocateHelperUI(this);
 		locateHelperUI->Show();
+	}
+	private: System::Void appButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		AppHelperUI^ appHelperUI = gcnew AppHelperUI(this);
+		appHelperUI->Show();
+	}
+	private: System::Void exitButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		this->Hide();
+		prevForm->Show();
 	}
 	private: System::Void MainMenuUI_Load(System::Object^ sender, System::EventArgs^ e) {
 		comboBoxTime->SelectedIndex = 0;

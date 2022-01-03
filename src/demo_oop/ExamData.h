@@ -29,6 +29,7 @@ private:
 	int countdownSeconds;
 	int questionAmount;
 	int maxWrongAnswer;
+	bool saveHistory;
 
 public:
 	ExamSettings(int srcCertificateIndex, int srcCountdownSeconds, int srcQuestionAmount, int srcMaxWrongAnswer) {
@@ -36,12 +37,17 @@ public:
 		countdownSeconds = srcCountdownSeconds;
 		questionAmount = srcQuestionAmount;
 		maxWrongAnswer = srcMaxWrongAnswer;
+
+		saveHistory = (countdownSeconds == 1200 && questionAmount == 25 && maxWrongAnswer == 4);
 	}
 	ExamSettings(const ExamSettings* examSettings) {
 		certificateIndex = examSettings->certificateIndex;
 		countdownSeconds = examSettings->countdownSeconds;
 		questionAmount = examSettings->questionAmount;
 		maxWrongAnswer = examSettings->maxWrongAnswer;
+	}
+	bool isSaveHistory() {
+		return saveHistory;
 	}
 	// for storing
 	std::string toString() const;

@@ -187,7 +187,7 @@ namespace demooop {
 			this->Controls->Add(this->accountLabel);
 			this->Name = L"HistoryUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"HistoryUI";
+			this->Text = L"Lịch sử";
 			this->Load += gcnew System::EventHandler(this, &HistoryUI::HistoryUI_Load);
 			this->ResumeLayout(false);
 			this->PerformLayout();

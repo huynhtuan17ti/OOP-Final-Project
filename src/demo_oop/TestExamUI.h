@@ -461,7 +461,7 @@ namespace demooop {
 			this->Controls->Add(this->panel1);
 			this->Name = L"TestExamUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"App thi bang lai xe (Demo)";
+			this->Text = L"Thi thử";
 			this->Load += gcnew System::EventHandler(this, &TestExamUI::TestExamUI_Load);
 			this->panel1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->EndInit();
@@ -556,7 +556,8 @@ namespace demooop {
 															examSettings, 
 															examSettings->getCountdownSeconds() - countdownSecond,
 															examResult->getScore());
-		historyStoring->storing();
+		if(examSettings->isSaveHistory())
+			historyStoring->storing();
 		delete historyStoring;
 		disableActiveAndShowResult();
 	}
@@ -579,6 +580,8 @@ namespace demooop {
 																examSettings,
 																examSettings->getCountdownSeconds() - countdownSecond,
 																examResult->getScore());
+			if (examSettings->isSaveHistory())
+				historyStoring->storing();
 			historyStoring->storing();
 			delete historyStoring;
 			disableActiveAndShowResult();

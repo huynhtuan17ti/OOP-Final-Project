@@ -229,7 +229,7 @@ namespace demooop {
 		User* curUser = userAccounts->accountSearching(curUserName, curPassword);
 		if (curUser != NULL) {
 			this->Hide();
-			MainMenuUI^ mainMenuUI = gcnew MainMenuUI(curUser);
+			MainMenuUI^ mainMenuUI = gcnew MainMenuUI(curUser, this);
 			mainMenuUI->Show();
 		}
 		else {

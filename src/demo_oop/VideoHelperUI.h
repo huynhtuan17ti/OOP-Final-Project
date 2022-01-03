@@ -113,7 +113,7 @@ namespace demooop {
 			this->Controls->Add(this->helperTitle);
 			this->Name = L"VideoHelperUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"HelperVideoUI";
+			this->Text = L"Trợ giúp";
 			this->Load += gcnew System::EventHandler(this, &VideoHelperUI::HelperVideoUI_Load);
 			this->ResumeLayout(false);
 

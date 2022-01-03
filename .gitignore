@@ -10,3 +10,5 @@ src/Debug
 src/demo_oop/Release
 src/demo_oop/Debug
 *.dll
+*.rar
+*.zip

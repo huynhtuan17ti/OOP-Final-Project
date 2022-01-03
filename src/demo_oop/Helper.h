@@ -128,10 +128,11 @@ public:
 	}
 };
 
-// Cau truc file: <Mo ta anh>,<url anh>
-// titleList: Luu cac mo ta anh
-// urlList: Luu url anh tuong ung
-class AppHelper : public UrlHelperDatabase {
+
+class AppHelper {
+private:
+	std::wstring path;
+	std::vector <std::wstring> imageList;
 public:
 	void readData() {
 		std::wifstream fi(path);
@@ -141,20 +142,21 @@ public:
 
 		std::wstring line;
 		while (getline(fi, line)) {
-			std::wistringstream iss(line);
-			std::wstring curTitle;
-			std::getline(iss, curTitle, L',');
-			std::wstring curUrl;
-			std::getline(iss, curUrl, L',');
-
-			titleList.push_back(curTitle);
-			urlList.push_back(curUrl);
+			imageList.push_back(line);
 		}
 
 		fi.close();
 	}
+
+	int getLength() {
+		return imageList.size();
+	}
+
+	std::wstring getImageAtIndex(int index) {
+		return imageList[index];
+	}
+
 	AppHelper() {
-		dataName = L"Hướng dẫn sử dụng phần mềm";
 		path = L"data/Helper/AppHelperDatabase.txt";
 	}
 };

@@ -289,7 +289,7 @@ namespace demooop {
 			this->Controls->Add(this->backButton);
 			this->Name = L"DatabaseUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"App thi bang lai xe (Demo)";
+			this->Text = L"Bộ câu hỏi";
 			this->Load += gcnew System::EventHandler(this, &DatabaseUI::DatabaseUI_Load);
 			this->panel1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->EndInit();
