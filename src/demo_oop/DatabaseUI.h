@@ -1,6 +1,7 @@
 ﻿#pragma once
 #include "Constants.h"
 #include "Database.h"
+#include <tuple>
 
 namespace demooop {
 
@@ -46,6 +47,9 @@ namespace demooop {
 	private:
 		const int maxAnsStringOnLine = 110; // maximum size of a string on a line
 		const int maxQueStringOnLine = 50;
+		const int xStartPositionInAnswerPanel = 10;
+		const int yStartPositionInAnswerPanel = 30;
+		const int heightTextLine = 30;
 		const int maxNAnswer = 6; // maximum number of answers
 		String^ noImagePath = "assets/no_image.png";
 
@@ -254,7 +258,7 @@ namespace demooop {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(338, 2);
+			this->label3->Location = System::Drawing::Point(353, 2);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(148, 35);
 			this->label3->TabIndex = 11;
@@ -265,7 +269,7 @@ namespace demooop {
 			this->typeCertificateLabel->AutoSize = true;
 			this->typeCertificateLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->typeCertificateLabel->Location = System::Drawing::Point(470, 2);
+			this->typeCertificateLabel->Location = System::Drawing::Point(485, 2);
 			this->typeCertificateLabel->Name = L"typeCertificateLabel";
 			this->typeCertificateLabel->Size = System::Drawing::Size(73, 35);
 			this->typeCertificateLabel->TabIndex = 12;
@@ -287,6 +291,7 @@ namespace demooop {
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
 			this->Controls->Add(this->backButton);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"DatabaseUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Bộ câu hỏi";
@@ -320,15 +325,15 @@ namespace demooop {
 		LoadCertificateLabel();
 		
 		answerUI = gcnew array<System::Windows::Forms::Label^>(maxNAnswer);
-		int xStartPoint = 10, yStartPoint = 30;
-		int rowRange = 65; // size between 2 answer lines
+		//int xStartPoint = 10, yStartPoint = 30;
+		//int rowRange = 65; // size between 2 answer lines
 		for (int i = 0; i < maxNAnswer; i++) {
 			answerUI[i] = gcnew Label();
 			answerUI[i]->AutoSize = true;
 			this->panel2->Controls->Add(answerUI[i]);
 			answerUI[i]->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			answerUI[i]->Location = System::Drawing::Point(xStartPoint, yStartPoint + i * rowRange);
+			//answerUI[i]->Location = System::Drawing::Point(xStartPoint, yStartPoint + i * rowRange);
 			answerUI[i]->Name = L"text";
 			answerUI[i]->Size = System::Drawing::Size(75, 21);
 			answerUI[i]->TabIndex = i;
@@ -358,30 +363,39 @@ namespace demooop {
 
 	// Utils goes here
 	private:
-		std::wstring fitStringLine(std::wstring s, int lineLimit) {
-			// find the nearest space symbol on the left and replace it by '\n'
+		std::tuple<std::wstring, int> fitStringLine(std::wstring s, int lineLimit) {
+			// find the nearest space symbol on the right and replace it by '\n'
+			int nLine = 0;
 			int q = (int)s.size() / lineLimit;
 			for (int i = 1; i <= q; i++) {
 				int pos = lineLimit * i;
 				while (pos--)
 					if (s[pos] == L' ') break;
 				s.replace(pos, 1, L"\n");
+				nLine++;
 			}
-			return s;
+			return { s, nLine };
 		}
 
 		void updateUI() {
 			std::wstring questionNumberText = L"Câu hỏi " + std::to_wstring(curIndexQuesion + 1);
 			this->questionNumberLabel->Text = gcnew String(questionNumberText.data());
 			Question q = questionData->getQuestion(curIndexQuesion);
-			std::wstring dg = q.getDescription();
-			this->qDescription->Text = gcnew String(fitStringLine(q.getDescription(), maxQueStringOnLine).data());
+			auto pack = fitStringLine(q.getDescription(), maxQueStringOnLine);
+			std::wstring fitQuestionDescription = std::get<0>(pack);
+			this->qDescription->Text = gcnew String(fitQuestionDescription.data());
 
 			std::vector <std::wstring> answers = q.getAnswers();
+			
+			int curYPostion = yStartPositionInAnswerPanel;
 			for (int i = 0; i < maxNAnswer; i++) {
 				if (i < q.getNumberAnswer()) {
 					std::wstring curAns = std::to_wstring(i + 1) + L") " + answers[i];
-					curAns = fitStringLine(curAns, maxAnsStringOnLine);
+					auto pack = fitStringLine(curAns, maxAnsStringOnLine);
+					curAns = std::get<0>(pack);
+					int nLine = std::get<1>(pack);
+					answerUI[i]->Location = System::Drawing::Point(xStartPositionInAnswerPanel, curYPostion);
+					curYPostion += nLine * heightTextLine + heightTextLine;
 					answerUI[i]->Text = gcnew String(curAns.data());
 					answerUI[i]->ForeColor = System::Drawing::Color::Red;
 				}

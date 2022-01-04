@@ -240,6 +240,7 @@ namespace demooop {
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->backButton);
 			this->Controls->Add(this->helperTitle);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"LocateHelperUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Trợ giúp";

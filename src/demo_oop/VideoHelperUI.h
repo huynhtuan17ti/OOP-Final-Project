@@ -108,9 +108,11 @@ namespace demooop {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->BackColor = System::Drawing::Color::White;
 			this->ClientSize = System::Drawing::Size(700, 700);
 			this->Controls->Add(this->backButton);
 			this->Controls->Add(this->helperTitle);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"VideoHelperUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Trợ giúp";
@@ -134,7 +136,7 @@ namespace demooop {
 		std::wstring text = helperDatabase->getDataName();
 		this->helperTitle->Text = gcnew String(text.data());
 
-		int spaceDist = 50;
+		int spaceDist = 55;
 		std::cout << helperDatabase->getLength() << '\n';
 		for (int i = 0; i < helperDatabase->getLength(); i++) {
 			std::wstring title = helperDatabase->getTitleAtIndex(i);

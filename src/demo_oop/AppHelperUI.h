@@ -143,6 +143,7 @@ namespace demooop {
 			this->Controls->Add(this->leftButton);
 			this->Controls->Add(this->pictureBox);
 			this->Controls->Add(this->helperTitle);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"AppHelperUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Trợ giúp";

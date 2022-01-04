@@ -44,7 +44,7 @@ namespace demooop {
 	private:
 		Users* userAccounts;
 
-	private: System::Windows::Forms::Panel^ panel1;
+
 	private: System::Windows::Forms::Label^ label1;
 	private: System::Windows::Forms::Panel^ panel2;
 	private: System::Windows::Forms::TextBox^ userText;
@@ -53,6 +53,8 @@ namespace demooop {
 	private: System::Windows::Forms::TextBox^ passText;
 	private: System::Windows::Forms::Button^ loginButton;
 	private: System::Windows::Forms::Button^ registerButton;
+	private: System::Windows::Forms::PictureBox^ pictureBox;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
 
 	protected:
 
@@ -70,7 +72,6 @@ namespace demooop {
 		void InitializeComponent(void)
 		{
 			System::ComponentModel::ComponentResourceManager^ resources = (gcnew System::ComponentModel::ComponentResourceManager(LoginUI::typeid));
-			this->panel1 = (gcnew System::Windows::Forms::Panel());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
 			this->userText = (gcnew System::Windows::Forms::TextBox());
@@ -78,24 +79,17 @@ namespace demooop {
 			this->passText = (gcnew System::Windows::Forms::TextBox());
 			this->loginButton = (gcnew System::Windows::Forms::Button());
 			this->registerButton = (gcnew System::Windows::Forms::Button());
+			this->pictureBox = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel2->SuspendLayout();
 			this->panel3->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->SuspendLayout();
-			// 
-			// panel1
-			// 
-			this->panel1->BackColor = System::Drawing::SystemColors::Control;
-			this->panel1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"panel1.BackgroundImage")));
-			this->panel1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->panel1->Location = System::Drawing::Point(0, 0);
-			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(347, 466);
-			this->panel1->TabIndex = 0;
-			this->panel1->Click += gcnew System::EventHandler(this, &LoginUI::other_Click);
 			// 
 			// label1
 			// 
-			this->label1->AutoSize = true;
+			this->label1->BackColor = System::Drawing::Color::Transparent;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Sitka Text", 21.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->label1->Location = System::Drawing::Point(385, 134);
@@ -176,17 +170,42 @@ namespace demooop {
 			this->registerButton->UseVisualStyleBackColor = true;
 			this->registerButton->Click += gcnew System::EventHandler(this, &LoginUI::registerButton_Click);
 			// 
+			// pictureBox
+			// 
+			this->pictureBox->BackColor = System::Drawing::Color::White;
+			this->pictureBox->Dock = System::Windows::Forms::DockStyle::Left;
+			this->pictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox.Image")));
+			this->pictureBox->Location = System::Drawing::Point(0, 0);
+			this->pictureBox->Name = L"pictureBox";
+			this->pictureBox->Size = System::Drawing::Size(443, 461);
+			this->pictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::CenterImage;
+			this->pictureBox->TabIndex = 6;
+			this->pictureBox->TabStop = false;
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(515, 12);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(207, 114);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox1->TabIndex = 7;
+			this->pictureBox1->TabStop = false;
+			// 
 			// LoginUI
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(880, 470);
+			this->BackColor = System::Drawing::Color::White;
+			this->ClientSize = System::Drawing::Size(784, 461);
+			this->Controls->Add(this->pictureBox1);
 			this->Controls->Add(this->registerButton);
 			this->Controls->Add(this->loginButton);
 			this->Controls->Add(this->panel3);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->label1);
-			this->Controls->Add(this->panel1);
+			this->Controls->Add(this->pictureBox);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"LoginUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Đăng nhập";
@@ -196,8 +215,9 @@ namespace demooop {
 			this->panel2->PerformLayout();
 			this->panel3->ResumeLayout(false);
 			this->panel3->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->ResumeLayout(false);
-			this->PerformLayout();
 
 		}
 #pragma endregion

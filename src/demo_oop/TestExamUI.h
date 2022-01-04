@@ -2,6 +2,7 @@
 #include "Database.h"
 #include "ExamData.h"
 #include "HistoryData.h"
+#include <tuple>
 
 namespace demooop {
 
@@ -57,6 +58,9 @@ namespace demooop {
 		const int maxAnsStringOnLine = 100; // maximum size of a string on a line
 		const int maxQueStringOnLine = 80;
 		const int maxNAnswer = 6; // maximum number of answers
+		const int xStartPositionInAnswerPanel = 10;
+		const int yStartPositionInAnswerPanel = 30;
+		const int heightTextLine = 30;
 		String^ noImagePath = "assets/no_image.png";
 
 	private:
@@ -459,6 +463,7 @@ namespace demooop {
 			this->Controls->Add(this->pictureBox);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"TestExamUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Thi thử";
@@ -522,21 +527,19 @@ namespace demooop {
 		this->timerCountdown->Enabled = true;
 		
 		// load exam information
+		this->userNameLabel->Text = L"Họ và tên: " + gcnew String(curUser->getName().data());
 		loadCertificateLabel();
 		loadQuestionAmount();
 		loadQuestionStateFlow();
 
 		// if firstLoad, initialize UI features
 		answerUI = gcnew array<System::Windows::Forms::Label^>(maxNAnswer);
-		int xStartPoint = 10, yStartPoint = 30;
-		int rowRange = 65; // size between 2 answer lines
 		for (int i = 0; i < maxNAnswer; i++) {
 			answerUI[i] = gcnew Label();
 			answerUI[i]->AutoSize = true;
 			this->panel2->Controls->Add(answerUI[i]);
 			answerUI[i]->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			answerUI[i]->Location = System::Drawing::Point(xStartPoint, yStartPoint + i * rowRange);
 			answerUI[i]->Name = L"text";
 			answerUI[i]->Size = System::Drawing::Size(75, 21);
 			answerUI[i]->TabIndex = i;
@@ -546,6 +549,12 @@ namespace demooop {
 	}
 
 	private: System::Void submitButton_Click(System::Object^ sender, System::EventArgs^ e) {
+		System::Windows::Forms::DialogResult dialogResult;
+		if (MessageBox::Show(L"Bạn có chắc bạn muốn nộp bài, nhấn Yes để tiếp tục!",
+			L"Xác nhận", MessageBoxButtons::YesNo) == System::Windows::Forms::DialogResult::No) {
+			return;
+		}
+
 		this->timerCountdown->Stop();
 		isExamFinish = true;
 		bool isPass = (questionData->getQuestionAmount() - examResult->getScore() <= examSettings->getMaxWrongAnswer());
@@ -590,16 +599,18 @@ namespace demooop {
 
 	// Utils goes here
 	private:
-		std::wstring fitStringLine(std::wstring s, int lineLimit) {
+		std::tuple<std::wstring, int> fitStringLine(std::wstring s, int lineLimit) {
 			// find the nearest space symbol on the right and replace it by '\n'
+			int nLine = 0;
 			int q = (int)s.size() / lineLimit;
 			for (int i = 1; i <= q; i++) {
 				int pos = lineLimit * i;
 				while (pos--)
 					if (s[pos] == L' ') break;
 				s.replace(pos, 1, L"\n");
+				nLine++;
 			}
-			return s;
+			return { s, nLine };
 		}
 
 		void loadCertificateLabel() {
@@ -671,15 +682,21 @@ namespace demooop {
 			// load question description
 			questionNumberLabel->Text = L"Câu hỏi " + (curIndexQuestion + 1).ToString();
 			Question q = questionData->getQuestion(curIndexQuestion);
-			std::wstring dg = q.getDescription();
-			this->qDescription->Text = gcnew String(fitStringLine(q.getDescription(), maxQueStringOnLine).data());
+			auto pack = fitStringLine(q.getDescription(), maxQueStringOnLine);
+			std::wstring fitQuestionDescription = std::get<0>(pack);
+			this->qDescription->Text = gcnew String(fitQuestionDescription.data());
 
 			// load multi-answers
+			int curYPostion = yStartPositionInAnswerPanel;
 			std::vector <std::wstring> answers = q.getAnswers();
 			for (int i = 0; i < maxNAnswer; i++) {
 				if (i < q.getNumberAnswer()) {
 					std::wstring curAns = std::to_wstring(i + 1) + L") " + answers[i];
-					curAns = fitStringLine(curAns, maxAnsStringOnLine);
+					auto pack = fitStringLine(curAns, maxAnsStringOnLine);
+					curAns = std::get<0>(pack);
+					int nLine = std::get<1>(pack);
+					answerUI[i]->Location = System::Drawing::Point(xStartPositionInAnswerPanel, curYPostion);
+					curYPostion += nLine * heightTextLine + heightTextLine;
 					answerUI[i]->Text = gcnew String(curAns.data());
 					answerUI[i]->ForeColor = System::Drawing::Color::Black;
 				}
@@ -702,10 +719,10 @@ namespace demooop {
 			}
 
 			// load checked list answer
-			checkedListAnswer->Items->Clear();
+			this->checkedListAnswer->Items->Clear();
 			for (int i = 1; i <= q.getNumberAnswer(); i++) {
 				std::wstring text = L"Đáp án " + std::to_wstring(i);
-				checkedListAnswer->Items->Add(gcnew String(text.data()));
+				this->checkedListAnswer->Items->Add(gcnew String(text.data()));
 			}
 
 			// fill checkedList by state
@@ -715,15 +732,16 @@ namespace demooop {
 			std::wstring questionPathImage = q.getImagePath();
 			if (questionPathImage != L"None") {
 				std::wstring imagePath = questionData->getImagePath() + questionPathImage;
-				pictureBox->Image = Image::FromFile(gcnew String(imagePath.data()));
+				this->pictureBox->Image = Image::FromFile(gcnew String(imagePath.data()));
 			}
 			else {
-				pictureBox->Image = Image::FromFile(noImagePath);
+				this->pictureBox->Image = Image::FromFile(noImagePath);
 			}
 		}
 
 		void disableActiveAndShowResult() {
-			checkedListAnswer->Enabled = false;
+			this->submitButton->Enabled = false;
+			this->checkedListAnswer->Enabled = false;
 			for (int index = 0; index < questionData->getQuestionAmount(); index++) {
 				int s = examResult->getSingleScoreAtIndex(index);
 				if (s == 1) {

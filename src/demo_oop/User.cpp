@@ -81,7 +81,6 @@ bool Users::Load() {
 		_users.push_back(user);
 	}
 	is.close();
-
 	return true;
 }
 

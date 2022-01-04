@@ -307,7 +307,9 @@ namespace demooop {
 			this->Controls->Add(this->label2);
 			this->Controls->Add(this->label1);
 			this->Controls->Add(this->panel1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"RegisterUI";
+			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Đăng kí tài khoản";
 			this->Load += gcnew System::EventHandler(this, &RegisterUI::RegisterUI_Load);
 			this->panel2->ResumeLayout(false);

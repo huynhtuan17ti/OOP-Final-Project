@@ -15,12 +15,12 @@ class User {
 public:
 	User();
 	User(std::string, std::string, std::string, Date, bool);
-	User(const User*& other) {
-		_userName = other->_userName;
-		_passWord = other->_passWord;
-		_name = other->_name;
-		_birth = other->_birth;
-		_sex = other->_sex;
+	User(const User& other) {
+		_userName = other._userName;
+		_passWord = other._passWord;
+		_name = other._name;
+		_birth = other._birth;
+		_sex = other._sex;
 	}
 	~User() {
 	}

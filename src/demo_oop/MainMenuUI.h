@@ -96,6 +96,11 @@ namespace demooop {
 	private: System::Windows::Forms::Button^ praticeButton;
 	private: System::Windows::Forms::Button^ theoryButton;
 	private: System::Windows::Forms::Button^ registerHelper;
+	private: System::Windows::Forms::PictureBox^ pictureBox1;
+	private: System::Windows::Forms::PictureBox^ pictureBox2;
+	private: System::Windows::Forms::PictureBox^ pictureBox5;
+	private: System::Windows::Forms::PictureBox^ pictureBox4;
+	private: System::Windows::Forms::PictureBox^ pictureBox3;
 
 
 
@@ -133,6 +138,11 @@ namespace demooop {
 			this->praticeButton = (gcnew System::Windows::Forms::Button());
 			this->theoryButton = (gcnew System::Windows::Forms::Button());
 			this->panel2 = (gcnew System::Windows::Forms::Panel());
+			this->pictureBox5 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox4 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox3 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox2 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox1 = (gcnew System::Windows::Forms::PictureBox());
 			this->label1 = (gcnew System::Windows::Forms::Label());
 			this->buttonA2 = (gcnew System::Windows::Forms::Button());
 			this->buttonB1 = (gcnew System::Windows::Forms::Button());
@@ -157,6 +167,11 @@ namespace demooop {
 			this->panel1->SuspendLayout();
 			this->panelHelp->SuspendLayout();
 			this->panel2->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->BeginInit();
 			this->panelData->SuspendLayout();
 			this->panelHistory->SuspendLayout();
 			this->panelTest->SuspendLayout();
@@ -164,6 +179,7 @@ namespace demooop {
 			// 
 			// questionButton
 			// 
+			this->questionButton->BackColor = System::Drawing::Color::White;
 			this->questionButton->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->questionButton->Location = System::Drawing::Point(10, 130);
@@ -171,7 +187,7 @@ namespace demooop {
 			this->questionButton->Size = System::Drawing::Size(280, 85);
 			this->questionButton->TabIndex = 2;
 			this->questionButton->Text = L"Bộ câu hỏi\n";
-			this->questionButton->UseVisualStyleBackColor = true;
+			this->questionButton->UseVisualStyleBackColor = false;
 			this->questionButton->Click += gcnew System::EventHandler(this, &MainMenuUI::questionButton_Click);
 			// 
 			// testButton
@@ -179,17 +195,17 @@ namespace demooop {
 			this->testButton->BackColor = System::Drawing::Color::White;
 			this->testButton->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->testButton->ForeColor = System::Drawing::SystemColors::ControlText;
 			this->testButton->Location = System::Drawing::Point(10, 20);
 			this->testButton->Name = L"testButton";
 			this->testButton->Size = System::Drawing::Size(280, 85);
-			this->testButton->TabIndex = 3;
-			this->testButton->Text = L"Thi thử ngay";
-			this->testButton->UseVisualStyleBackColor = true;
+			this->testButton->TabIndex = 0;
+			this->testButton->Text = L"Thi thử";
+			this->testButton->UseVisualStyleBackColor = false;
 			this->testButton->Click += gcnew System::EventHandler(this, &MainMenuUI::testButton_Click);
 			// 
 			// helpButton
 			// 
+			this->helpButton->BackColor = System::Drawing::Color::White;
 			this->helpButton->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->helpButton->Location = System::Drawing::Point(10, 350);
@@ -197,23 +213,25 @@ namespace demooop {
 			this->helpButton->Size = System::Drawing::Size(280, 85);
 			this->helpButton->TabIndex = 4;
 			this->helpButton->Text = L"Trợ giúp";
-			this->helpButton->UseVisualStyleBackColor = true;
+			this->helpButton->UseVisualStyleBackColor = false;
 			this->helpButton->Click += gcnew System::EventHandler(this, &MainMenuUI::helpButton_Click);
 			// 
 			// historyButton
 			// 
+			this->historyButton->BackColor = System::Drawing::Color::White;
 			this->historyButton->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->historyButton->Location = System::Drawing::Point(10, 240);
 			this->historyButton->Name = L"historyButton";
 			this->historyButton->Size = System::Drawing::Size(280, 85);
-			this->historyButton->TabIndex = 0;
-			this->historyButton->Text = L"Lịch sử";
-			this->historyButton->UseVisualStyleBackColor = true;
+			this->historyButton->TabIndex = 3;
+			this->historyButton->Text = L" Lịch sử";
+			this->historyButton->UseVisualStyleBackColor = false;
 			this->historyButton->Click += gcnew System::EventHandler(this, &MainMenuUI::historyButton_Click);
 			// 
 			// exitButton
 			// 
+			this->exitButton->BackColor = System::Drawing::Color::White;
 			this->exitButton->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->exitButton->Location = System::Drawing::Point(10, 460);
@@ -221,7 +239,7 @@ namespace demooop {
 			this->exitButton->Size = System::Drawing::Size(280, 85);
 			this->exitButton->TabIndex = 1;
 			this->exitButton->Text = L"Đăng xuất";
-			this->exitButton->UseVisualStyleBackColor = true;
+			this->exitButton->UseVisualStyleBackColor = false;
 			this->exitButton->Click += gcnew System::EventHandler(this, &MainMenuUI::exitButton_Click);
 			// 
 			// panel1
@@ -247,6 +265,7 @@ namespace demooop {
 			// 
 			// panelHelp
 			// 
+			this->panelHelp->BackColor = System::Drawing::Color::White;
 			this->panelHelp->Controls->Add(this->registerHelper);
 			this->panelHelp->Controls->Add(this->label3);
 			this->panelHelp->Controls->Add(this->appButton);
@@ -262,7 +281,7 @@ namespace demooop {
 			// 
 			this->registerHelper->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->registerHelper->Location = System::Drawing::Point(176, 339);
+			this->registerHelper->Location = System::Drawing::Point(176, 289);
 			this->registerHelper->Name = L"registerHelper";
 			this->registerHelper->Size = System::Drawing::Size(236, 57);
 			this->registerHelper->TabIndex = 5;
@@ -275,7 +294,7 @@ namespace demooop {
 			this->label3->AutoSize = true;
 			this->label3->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(123, 70);
+			this->label3->Location = System::Drawing::Point(123, 20);
 			this->label3->Name = L"label3";
 			this->label3->Size = System::Drawing::Size(336, 35);
 			this->label3->TabIndex = 4;
@@ -285,7 +304,7 @@ namespace demooop {
 			// 
 			this->appButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->appButton->Location = System::Drawing::Point(176, 520);
+			this->appButton->Location = System::Drawing::Point(176, 484);
 			this->appButton->Name = L"appButton";
 			this->appButton->Size = System::Drawing::Size(236, 57);
 			this->appButton->TabIndex = 3;
@@ -297,7 +316,7 @@ namespace demooop {
 			// 
 			this->locateButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->locateButton->Location = System::Drawing::Point(176, 431);
+			this->locateButton->Location = System::Drawing::Point(176, 385);
 			this->locateButton->Name = L"locateButton";
 			this->locateButton->Size = System::Drawing::Size(236, 57);
 			this->locateButton->TabIndex = 2;
@@ -309,7 +328,7 @@ namespace demooop {
 			// 
 			this->praticeButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->praticeButton->Location = System::Drawing::Point(176, 249);
+			this->praticeButton->Location = System::Drawing::Point(176, 197);
 			this->praticeButton->Name = L"praticeButton";
 			this->praticeButton->Size = System::Drawing::Size(236, 57);
 			this->praticeButton->TabIndex = 1;
@@ -321,7 +340,7 @@ namespace demooop {
 			// 
 			this->theoryButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->theoryButton->Location = System::Drawing::Point(176, 154);
+			this->theoryButton->Location = System::Drawing::Point(176, 102);
 			this->theoryButton->Name = L"theoryButton";
 			this->theoryButton->Size = System::Drawing::Size(236, 57);
 			this->theoryButton->TabIndex = 0;
@@ -331,7 +350,12 @@ namespace demooop {
 			// 
 			// panel2
 			// 
-			this->panel2->BackColor = System::Drawing::Color::White;
+			this->panel2->BackColor = System::Drawing::Color::MediumSeaGreen;
+			this->panel2->Controls->Add(this->pictureBox5);
+			this->panel2->Controls->Add(this->pictureBox4);
+			this->panel2->Controls->Add(this->pictureBox3);
+			this->panel2->Controls->Add(this->pictureBox2);
+			this->panel2->Controls->Add(this->pictureBox1);
 			this->panel2->Controls->Add(this->historyButton);
 			this->panel2->Controls->Add(this->exitButton);
 			this->panel2->Controls->Add(this->questionButton);
@@ -341,6 +365,61 @@ namespace demooop {
 			this->panel2->Name = L"panel2";
 			this->panel2->Size = System::Drawing::Size(303, 670);
 			this->panel2->TabIndex = 2;
+			// 
+			// pictureBox5
+			// 
+			this->pictureBox5->BackColor = System::Drawing::Color::White;
+			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
+			this->pictureBox5->Location = System::Drawing::Point(32, 484);
+			this->pictureBox5->Name = L"pictureBox5";
+			this->pictureBox5->Size = System::Drawing::Size(38, 38);
+			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox5->TabIndex = 9;
+			this->pictureBox5->TabStop = false;
+			// 
+			// pictureBox4
+			// 
+			this->pictureBox4->BackColor = System::Drawing::Color::White;
+			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
+			this->pictureBox4->Location = System::Drawing::Point(32, 373);
+			this->pictureBox4->Name = L"pictureBox4";
+			this->pictureBox4->Size = System::Drawing::Size(38, 38);
+			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox4->TabIndex = 8;
+			this->pictureBox4->TabStop = false;
+			// 
+			// pictureBox3
+			// 
+			this->pictureBox3->BackColor = System::Drawing::Color::White;
+			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
+			this->pictureBox3->Location = System::Drawing::Point(32, 263);
+			this->pictureBox3->Name = L"pictureBox3";
+			this->pictureBox3->Size = System::Drawing::Size(38, 38);
+			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox3->TabIndex = 7;
+			this->pictureBox3->TabStop = false;
+			// 
+			// pictureBox2
+			// 
+			this->pictureBox2->BackColor = System::Drawing::Color::White;
+			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
+			this->pictureBox2->Location = System::Drawing::Point(32, 153);
+			this->pictureBox2->Name = L"pictureBox2";
+			this->pictureBox2->Size = System::Drawing::Size(38, 38);
+			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox2->TabIndex = 6;
+			this->pictureBox2->TabStop = false;
+			// 
+			// pictureBox1
+			// 
+			this->pictureBox1->BackColor = System::Drawing::Color::White;
+			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
+			this->pictureBox1->Location = System::Drawing::Point(32, 41);
+			this->pictureBox1->Name = L"pictureBox1";
+			this->pictureBox1->Size = System::Drawing::Size(38, 38);
+			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox1->TabIndex = 5;
+			this->pictureBox1->TabStop = false;
 			// 
 			// label1
 			// 
@@ -403,6 +482,7 @@ namespace demooop {
 			// 
 			// panelData
 			// 
+			this->panelData->BackColor = System::Drawing::Color::White;
 			this->panelData->Controls->Add(this->label1);
 			this->panelData->Controls->Add(this->buttonA2);
 			this->panelData->Controls->Add(this->buttonB1);
@@ -415,6 +495,7 @@ namespace demooop {
 			// 
 			// panelHistory
 			// 
+			this->panelHistory->BackColor = System::Drawing::Color::White;
 			this->panelHistory->Controls->Add(this->resetHistoryButton);
 			this->panelHistory->Controls->Add(this->historyLabel);
 			this->panelHistory->Controls->Add(this->flowHistoryPanel);
@@ -425,10 +506,11 @@ namespace demooop {
 			// 
 			// resetHistoryButton
 			// 
-			this->resetHistoryButton->BackColor = System::Drawing::SystemColors::Control;
+			this->resetHistoryButton->BackColor = System::Drawing::Color::White;
 			this->resetHistoryButton->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"resetHistoryButton.BackgroundImage")));
 			this->resetHistoryButton->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->resetHistoryButton->Location = System::Drawing::Point(397, 30);
+			this->resetHistoryButton->Cursor = System::Windows::Forms::Cursors::Default;
+			this->resetHistoryButton->Location = System::Drawing::Point(397, 19);
 			this->resetHistoryButton->Name = L"resetHistoryButton";
 			this->resetHistoryButton->Size = System::Drawing::Size(40, 40);
 			this->resetHistoryButton->TabIndex = 2;
@@ -440,7 +522,7 @@ namespace demooop {
 			this->historyLabel->AutoSize = true;
 			this->historyLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->historyLabel->Location = System::Drawing::Point(196, 31);
+			this->historyLabel->Location = System::Drawing::Point(196, 20);
 			this->historyLabel->Name = L"historyLabel";
 			this->historyLabel->Size = System::Drawing::Size(200, 35);
 			this->historyLabel->TabIndex = 1;
@@ -459,6 +541,7 @@ namespace demooop {
 			// 
 			// panelTest
 			// 
+			this->panelTest->BackColor = System::Drawing::Color::White;
 			this->panelTest->Controls->Add(this->buttonStartTest);
 			this->panelTest->Controls->Add(this->labelLimitWrong);
 			this->panelTest->Controls->Add(this->comboBoxLimitWrong);
@@ -478,7 +561,7 @@ namespace demooop {
 			// 
 			this->buttonStartTest->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->buttonStartTest->Location = System::Drawing::Point(202, 452);
+			this->buttonStartTest->Location = System::Drawing::Point(228, 448);
 			this->buttonStartTest->Name = L"buttonStartTest";
 			this->buttonStartTest->Size = System::Drawing::Size(162, 57);
 			this->buttonStartTest->TabIndex = 9;
@@ -491,7 +574,7 @@ namespace demooop {
 			this->labelLimitWrong->AutoSize = true;
 			this->labelLimitWrong->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->labelLimitWrong->Location = System::Drawing::Point(25, 360);
+			this->labelLimitWrong->Location = System::Drawing::Point(109, 360);
 			this->labelLimitWrong->Name = L"labelLimitWrong";
 			this->labelLimitWrong->Size = System::Drawing::Size(182, 22);
 			this->labelLimitWrong->TabIndex = 8;
@@ -507,7 +590,7 @@ namespace demooop {
 				L"0 câu", L"4 câu (chuẩn)", L"10 câu",
 					L"15 câu"
 			});
-			this->comboBoxLimitWrong->Location = System::Drawing::Point(256, 352);
+			this->comboBoxLimitWrong->Location = System::Drawing::Point(340, 352);
 			this->comboBoxLimitWrong->Name = L"comboBoxLimitWrong";
 			this->comboBoxLimitWrong->Size = System::Drawing::Size(156, 30);
 			this->comboBoxLimitWrong->TabIndex = 7;
@@ -517,7 +600,7 @@ namespace demooop {
 			this->labelQuestionAmount->AutoSize = true;
 			this->labelQuestionAmount->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->labelQuestionAmount->Location = System::Drawing::Point(25, 284);
+			this->labelQuestionAmount->Location = System::Drawing::Point(109, 284);
 			this->labelQuestionAmount->Name = L"labelQuestionAmount";
 			this->labelQuestionAmount->Size = System::Drawing::Size(99, 22);
 			this->labelQuestionAmount->TabIndex = 6;
@@ -533,7 +616,7 @@ namespace demooop {
 				L"15 câu", L"25 câu (chuẩn)", L"50 câu",
 					L"Hết"
 			});
-			this->comboBoxQuestionAmount->Location = System::Drawing::Point(256, 276);
+			this->comboBoxQuestionAmount->Location = System::Drawing::Point(340, 276);
 			this->comboBoxQuestionAmount->Name = L"comboBoxQuestionAmount";
 			this->comboBoxQuestionAmount->Size = System::Drawing::Size(156, 30);
 			this->comboBoxQuestionAmount->TabIndex = 5;
@@ -543,7 +626,7 @@ namespace demooop {
 			this->labelCertificate->AutoSize = true;
 			this->labelCertificate->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->labelCertificate->Location = System::Drawing::Point(25, 210);
+			this->labelCertificate->Location = System::Drawing::Point(109, 210);
 			this->labelCertificate->Name = L"labelCertificate";
 			this->labelCertificate->Size = System::Drawing::Size(93, 22);
 			this->labelCertificate->TabIndex = 4;
@@ -556,7 +639,7 @@ namespace demooop {
 				static_cast<System::Byte>(0)));
 			this->comboBoxCertificate->FormattingEnabled = true;
 			this->comboBoxCertificate->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"A1", L"A2", L"B1", L"B2" });
-			this->comboBoxCertificate->Location = System::Drawing::Point(256, 202);
+			this->comboBoxCertificate->Location = System::Drawing::Point(340, 202);
 			this->comboBoxCertificate->Name = L"comboBoxCertificate";
 			this->comboBoxCertificate->Size = System::Drawing::Size(156, 30);
 			this->comboBoxCertificate->TabIndex = 3;
@@ -566,7 +649,7 @@ namespace demooop {
 			this->labelTime->AutoSize = true;
 			this->labelTime->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->labelTime->Location = System::Drawing::Point(25, 137);
+			this->labelTime->Location = System::Drawing::Point(109, 137);
 			this->labelTime->Name = L"labelTime";
 			this->labelTime->Size = System::Drawing::Size(88, 22);
 			this->labelTime->TabIndex = 2;
@@ -582,7 +665,7 @@ namespace demooop {
 				L"20 phút (chuẩn)", L"15 phút", L"10 phút",
 					L"5 phút", L"1 phút"
 			});
-			this->comboBoxTime->Location = System::Drawing::Point(256, 129);
+			this->comboBoxTime->Location = System::Drawing::Point(340, 129);
 			this->comboBoxTime->Name = L"comboBoxTime";
 			this->comboBoxTime->Size = System::Drawing::Size(156, 30);
 			this->comboBoxTime->TabIndex = 1;
@@ -592,7 +675,7 @@ namespace demooop {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(24, 21);
+			this->label2->Location = System::Drawing::Point(140, 20);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(335, 35);
 			this->label2->TabIndex = 0;
@@ -603,12 +686,13 @@ namespace demooop {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->ClientSize = System::Drawing::Size(900, 750);
+			this->Controls->Add(this->panel2);
+			this->Controls->Add(this->panel1);
+			this->Controls->Add(this->panelTest);
 			this->Controls->Add(this->panelHelp);
 			this->Controls->Add(this->panelHistory);
 			this->Controls->Add(this->panelData);
-			this->Controls->Add(this->panelTest);
-			this->Controls->Add(this->panel2);
-			this->Controls->Add(this->panel1);
+			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"MainMenuUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Phần mềm thi bằng lái xe v0.1.1";
@@ -618,6 +702,11 @@ namespace demooop {
 			this->panelHelp->ResumeLayout(false);
 			this->panelHelp->PerformLayout();
 			this->panel2->ResumeLayout(false);
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox5))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox4))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox3))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox2))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox1))->EndInit();
 			this->panelData->ResumeLayout(false);
 			this->panelData->PerformLayout();
 			this->panelHistory->ResumeLayout(false);
@@ -683,7 +772,7 @@ namespace demooop {
 	private: System::Void resetHistoryButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		loadHistory();
 	}
-	private: System::Void containPanelButton_OnClick(System::Object^ sender, System::EventArgs^ e) {
+	private: System::Void containDetailButton_OnClick(System::Object^ sender, System::EventArgs^ e) {
 		System::Windows::Forms::Button^ button = (System::Windows::Forms::Button^)sender;
 		int curHistoryIndex = Convert::ToInt32(button->Tag) - 1;
 		HistoryUI^ historyUI = gcnew HistoryUI(historyStoringList->getAtIndex(curHistoryIndex));
@@ -773,6 +862,7 @@ namespace demooop {
 				int correctAnswer = historyStoringItem->getCorrectAnswer();
 				int totalQuestion = historyStoringItem->getExamSettings()->getQuestionAmount();
 				bool isPass = historyStoringItem->isPass();
+				
 
 				historyStoringList->add(historyStoringItem);
 
@@ -781,15 +871,13 @@ namespace demooop {
 				containPanel->BorderStyle = System::Windows::Forms::BorderStyle::Fixed3D;
 				containPanel->Size = System::Drawing::Size(527, 80);
 
-				System::Windows::Forms::Button^ passState = (gcnew System::Windows::Forms::Button());
-				if (isPass)
-					passState->BackColor = System::Drawing::Color::Green;
-				else
-					passState->BackColor = System::Drawing::Color::Red;
+				System::Windows::Forms::Button^ detailButton = (gcnew System::Windows::Forms::Button());
+				detailButton->BackColor = System::Drawing::Color::White;
+				detailButton->Text = L"...";
 				//passState->BorderStyle = System::Windows::Forms::BorderStyle::FixedSingle;
-				passState->Location = System::Drawing::Point(490, 23);
-				passState->Size = System::Drawing::Size(25, 25);
-				passState->Tag = historyStoringList->getAmount().ToString();
+				detailButton->Location = System::Drawing::Point(490, 23);
+				detailButton->Size = System::Drawing::Size(25, 25);
+				detailButton->Tag = historyStoringList->getAmount().ToString();
 
 				System::Windows::Forms::Label^ dateLabel = (gcnew System::Windows::Forms::Label());
 				dateLabel->Font = (gcnew System::Drawing::Font(L"Arial", 12.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
@@ -801,24 +889,27 @@ namespace demooop {
 				System::Windows::Forms::Label^ usernameLabel = (gcnew System::Windows::Forms::Label());
 				usernameLabel->Font = (gcnew System::Drawing::Font(L"Arial", 12.5F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				usernameLabel->Location = System::Drawing::Point(190, 28);
+				usernameLabel->Location = System::Drawing::Point(180, 28);
 				usernameLabel->Size = System::Drawing::Size(130, 22);
 				usernameLabel->Text = gcnew String(username.data());
 
 				System::Windows::Forms::Label^ ansLabel = (gcnew System::Windows::Forms::Label());
 				ansLabel->Font = (gcnew System::Drawing::Font(L"Arial", 12.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
-				ansLabel->Location = System::Drawing::Point(360, 28);
+				ansLabel->Location = System::Drawing::Point(310, 28);
 				ansLabel->Size = System::Drawing::Size(130, 22);
 				ansLabel->Text = L"Kết quả: " + correctAnswer.ToString() + L'/' + totalQuestion.ToString();
+				if(isPass)
+					ansLabel->ForeColor = System::Drawing::Color::Green;
+				else ansLabel->ForeColor = System::Drawing::Color::Red;
 
 				containPanel->Controls->Add(dateLabel);
 				containPanel->Controls->Add(usernameLabel);
 				containPanel->Controls->Add(ansLabel);
-				containPanel->Controls->Add(passState);
+				containPanel->Controls->Add(detailButton);
 
 				this->flowHistoryPanel->Controls->Add(containPanel);
-				passState->Click += gcnew System::EventHandler(this, &MainMenuUI::containPanelButton_OnClick);
+				detailButton->Click += gcnew System::EventHandler(this, &MainMenuUI::containDetailButton_OnClick);
 			}
 
 			inp.close();
