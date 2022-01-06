@@ -1,17 +1,23 @@
 #include "Timestamp.h"
 
-Date Date::Parse(std::string line) {
+Date* Date::Parse(std::string line) {
 	std::vector<std::string> tokens = Tokenizer::Parse(line, "/");
 
-	if (tokens.size() != 3) return Date(0, 0, 0);
+	if (tokens.size() != 3) return new Date(0, 0, 0);
 
 	int day = stoi(tokens[0]);
 	int mon = stoi(tokens[1]);
 	int year = stoi(tokens[2]);
 
-	Date d(day, mon, year);
+	Date* d = new Date(day, mon, year);
 
 	return d;
+}
+
+Date::Date(const Date& d) {
+	_day = d._day;
+	_mon = d._mon;
+	_year = d._year;
 }
 
 Date::Date() {
@@ -56,6 +62,12 @@ Time::Time() {
 	_second = Sec;
 }
 
+Time::Time(const Time& t) {
+	_hour = t._hour;
+	_minute = t._minute;
+	_second = t._second;
+}
+
 Time::Time(int srcHour, int srcMinute, int srcSecond) {
 	_hour = srcHour;
 	_minute = srcMinute;
@@ -72,42 +84,47 @@ std::string Time::toString() const{
 	return ss.str();
 }
 
-Time Time::Parse(std::string line) {
+Time* Time::Parse(std::string line) {
 	std::vector<std::string> tokens = Tokenizer::Parse(line, ":");
 
-	if (tokens.size() != 3) return Time(0, 0, 0);
+	if (tokens.size() != 3) return new Time(0, 0, 0);
 
 	int hour = stoi(tokens[0]);
 	int minute = stoi(tokens[1]);
 	int second = stoi(tokens[2]);
 
-	Time t(hour, minute, second);
+	Time* t = new Time(hour, minute, second);
 
 	return t;
 }
 
 Timestamp::Timestamp() {
-	Date date = Date();
-	Time time = Time();
+	date = new Date();
+	time = new Time();
 }
 
-Timestamp::Timestamp(Date srcDate, Time srcTime) {
-	date = srcDate;
-	time = srcTime;
+Timestamp::Timestamp(const Timestamp& ts) {
+	date = new Date(*ts.date);
+	time = new Time(*ts.time);
 }
 
-Date Timestamp::getDate() {
+Timestamp::Timestamp(Date* srcDate, Time* srcTime) {
+	date = new Date(*srcDate);
+	time = new Time(*srcTime);
+}
+
+Date* Timestamp::getDate() {
 	return date;
 }
 
-Time Timestamp::getTime() {
+Time* Timestamp::getTime() {
 	return time;
 }
 
 std::string Timestamp::toString() {
-	return date.toString() + " - " + time.toString();
+	return date->toString() + " - " + time->toString();
 }
 
 std::string Timestamp::toStringv2() {
-	return date.toString() + "," + time.toString();
+	return date->toString() + "," + time->toString();
 }

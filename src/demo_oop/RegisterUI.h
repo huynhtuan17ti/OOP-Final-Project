@@ -34,6 +34,10 @@ namespace demooop {
 		/// </summary>
 		~RegisterUI()
 		{
+			if (userAccounts != nullptr) {
+				delete userAccounts;
+				userAccounts = nullptr;
+			}
 			if (components)
 			{
 				delete components;
@@ -311,6 +315,7 @@ namespace demooop {
 			this->Name = L"RegisterUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Đăng kí tài khoản";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &RegisterUI::RegisterUI_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &RegisterUI::RegisterUI_Load);
 			this->panel2->ResumeLayout(false);
 			this->panel2->PerformLayout();
@@ -328,6 +333,9 @@ namespace demooop {
 		prevForm->Show();
 		this->Hide();
 	}
+	private: System::Void RegisterUI_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		Environment::Exit(1);
+	}
 	private: System::Void RegisterUI_Load(System::Object^ sender, System::EventArgs^ e) {
 		genderComboBox->SelectedIndex = 0;
 	}
@@ -338,7 +346,7 @@ namespace demooop {
 		std::string curName = msclr::interop::marshal_as<std::string>(nameText->Text);
 		bool curSex = genderComboBox->SelectedIndex;
 		std::string birthDayStr = msclr::interop::marshal_as<std::string>((this->birthDateTimePicker->Value).ToString("dd/MM/yyyy"));
-		Date curBirth = Date::Parse(birthDayStr);
+		Date* curBirth = Date::Parse(birthDayStr);
 
 		if (curUserName == "" || curPassword == "" || curName == "") {
 			MessageBox::Show(L"Hãy điền hết các chỗ trống!", L"Đăng kí thất bại");

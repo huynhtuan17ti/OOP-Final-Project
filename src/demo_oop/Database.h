@@ -18,7 +18,7 @@ private:
 
 public:
 	QuestionData(const std::wstring);
-	QuestionData(const QuestionData*);
+	QuestionData(const QuestionData&);
 
 public:
 	std::wstring getImagePath() {

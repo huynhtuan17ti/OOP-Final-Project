@@ -43,8 +43,15 @@ namespace demooop {
 		/// </summary>
 		~MainMenuUI()
 		{
-			delete historyStoringList;
-			delete curUser;
+			if (historyStoringList != nullptr) {
+				delete historyStoringList;
+				historyStoringList = nullptr;
+			}
+			if (curUser != nullptr) {
+				delete curUser;
+				curUser = nullptr;
+			}
+
 			if (components)
 			{
 				delete components;
@@ -101,9 +108,6 @@ namespace demooop {
 	private: System::Windows::Forms::PictureBox^ pictureBox5;
 	private: System::Windows::Forms::PictureBox^ pictureBox4;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
-
-
-
 
 	protected:
 
@@ -685,6 +689,8 @@ namespace demooop {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->AutoSize = true;
+			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->ClientSize = System::Drawing::Size(900, 750);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
@@ -695,7 +701,8 @@ namespace demooop {
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"MainMenuUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Phần mềm thi bằng lái xe v0.1.1";
+			this->Text = L"Phần mềm thi bằng lái xe v0.1.2";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MainMenuUI::MainMenuUI_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &MainMenuUI::MainMenuUI_Load);
 			this->panel1->ResumeLayout(false);
 			this->panel1->PerformLayout();
@@ -804,8 +811,12 @@ namespace demooop {
 		appHelperUI->Show();
 	}
 	private: System::Void exitButton_Click(System::Object^ sender, System::EventArgs^ e) {
-		this->Hide();
+		//Application::Run(prevForm);
 		prevForm->Show();
+		this->Hide();
+	}
+	private: System::Void MainMenuUI_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		Environment::Exit(1);
 	}
 	private: System::Void MainMenuUI_Load(System::Object^ sender, System::EventArgs^ e) {
 		comboBoxTime->SelectedIndex = 0;
@@ -858,7 +869,7 @@ namespace demooop {
 				historyStoringItem = new HistoryStoring(line);
 
 				std::string username = historyStoringItem->getUsername();
-				std::string date = historyStoringItem->getTimestamp()->getDate().toString();
+				std::string date = historyStoringItem->getTimestamp()->getDate()->toString();
 				int correctAnswer = historyStoringItem->getCorrectAnswer();
 				int totalQuestion = historyStoringItem->getExamSettings()->getQuestionAmount();
 				bool isPass = historyStoringItem->isPass();

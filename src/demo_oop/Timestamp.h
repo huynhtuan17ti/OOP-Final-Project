@@ -11,12 +11,13 @@ private:
 	int _year;
 public:
 	Date();
+	Date(const Date&);
 	Date(int day, int mon, int year);
 	~Date() {};
 
 public:
 	std::string toString() const;
-	static Date Parse(std::string line);
+	static Date* Parse(std::string line);
 };
 
 class Time {
@@ -27,26 +28,38 @@ private:
 
 public:
 	Time();
+	Time(const Time&);
 	Time(int, int, int);
 	~Time() {};
 
 public:
 	std::string toString() const;
-	static Time Parse(std::string);
+	static Time* Parse(std::string);
 };
 
 class Timestamp {
 private:
-	Date date;
-	Time time;
+	Date* date;
+	Time* time;
 
 public:
 	Timestamp();
-	Timestamp(Date, Time);
+	Timestamp(const Timestamp&);
+	~Timestamp() {
+		if (date != nullptr) {
+			delete date;
+			date = nullptr;
+		}
+		if (time != nullptr) {
+			delete time;
+			time = nullptr;
+		}
+	}
+	Timestamp(Date*, Time*);
 
 public:
-	Time getTime();
-	Date getDate();
+	Time* getTime();
+	Date* getDate();
 
 public:
 	std::string toString(); // for interface

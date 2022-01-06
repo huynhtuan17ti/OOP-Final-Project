@@ -21,6 +21,7 @@ namespace demooop {
 	public:
 		LoginUI(void)
 		{
+			std::cout << "Do initialize!" << '\n';
 			userAccounts = new Users();
 			InitializeComponent();
 			//
@@ -34,7 +35,10 @@ namespace demooop {
 		/// </summary>
 		~LoginUI()
 		{
-			delete userAccounts;
+			if (userAccounts != nullptr) {
+				delete userAccounts;
+				userAccounts = nullptr;
+			}
 			if (components)
 			{
 				delete components;

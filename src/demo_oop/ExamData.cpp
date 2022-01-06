@@ -27,8 +27,8 @@ std::vector <AnswerState*> AnswerState::createAnswerStateList(QuestionData* ques
 }
 
 ExamResult::ExamResult(ExamData* srcExamData, ExamSettings* srcExamSettings){
-	examData = srcExamData;
-	examSettings = srcExamSettings;
+	examData = new ExamData(*srcExamData);
+	examSettings = new ExamSettings(*srcExamSettings);
 };
 
 void ExamResult::addAnswerStateList(std::vector <AnswerState*> srcList) {

@@ -44,10 +44,22 @@ namespace demooop {
 		/// </summary>
 		~TestExamUI()
 		{
-			delete curUser;
-			delete questionData;
-			delete examSettings;
-			delete examResult;
+			if (curUser != nullptr) {
+				delete curUser;
+				curUser = nullptr;
+			}
+			if (questionData != nullptr) {
+				delete questionData;
+				questionData = nullptr;
+			}
+			if (examSettings != nullptr) {
+				delete examSettings;
+				examSettings = nullptr;
+			}
+			if (examResult != nullptr) {
+				delete examResult;
+				examResult = nullptr;
+			}
 			if (components)
 			{
 				delete components;
@@ -451,6 +463,8 @@ namespace demooop {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
+			this->AutoSize = true;
+			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
 			this->BackColor = System::Drawing::Color::White;
 			this->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->ClientSize = System::Drawing::Size(1385, 803);
@@ -467,6 +481,7 @@ namespace demooop {
 			this->Name = L"TestExamUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Thi thử";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &TestExamUI::TestExamUI_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &TestExamUI::TestExamUI_Load);
 			this->panel1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->EndInit();
@@ -520,6 +535,10 @@ namespace demooop {
 		curIndexQuestion = curIndex;
 		updateUI();
 		//TestExamUI_Load(sender, e);
+	}
+
+	private: System::Void TestExamUI_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		Environment::Exit(1);
 	}
 
 	private: System::Void TestExamUI_Load(System::Object^ sender, System::EventArgs^ e) {

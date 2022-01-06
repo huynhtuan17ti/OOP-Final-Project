@@ -37,7 +37,10 @@ namespace demooop {
 		/// </summary>
 		~DatabaseUI()
 		{
-			delete questionData;
+			if (questionData != nullptr) {
+				delete questionData;
+				questionData = nullptr;
+			}
 			if (components)
 			{
 				delete components;
@@ -295,6 +298,7 @@ namespace demooop {
 			this->Name = L"DatabaseUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
 			this->Text = L"Bộ câu hỏi";
+			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &DatabaseUI::DatabaseUI_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &DatabaseUI::DatabaseUI_Load);
 			this->panel1->ResumeLayout(false);
 			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox))->EndInit();
@@ -320,7 +324,9 @@ namespace demooop {
 		}
 		updateUI();
 	}
-	
+	private: System::Void DatabaseUI_FormClosing(System::Object^ sender, System::Windows::Forms::FormClosingEventArgs^ e) {
+		Environment::Exit(1);
+	}
 	private: System::Void DatabaseUI_Load(System::Object^ sender, System::EventArgs^ e) {
 		LoadCertificateLabel();
 		

@@ -12,9 +12,9 @@ private:
 
 public:
 	ExamData(int, int, int);
-	ExamData(const ExamData* examData): QuestionData(examData){
-		examQuestionAmount = examData->examQuestionAmount;
-		maxWrongAnswer = examData->maxWrongAnswer;
+	ExamData(const ExamData& examData): QuestionData(examData){
+		examQuestionAmount = examData.examQuestionAmount;
+		maxWrongAnswer = examData.maxWrongAnswer;
 	}
 	
 public:
@@ -40,11 +40,11 @@ public:
 
 		saveHistory = (countdownSeconds == 1200 && questionAmount == 25 && maxWrongAnswer == 4);
 	}
-	ExamSettings(const ExamSettings* examSettings) {
-		certificateIndex = examSettings->certificateIndex;
-		countdownSeconds = examSettings->countdownSeconds;
-		questionAmount = examSettings->questionAmount;
-		maxWrongAnswer = examSettings->maxWrongAnswer;
+	ExamSettings(const ExamSettings& examSettings) {
+		certificateIndex = examSettings.certificateIndex;
+		countdownSeconds = examSettings.countdownSeconds;
+		questionAmount = examSettings.questionAmount;
+		maxWrongAnswer = examSettings.maxWrongAnswer;
 	}
 	bool isSaveHistory() {
 		return saveHistory;
@@ -115,9 +115,19 @@ private:
 public:
 	ExamResult(ExamData*, ExamSettings*);
 	~ExamResult() {
-		delete examData, examSettings;
+		if (examData != nullptr) {
+			delete examData;
+			examData = nullptr;
+		}
+		if (examSettings != nullptr) {
+			delete examSettings;
+			examSettings = nullptr;
+		}
 		for (auto& x : answerStateList)
-			delete x;
+			if (x != nullptr) {
+				delete x;
+				x = nullptr;
+			}
 	}
 	void addAnswerStateList(std::vector <AnswerState*>);
 

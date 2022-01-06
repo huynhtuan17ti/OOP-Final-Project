@@ -14,8 +14,14 @@ public:
 	HistoryStoring(std::string, ExamSettings*, int, int);
 	HistoryStoring(std::string line);
 	~HistoryStoring() {
-		delete examSettings;
-		delete timestamp;
+		if (examSettings != nullptr) {
+			delete examSettings;
+			examSettings = nullptr;
+		}
+		if (timestamp != nullptr) {
+			delete timestamp;
+			timestamp = nullptr;
+		}
 	}
 
 public:
@@ -51,7 +57,10 @@ public:
 	HistoryStoringList(){}
 	~HistoryStoringList() {
 		for (auto& x : list)
-			delete x;
+			if (x != nullptr) {
+				delete x;
+				x = nullptr;
+			}
 	}
 
 	int getAmount() {

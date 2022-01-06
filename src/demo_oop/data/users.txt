@@ -1,2 +1,2 @@
 admin,admin,Huynh Minh Tuan,25/08/2002,1
-kkura,25082002,Huynh Tuan,04/01/2022,1
+kkura,25082002,Tuan Huynh,06/01/2022,1

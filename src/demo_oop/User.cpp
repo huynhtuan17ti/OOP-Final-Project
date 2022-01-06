@@ -4,7 +4,7 @@ User::User() {
 
 }
 
-User::User(std::string srcUserName, std::string srcPassWord, std::string srcName, Date srcBirth, bool srcSex) {
+User::User(std::string srcUserName, std::string srcPassWord, std::string srcName, Date* srcBirth, bool srcSex) {
 	_userName = srcUserName;
 	_passWord = srcPassWord;
 	_name = srcName;
@@ -25,7 +25,7 @@ bool User::MatchUsername(const std::string& username) {
 bool User::Save(std::ofstream& os) {
 	if (!os) return false;
 
-	os << _userName << ',' << _passWord << ',' << _name << ',' << _birth.toString() << ',' << _sex << std::endl;
+	os << _userName << ',' << _passWord << ',' << _name << ',' << _birth->toString() << ',' << _sex << std::endl;
 	return true;
 }
 
