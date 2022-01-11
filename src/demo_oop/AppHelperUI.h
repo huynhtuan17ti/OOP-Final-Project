@@ -77,9 +77,9 @@ namespace demooop {
 			this->pictureBox->Anchor = static_cast<System::Windows::Forms::AnchorStyles>((((System::Windows::Forms::AnchorStyles::Top | System::Windows::Forms::AnchorStyles::Bottom)
 				| System::Windows::Forms::AnchorStyles::Left)
 				| System::Windows::Forms::AnchorStyles::Right));
-			this->pictureBox->Location = System::Drawing::Point(74, 88);
+			this->pictureBox->Location = System::Drawing::Point(46, 59);
 			this->pictureBox->Name = L"pictureBox";
-			this->pictureBox->Size = System::Drawing::Size(830, 504);
+			this->pictureBox->Size = System::Drawing::Size(739, 446);
 			this->pictureBox->TabIndex = 0;
 			this->pictureBox->TabStop = false;
 			// 
@@ -89,9 +89,9 @@ namespace demooop {
 			this->leftButton->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"leftButton.BackgroundImage")));
 			this->leftButton->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
 			this->leftButton->ForeColor = System::Drawing::Color::White;
-			this->leftButton->Location = System::Drawing::Point(0, 245);
+			this->leftButton->Location = System::Drawing::Point(0, 178);
 			this->leftButton->Name = L"leftButton";
-			this->leftButton->Size = System::Drawing::Size(51, 186);
+			this->leftButton->Size = System::Drawing::Size(40, 155);
 			this->leftButton->TabIndex = 1;
 			this->leftButton->UseVisualStyleBackColor = false;
 			this->leftButton->Click += gcnew System::EventHandler(this, &AppHelperUI::leftButton_Click);
@@ -101,9 +101,9 @@ namespace demooop {
 			this->rightButton->BackColor = System::Drawing::Color::White;
 			this->rightButton->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"rightButton.BackgroundImage")));
 			this->rightButton->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Zoom;
-			this->rightButton->Location = System::Drawing::Point(928, 245);
+			this->rightButton->Location = System::Drawing::Point(792, 178);
 			this->rightButton->Name = L"rightButton";
-			this->rightButton->Size = System::Drawing::Size(51, 186);
+			this->rightButton->Size = System::Drawing::Size(40, 155);
 			this->rightButton->TabIndex = 2;
 			this->rightButton->UseVisualStyleBackColor = false;
 			this->rightButton->Click += gcnew System::EventHandler(this, &AppHelperUI::rightButton_Click);
@@ -116,7 +116,7 @@ namespace demooop {
 				static_cast<System::Byte>(0)));
 			this->backButton->Location = System::Drawing::Point(0, 0);
 			this->backButton->Name = L"backButton";
-			this->backButton->Size = System::Drawing::Size(55, 54);
+			this->backButton->Size = System::Drawing::Size(40, 40);
 			this->backButton->TabIndex = 3;
 			this->backButton->UseVisualStyleBackColor = true;
 			this->backButton->Click += gcnew System::EventHandler(this, &AppHelperUI::backButton_Click);
@@ -124,11 +124,11 @@ namespace demooop {
 			// helperTitle
 			// 
 			this->helperTitle->Dock = System::Windows::Forms::DockStyle::Top;
-			this->helperTitle->Font = (gcnew System::Drawing::Font(L"Sitka Text", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->helperTitle->Font = (gcnew System::Drawing::Font(L"Sitka Text", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->helperTitle->Location = System::Drawing::Point(0, 0);
 			this->helperTitle->Name = L"helperTitle";
-			this->helperTitle->Size = System::Drawing::Size(979, 39);
+			this->helperTitle->Size = System::Drawing::Size(832, 39);
 			this->helperTitle->TabIndex = 4;
 			this->helperTitle->Text = L"Tiêu đề";
 			this->helperTitle->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -137,7 +137,7 @@ namespace demooop {
 			// 
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
-			this->ClientSize = System::Drawing::Size(979, 616);
+			this->ClientSize = System::Drawing::Size(832, 529);
 			this->Controls->Add(this->backButton);
 			this->Controls->Add(this->rightButton);
 			this->Controls->Add(this->leftButton);

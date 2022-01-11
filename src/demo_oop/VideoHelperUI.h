@@ -82,11 +82,11 @@ namespace demooop {
 			// helperTitle
 			// 
 			this->helperTitle->Dock = System::Windows::Forms::DockStyle::Top;
-			this->helperTitle->Font = (gcnew System::Drawing::Font(L"Sitka Text", 20.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->helperTitle->Font = (gcnew System::Drawing::Font(L"Sitka Text", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->helperTitle->Location = System::Drawing::Point(0, 0);
 			this->helperTitle->Name = L"helperTitle";
-			this->helperTitle->Size = System::Drawing::Size(700, 39);
+			this->helperTitle->Size = System::Drawing::Size(551, 39);
 			this->helperTitle->TabIndex = 0;
 			this->helperTitle->Text = L"Tiêu đề";
 			this->helperTitle->TextAlign = System::Drawing::ContentAlignment::MiddleCenter;
@@ -99,7 +99,7 @@ namespace demooop {
 				static_cast<System::Byte>(0)));
 			this->backButton->Location = System::Drawing::Point(-2, -2);
 			this->backButton->Name = L"backButton";
-			this->backButton->Size = System::Drawing::Size(55, 54);
+			this->backButton->Size = System::Drawing::Size(40, 40);
 			this->backButton->TabIndex = 1;
 			this->backButton->UseVisualStyleBackColor = true;
 			this->backButton->Click += gcnew System::EventHandler(this, &VideoHelperUI::backButton_Click);
@@ -109,7 +109,7 @@ namespace demooop {
 			this->AutoScaleDimensions = System::Drawing::SizeF(6, 13);
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->BackColor = System::Drawing::Color::White;
-			this->ClientSize = System::Drawing::Size(700, 700);
+			this->ClientSize = System::Drawing::Size(551, 431);
 			this->Controls->Add(this->backButton);
 			this->Controls->Add(this->helperTitle);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
@@ -136,13 +136,13 @@ namespace demooop {
 		std::wstring text = helperDatabase->getDataName();
 		this->helperTitle->Text = gcnew String(text.data());
 
-		int spaceDist = 55;
+		int spaceDist = 35;
 		std::cout << helperDatabase->getLength() << '\n';
 		for (int i = 0; i < helperDatabase->getLength(); i++) {
 			std::wstring title = helperDatabase->getTitleAtIndex(i);
 			System::Windows::Forms::LinkLabel^ linkLabel = (gcnew System::Windows::Forms::LinkLabel());
 
-			linkLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			linkLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			linkLabel->LinkColor = System::Drawing::Color::Blue;
 			linkLabel->Location = System::Drawing::Point(70, 80 + spaceDist * i);

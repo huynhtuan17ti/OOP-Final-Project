@@ -108,6 +108,7 @@ namespace demooop {
 	private: System::Windows::Forms::PictureBox^ pictureBox5;
 	private: System::Windows::Forms::PictureBox^ pictureBox4;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
+	private: System::Windows::Forms::Button^ button1;
 
 	protected:
 
@@ -168,6 +169,7 @@ namespace demooop {
 			this->labelTime = (gcnew System::Windows::Forms::Label());
 			this->comboBoxTime = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
+			this->button1 = (gcnew System::Windows::Forms::Button());
 			this->panel1->SuspendLayout();
 			this->panelHelp->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -184,11 +186,11 @@ namespace demooop {
 			// questionButton
 			// 
 			this->questionButton->BackColor = System::Drawing::Color::White;
-			this->questionButton->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->questionButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->questionButton->Location = System::Drawing::Point(10, 130);
+			this->questionButton->Location = System::Drawing::Point(10, 109);
 			this->questionButton->Name = L"questionButton";
-			this->questionButton->Size = System::Drawing::Size(280, 85);
+			this->questionButton->Size = System::Drawing::Size(240, 70);
 			this->questionButton->TabIndex = 2;
 			this->questionButton->Text = L"Bộ câu hỏi\n";
 			this->questionButton->UseVisualStyleBackColor = false;
@@ -197,11 +199,11 @@ namespace demooop {
 			// testButton
 			// 
 			this->testButton->BackColor = System::Drawing::Color::White;
-			this->testButton->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->testButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->testButton->Location = System::Drawing::Point(10, 20);
 			this->testButton->Name = L"testButton";
-			this->testButton->Size = System::Drawing::Size(280, 85);
+			this->testButton->Size = System::Drawing::Size(240, 70);
 			this->testButton->TabIndex = 0;
 			this->testButton->Text = L"Thi thử";
 			this->testButton->UseVisualStyleBackColor = false;
@@ -210,11 +212,11 @@ namespace demooop {
 			// helpButton
 			// 
 			this->helpButton->BackColor = System::Drawing::Color::White;
-			this->helpButton->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->helpButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->helpButton->Location = System::Drawing::Point(10, 350);
+			this->helpButton->Location = System::Drawing::Point(10, 289);
 			this->helpButton->Name = L"helpButton";
-			this->helpButton->Size = System::Drawing::Size(280, 85);
+			this->helpButton->Size = System::Drawing::Size(240, 70);
 			this->helpButton->TabIndex = 4;
 			this->helpButton->Text = L"Trợ giúp";
 			this->helpButton->UseVisualStyleBackColor = false;
@@ -223,11 +225,11 @@ namespace demooop {
 			// historyButton
 			// 
 			this->historyButton->BackColor = System::Drawing::Color::White;
-			this->historyButton->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->historyButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->historyButton->Location = System::Drawing::Point(10, 240);
+			this->historyButton->Location = System::Drawing::Point(10, 197);
 			this->historyButton->Name = L"historyButton";
-			this->historyButton->Size = System::Drawing::Size(280, 85);
+			this->historyButton->Size = System::Drawing::Size(240, 70);
 			this->historyButton->TabIndex = 3;
 			this->historyButton->Text = L" Lịch sử";
 			this->historyButton->UseVisualStyleBackColor = false;
@@ -236,11 +238,11 @@ namespace demooop {
 			// exitButton
 			// 
 			this->exitButton->BackColor = System::Drawing::Color::White;
-			this->exitButton->Font = (gcnew System::Drawing::Font(L"Arial", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->exitButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->exitButton->Location = System::Drawing::Point(10, 460);
+			this->exitButton->Location = System::Drawing::Point(10, 375);
 			this->exitButton->Name = L"exitButton";
-			this->exitButton->Size = System::Drawing::Size(280, 85);
+			this->exitButton->Size = System::Drawing::Size(240, 70);
 			this->exitButton->TabIndex = 1;
 			this->exitButton->Text = L"Đăng xuất";
 			this->exitButton->UseVisualStyleBackColor = false;
@@ -252,7 +254,7 @@ namespace demooop {
 			this->panel1->Controls->Add(this->nameShowingLabel);
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
-			this->panel1->Size = System::Drawing::Size(901, 80);
+			this->panel1->Size = System::Drawing::Size(874, 80);
 			this->panel1->TabIndex = 3;
 			// 
 			// nameShowingLabel
@@ -276,18 +278,18 @@ namespace demooop {
 			this->panelHelp->Controls->Add(this->locateButton);
 			this->panelHelp->Controls->Add(this->praticeButton);
 			this->panelHelp->Controls->Add(this->theoryButton);
-			this->panelHelp->Location = System::Drawing::Point(300, 80);
+			this->panelHelp->Location = System::Drawing::Point(270, 80);
 			this->panelHelp->Name = L"panelHelp";
-			this->panelHelp->Size = System::Drawing::Size(604, 673);
+			this->panelHelp->Size = System::Drawing::Size(604, 511);
 			this->panelHelp->TabIndex = 1;
 			// 
 			// registerHelper
 			// 
-			this->registerHelper->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->registerHelper->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->registerHelper->Location = System::Drawing::Point(176, 289);
+			this->registerHelper->Location = System::Drawing::Point(183, 225);
 			this->registerHelper->Name = L"registerHelper";
-			this->registerHelper->Size = System::Drawing::Size(236, 57);
+			this->registerHelper->Size = System::Drawing::Size(213, 57);
 			this->registerHelper->TabIndex = 5;
 			this->registerHelper->Text = L"Đăng kí thi";
 			this->registerHelper->UseVisualStyleBackColor = true;
@@ -296,21 +298,21 @@ namespace demooop {
 			// label3
 			// 
 			this->label3->AutoSize = true;
-			this->label3->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label3->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label3->Location = System::Drawing::Point(123, 20);
+			this->label3->Location = System::Drawing::Point(159, 22);
 			this->label3->Name = L"label3";
-			this->label3->Size = System::Drawing::Size(336, 35);
+			this->label3->Size = System::Drawing::Size(262, 28);
 			this->label3->TabIndex = 4;
 			this->label3->Text = L"Hãy chọn mục cần trợ giúp";
 			// 
 			// appButton
 			// 
-			this->appButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->appButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->appButton->Location = System::Drawing::Point(176, 484);
+			this->appButton->Location = System::Drawing::Point(183, 375);
 			this->appButton->Name = L"appButton";
-			this->appButton->Size = System::Drawing::Size(236, 57);
+			this->appButton->Size = System::Drawing::Size(213, 57);
 			this->appButton->TabIndex = 3;
 			this->appButton->Text = L"Cách sử dụng";
 			this->appButton->UseVisualStyleBackColor = true;
@@ -318,11 +320,11 @@ namespace demooop {
 			// 
 			// locateButton
 			// 
-			this->locateButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->locateButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->locateButton->Location = System::Drawing::Point(176, 385);
+			this->locateButton->Location = System::Drawing::Point(183, 300);
 			this->locateButton->Name = L"locateButton";
-			this->locateButton->Size = System::Drawing::Size(236, 57);
+			this->locateButton->Size = System::Drawing::Size(213, 57);
 			this->locateButton->TabIndex = 2;
 			this->locateButton->Text = L"Địa điểm thi";
 			this->locateButton->UseVisualStyleBackColor = true;
@@ -330,11 +332,11 @@ namespace demooop {
 			// 
 			// praticeButton
 			// 
-			this->praticeButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->praticeButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->praticeButton->Location = System::Drawing::Point(176, 197);
+			this->praticeButton->Location = System::Drawing::Point(183, 150);
 			this->praticeButton->Name = L"praticeButton";
-			this->praticeButton->Size = System::Drawing::Size(236, 57);
+			this->praticeButton->Size = System::Drawing::Size(213, 57);
 			this->praticeButton->TabIndex = 1;
 			this->praticeButton->Text = L"Thi thực hành";
 			this->praticeButton->UseVisualStyleBackColor = true;
@@ -342,11 +344,11 @@ namespace demooop {
 			// 
 			// theoryButton
 			// 
-			this->theoryButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->theoryButton->Font = (gcnew System::Drawing::Font(L"Sitka Text", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->theoryButton->Location = System::Drawing::Point(176, 102);
+			this->theoryButton->Location = System::Drawing::Point(183, 75);
 			this->theoryButton->Name = L"theoryButton";
-			this->theoryButton->Size = System::Drawing::Size(236, 57);
+			this->theoryButton->Size = System::Drawing::Size(213, 57);
 			this->theoryButton->TabIndex = 0;
 			this->theoryButton->Text = L"Thi lý thuyết";
 			this->theoryButton->UseVisualStyleBackColor = true;
@@ -367,14 +369,14 @@ namespace demooop {
 			this->panel2->Controls->Add(this->helpButton);
 			this->panel2->Location = System::Drawing::Point(0, 80);
 			this->panel2->Name = L"panel2";
-			this->panel2->Size = System::Drawing::Size(303, 670);
+			this->panel2->Size = System::Drawing::Size(270, 511);
 			this->panel2->TabIndex = 2;
 			// 
 			// pictureBox5
 			// 
 			this->pictureBox5->BackColor = System::Drawing::Color::White;
 			this->pictureBox5->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox5.Image")));
-			this->pictureBox5->Location = System::Drawing::Point(32, 484);
+			this->pictureBox5->Location = System::Drawing::Point(25, 393);
 			this->pictureBox5->Name = L"pictureBox5";
 			this->pictureBox5->Size = System::Drawing::Size(38, 38);
 			this->pictureBox5->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -385,7 +387,7 @@ namespace demooop {
 			// 
 			this->pictureBox4->BackColor = System::Drawing::Color::White;
 			this->pictureBox4->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox4.Image")));
-			this->pictureBox4->Location = System::Drawing::Point(32, 373);
+			this->pictureBox4->Location = System::Drawing::Point(25, 305);
 			this->pictureBox4->Name = L"pictureBox4";
 			this->pictureBox4->Size = System::Drawing::Size(38, 38);
 			this->pictureBox4->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -396,7 +398,7 @@ namespace demooop {
 			// 
 			this->pictureBox3->BackColor = System::Drawing::Color::White;
 			this->pictureBox3->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox3.Image")));
-			this->pictureBox3->Location = System::Drawing::Point(32, 263);
+			this->pictureBox3->Location = System::Drawing::Point(25, 212);
 			this->pictureBox3->Name = L"pictureBox3";
 			this->pictureBox3->Size = System::Drawing::Size(38, 38);
 			this->pictureBox3->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -407,7 +409,7 @@ namespace demooop {
 			// 
 			this->pictureBox2->BackColor = System::Drawing::Color::White;
 			this->pictureBox2->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox2.Image")));
-			this->pictureBox2->Location = System::Drawing::Point(32, 153);
+			this->pictureBox2->Location = System::Drawing::Point(25, 124);
 			this->pictureBox2->Name = L"pictureBox2";
 			this->pictureBox2->Size = System::Drawing::Size(38, 38);
 			this->pictureBox2->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -418,7 +420,7 @@ namespace demooop {
 			// 
 			this->pictureBox1->BackColor = System::Drawing::Color::White;
 			this->pictureBox1->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox1.Image")));
-			this->pictureBox1->Location = System::Drawing::Point(32, 41);
+			this->pictureBox1->Location = System::Drawing::Point(25, 33);
 			this->pictureBox1->Name = L"pictureBox1";
 			this->pictureBox1->Size = System::Drawing::Size(38, 38);
 			this->pictureBox1->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
@@ -428,19 +430,19 @@ namespace demooop {
 			// label1
 			// 
 			this->label1->AutoSize = true;
-			this->label1->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label1->Font = (gcnew System::Drawing::Font(L"Sitka Text", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(82, 20);
+			this->label1->Location = System::Drawing::Point(103, 20);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(449, 35);
+			this->label1->Size = System::Drawing::Size(393, 30);
 			this->label1->TabIndex = 0;
 			this->label1->Text = L"Hãy chọn loại bằng lái xe tương ứng";
 			// 
 			// buttonA2
 			// 
-			this->buttonA2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->buttonA2->Font = (gcnew System::Drawing::Font(L"Arial", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->buttonA2->Location = System::Drawing::Point(349, 118);
+			this->buttonA2->Location = System::Drawing::Point(349, 109);
 			this->buttonA2->Name = L"buttonA2";
 			this->buttonA2->Size = System::Drawing::Size(142, 70);
 			this->buttonA2->TabIndex = 1;
@@ -450,9 +452,9 @@ namespace demooop {
 			// 
 			// buttonB1
 			// 
-			this->buttonB1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->buttonB1->Font = (gcnew System::Drawing::Font(L"Arial", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->buttonB1->Location = System::Drawing::Point(97, 255);
+			this->buttonB1->Location = System::Drawing::Point(108, 243);
 			this->buttonB1->Name = L"buttonB1";
 			this->buttonB1->Size = System::Drawing::Size(142, 70);
 			this->buttonB1->TabIndex = 2;
@@ -462,9 +464,9 @@ namespace demooop {
 			// 
 			// buttonB2
 			// 
-			this->buttonB2->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->buttonB2->Font = (gcnew System::Drawing::Font(L"Arial", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->buttonB2->Location = System::Drawing::Point(349, 255);
+			this->buttonB2->Location = System::Drawing::Point(349, 243);
 			this->buttonB2->Name = L"buttonB2";
 			this->buttonB2->Size = System::Drawing::Size(142, 70);
 			this->buttonB2->TabIndex = 3;
@@ -474,9 +476,9 @@ namespace demooop {
 			// 
 			// butonA1
 			// 
-			this->butonA1->Font = (gcnew System::Drawing::Font(L"Segoe UI", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->butonA1->Font = (gcnew System::Drawing::Font(L"Arial", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->butonA1->Location = System::Drawing::Point(97, 118);
+			this->butonA1->Location = System::Drawing::Point(108, 109);
 			this->butonA1->Name = L"butonA1";
 			this->butonA1->Size = System::Drawing::Size(142, 70);
 			this->butonA1->TabIndex = 4;
@@ -492,20 +494,21 @@ namespace demooop {
 			this->panelData->Controls->Add(this->buttonB1);
 			this->panelData->Controls->Add(this->buttonB2);
 			this->panelData->Controls->Add(this->butonA1);
-			this->panelData->Location = System::Drawing::Point(300, 80);
+			this->panelData->Location = System::Drawing::Point(270, 80);
 			this->panelData->Name = L"panelData";
-			this->panelData->Size = System::Drawing::Size(604, 673);
+			this->panelData->Size = System::Drawing::Size(604, 511);
 			this->panelData->TabIndex = 0;
 			// 
 			// panelHistory
 			// 
 			this->panelHistory->BackColor = System::Drawing::Color::White;
+			this->panelHistory->Controls->Add(this->button1);
 			this->panelHistory->Controls->Add(this->resetHistoryButton);
 			this->panelHistory->Controls->Add(this->historyLabel);
 			this->panelHistory->Controls->Add(this->flowHistoryPanel);
-			this->panelHistory->Location = System::Drawing::Point(300, 80);
+			this->panelHistory->Location = System::Drawing::Point(270, 80);
 			this->panelHistory->Name = L"panelHistory";
-			this->panelHistory->Size = System::Drawing::Size(604, 673);
+			this->panelHistory->Size = System::Drawing::Size(604, 511);
 			this->panelHistory->TabIndex = 1;
 			// 
 			// resetHistoryButton
@@ -514,7 +517,7 @@ namespace demooop {
 			this->resetHistoryButton->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"resetHistoryButton.BackgroundImage")));
 			this->resetHistoryButton->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
 			this->resetHistoryButton->Cursor = System::Windows::Forms::Cursors::Default;
-			this->resetHistoryButton->Location = System::Drawing::Point(397, 19);
+			this->resetHistoryButton->Location = System::Drawing::Point(374, 15);
 			this->resetHistoryButton->Name = L"resetHistoryButton";
 			this->resetHistoryButton->Size = System::Drawing::Size(40, 40);
 			this->resetHistoryButton->TabIndex = 2;
@@ -524,11 +527,11 @@ namespace demooop {
 			// historyLabel
 			// 
 			this->historyLabel->AutoSize = true;
-			this->historyLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->historyLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->historyLabel->Location = System::Drawing::Point(196, 20);
+			this->historyLabel->Location = System::Drawing::Point(211, 22);
 			this->historyLabel->Name = L"historyLabel";
-			this->historyLabel->Size = System::Drawing::Size(200, 35);
+			this->historyLabel->Size = System::Drawing::Size(157, 28);
 			this->historyLabel->TabIndex = 1;
 			this->historyLabel->Text = L"Lịch sử làm bài";
 			// 
@@ -536,11 +539,11 @@ namespace demooop {
 			// 
 			this->flowHistoryPanel->AutoScroll = true;
 			this->flowHistoryPanel->BackColor = System::Drawing::SystemColors::ControlLightLight;
-			this->flowHistoryPanel->Location = System::Drawing::Point(24, 89);
+			this->flowHistoryPanel->Location = System::Drawing::Point(24, 68);
 			this->flowHistoryPanel->Margin = System::Windows::Forms::Padding(10);
 			this->flowHistoryPanel->Name = L"flowHistoryPanel";
 			this->flowHistoryPanel->Padding = System::Windows::Forms::Padding(10);
-			this->flowHistoryPanel->Size = System::Drawing::Size(556, 561);
+			this->flowHistoryPanel->Size = System::Drawing::Size(556, 406);
 			this->flowHistoryPanel->TabIndex = 0;
 			// 
 			// panelTest
@@ -556,16 +559,16 @@ namespace demooop {
 			this->panelTest->Controls->Add(this->labelTime);
 			this->panelTest->Controls->Add(this->comboBoxTime);
 			this->panelTest->Controls->Add(this->label2);
-			this->panelTest->Location = System::Drawing::Point(300, 80);
+			this->panelTest->Location = System::Drawing::Point(270, 80);
 			this->panelTest->Name = L"panelTest";
-			this->panelTest->Size = System::Drawing::Size(604, 673);
+			this->panelTest->Size = System::Drawing::Size(604, 511);
 			this->panelTest->TabIndex = 5;
 			// 
 			// buttonStartTest
 			// 
 			this->buttonStartTest->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->buttonStartTest->Location = System::Drawing::Point(228, 448);
+			this->buttonStartTest->Location = System::Drawing::Point(216, 375);
 			this->buttonStartTest->Name = L"buttonStartTest";
 			this->buttonStartTest->Size = System::Drawing::Size(162, 57);
 			this->buttonStartTest->TabIndex = 9;
@@ -576,114 +579,125 @@ namespace demooop {
 			// labelLimitWrong
 			// 
 			this->labelLimitWrong->AutoSize = true;
-			this->labelLimitWrong->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->labelLimitWrong->Font = (gcnew System::Drawing::Font(L"Arial", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->labelLimitWrong->Location = System::Drawing::Point(109, 360);
+			this->labelLimitWrong->Location = System::Drawing::Point(104, 316);
 			this->labelLimitWrong->Name = L"labelLimitWrong";
-			this->labelLimitWrong->Size = System::Drawing::Size(182, 22);
+			this->labelLimitWrong->Size = System::Drawing::Size(160, 19);
 			this->labelLimitWrong->TabIndex = 8;
 			this->labelLimitWrong->Text = L"Số câu sai cho phép";
 			// 
 			// comboBoxLimitWrong
 			// 
 			this->comboBoxLimitWrong->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->comboBoxLimitWrong->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->comboBoxLimitWrong->Font = (gcnew System::Drawing::Font(L"Arial", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBoxLimitWrong->FormattingEnabled = true;
 			this->comboBoxLimitWrong->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"0 câu", L"4 câu (chuẩn)", L"10 câu",
 					L"15 câu"
 			});
-			this->comboBoxLimitWrong->Location = System::Drawing::Point(340, 352);
+			this->comboBoxLimitWrong->Location = System::Drawing::Point(335, 308);
 			this->comboBoxLimitWrong->Name = L"comboBoxLimitWrong";
-			this->comboBoxLimitWrong->Size = System::Drawing::Size(156, 30);
+			this->comboBoxLimitWrong->Size = System::Drawing::Size(156, 27);
 			this->comboBoxLimitWrong->TabIndex = 7;
 			// 
 			// labelQuestionAmount
 			// 
 			this->labelQuestionAmount->AutoSize = true;
-			this->labelQuestionAmount->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->labelQuestionAmount->Font = (gcnew System::Drawing::Font(L"Arial", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->labelQuestionAmount->Location = System::Drawing::Point(109, 284);
+			this->labelQuestionAmount->Location = System::Drawing::Point(104, 240);
 			this->labelQuestionAmount->Name = L"labelQuestionAmount";
-			this->labelQuestionAmount->Size = System::Drawing::Size(99, 22);
+			this->labelQuestionAmount->Size = System::Drawing::Size(88, 19);
 			this->labelQuestionAmount->TabIndex = 6;
 			this->labelQuestionAmount->Text = L"Số câu hỏi";
 			// 
 			// comboBoxQuestionAmount
 			// 
 			this->comboBoxQuestionAmount->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->comboBoxQuestionAmount->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->comboBoxQuestionAmount->Font = (gcnew System::Drawing::Font(L"Arial", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBoxQuestionAmount->FormattingEnabled = true;
 			this->comboBoxQuestionAmount->Items->AddRange(gcnew cli::array< System::Object^  >(4) {
 				L"15 câu", L"25 câu (chuẩn)", L"50 câu",
 					L"Hết"
 			});
-			this->comboBoxQuestionAmount->Location = System::Drawing::Point(340, 276);
+			this->comboBoxQuestionAmount->Location = System::Drawing::Point(335, 232);
 			this->comboBoxQuestionAmount->Name = L"comboBoxQuestionAmount";
-			this->comboBoxQuestionAmount->Size = System::Drawing::Size(156, 30);
+			this->comboBoxQuestionAmount->Size = System::Drawing::Size(156, 27);
 			this->comboBoxQuestionAmount->TabIndex = 5;
 			// 
 			// labelCertificate
 			// 
 			this->labelCertificate->AutoSize = true;
-			this->labelCertificate->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->labelCertificate->Font = (gcnew System::Drawing::Font(L"Arial", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->labelCertificate->Location = System::Drawing::Point(109, 210);
+			this->labelCertificate->Location = System::Drawing::Point(104, 166);
 			this->labelCertificate->Name = L"labelCertificate";
-			this->labelCertificate->Size = System::Drawing::Size(93, 22);
+			this->labelCertificate->Size = System::Drawing::Size(81, 19);
 			this->labelCertificate->TabIndex = 4;
 			this->labelCertificate->Text = L"Loại bằng";
 			// 
 			// comboBoxCertificate
 			// 
 			this->comboBoxCertificate->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->comboBoxCertificate->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->comboBoxCertificate->Font = (gcnew System::Drawing::Font(L"Arial", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBoxCertificate->FormattingEnabled = true;
 			this->comboBoxCertificate->Items->AddRange(gcnew cli::array< System::Object^  >(4) { L"A1", L"A2", L"B1", L"B2" });
-			this->comboBoxCertificate->Location = System::Drawing::Point(340, 202);
+			this->comboBoxCertificate->Location = System::Drawing::Point(335, 158);
 			this->comboBoxCertificate->Name = L"comboBoxCertificate";
-			this->comboBoxCertificate->Size = System::Drawing::Size(156, 30);
+			this->comboBoxCertificate->Size = System::Drawing::Size(156, 27);
 			this->comboBoxCertificate->TabIndex = 3;
 			// 
 			// labelTime
 			// 
 			this->labelTime->AutoSize = true;
-			this->labelTime->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->labelTime->Font = (gcnew System::Drawing::Font(L"Arial", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->labelTime->Location = System::Drawing::Point(109, 137);
+			this->labelTime->Location = System::Drawing::Point(104, 93);
 			this->labelTime->Name = L"labelTime";
-			this->labelTime->Size = System::Drawing::Size(88, 22);
+			this->labelTime->Size = System::Drawing::Size(78, 19);
 			this->labelTime->TabIndex = 2;
 			this->labelTime->Text = L"Thời gian";
 			// 
 			// comboBoxTime
 			// 
 			this->comboBoxTime->DropDownStyle = System::Windows::Forms::ComboBoxStyle::DropDownList;
-			this->comboBoxTime->Font = (gcnew System::Drawing::Font(L"Arial", 14.25F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+			this->comboBoxTime->Font = (gcnew System::Drawing::Font(L"Arial", 12.75F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
 			this->comboBoxTime->FormattingEnabled = true;
 			this->comboBoxTime->Items->AddRange(gcnew cli::array< System::Object^  >(5) {
 				L"20 phút (chuẩn)", L"15 phút", L"10 phút",
 					L"5 phút", L"1 phút"
 			});
-			this->comboBoxTime->Location = System::Drawing::Point(340, 129);
+			this->comboBoxTime->Location = System::Drawing::Point(335, 85);
 			this->comboBoxTime->Name = L"comboBoxTime";
-			this->comboBoxTime->Size = System::Drawing::Size(156, 30);
+			this->comboBoxTime->Size = System::Drawing::Size(156, 27);
 			this->comboBoxTime->TabIndex = 1;
 			// 
 			// label2
 			// 
 			this->label2->AutoSize = true;
-			this->label2->Font = (gcnew System::Drawing::Font(L"Sitka Text", 18, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+			this->label2->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(140, 20);
+			this->label2->Location = System::Drawing::Point(159, 22);
 			this->label2->Name = L"label2";
-			this->label2->Size = System::Drawing::Size(335, 35);
+			this->label2->Size = System::Drawing::Size(262, 28);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Cài đặt cho làm bài thi thử";
+			// 
+			// button1
+			// 
+			this->button1->BackColor = System::Drawing::Color::White;
+			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
+			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
+			this->button1->Location = System::Drawing::Point(427, 15);
+			this->button1->Name = L"button1";
+			this->button1->Size = System::Drawing::Size(40, 40);
+			this->button1->TabIndex = 3;
+			this->button1->UseVisualStyleBackColor = false;
 			// 
 			// MainMenuUI
 			// 
@@ -691,13 +705,13 @@ namespace demooop {
 			this->AutoScaleMode = System::Windows::Forms::AutoScaleMode::Font;
 			this->AutoSize = true;
 			this->AutoSizeMode = System::Windows::Forms::AutoSizeMode::GrowAndShrink;
-			this->ClientSize = System::Drawing::Size(900, 750);
+			this->ClientSize = System::Drawing::Size(873, 590);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
-			this->Controls->Add(this->panelTest);
-			this->Controls->Add(this->panelHelp);
 			this->Controls->Add(this->panelHistory);
 			this->Controls->Add(this->panelData);
+			this->Controls->Add(this->panelHelp);
+			this->Controls->Add(this->panelTest);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"MainMenuUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
@@ -891,21 +905,21 @@ namespace demooop {
 				detailButton->Tag = historyStoringList->getAmount().ToString();
 
 				System::Windows::Forms::Label^ dateLabel = (gcnew System::Windows::Forms::Label());
-				dateLabel->Font = (gcnew System::Drawing::Font(L"Arial", 12.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				dateLabel->Font = (gcnew System::Drawing::Font(L"Arial", 11.0F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				dateLabel->Location = System::Drawing::Point(13, 28);
 				dateLabel->Size = System::Drawing::Size(130, 22);
 				dateLabel->Text = gcnew String(date.data());
 
 				System::Windows::Forms::Label^ usernameLabel = (gcnew System::Windows::Forms::Label());
-				usernameLabel->Font = (gcnew System::Drawing::Font(L"Arial", 12.5F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				usernameLabel->Font = (gcnew System::Drawing::Font(L"Arial", 11.0F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				usernameLabel->Location = System::Drawing::Point(180, 28);
 				usernameLabel->Size = System::Drawing::Size(130, 22);
 				usernameLabel->Text = gcnew String(username.data());
 
 				System::Windows::Forms::Label^ ansLabel = (gcnew System::Windows::Forms::Label());
-				ansLabel->Font = (gcnew System::Drawing::Font(L"Arial", 12.5F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
+				ansLabel->Font = (gcnew System::Drawing::Font(L"Arial", 11.0F, System::Drawing::FontStyle::Regular, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 				ansLabel->Location = System::Drawing::Point(310, 28);
 				ansLabel->Size = System::Drawing::Size(130, 22);
