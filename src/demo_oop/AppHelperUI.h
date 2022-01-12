@@ -16,10 +16,11 @@ namespace demooop {
 	public ref class AppHelperUI : public System::Windows::Forms::Form
 	{
 	public:
-		AppHelperUI(System::Windows::Forms::Form^ srcPrevForm)
+		AppHelperUI(System::Windows::Forms::Form^ srcPrevForm, ImageHelper* srcImageHelper)
 		{
 			prevForm = srcPrevForm;
-			helperDatabase = new AppHelper();
+			imageHelper = srcImageHelper;
+			visitor = new GetItemVisitor();
 			curImageIndex = 0;
 			InitializeComponent();
 			//
@@ -33,7 +34,7 @@ namespace demooop {
 		/// </summary>
 		~AppHelperUI()
 		{
-			delete helperDatabase;
+			delete imageHelper, visitor;
 			if (components)
 			{
 				delete components;
@@ -41,7 +42,8 @@ namespace demooop {
 		}
 	private:
 		int curImageIndex;
-		AppHelper* helperDatabase;
+		ImageHelper* imageHelper;
+		HelperVisitor* visitor;
 		System::Windows::Forms::Form^ prevForm;
 	private: System::Windows::Forms::PictureBox^ pictureBox;
 	protected:
@@ -155,18 +157,17 @@ namespace demooop {
 #pragma endregion
 	private: System::Void AppHelperUI_Load(System::Object^ sender, System::EventArgs^ e) {
 		helperTitle->Text = L"Hướng dẫn sử dụng phần mềm";
-		helperDatabase->readData();
 		loadPicture();
 	}
 	private: System::Void leftButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		curImageIndex--;
 		if (curImageIndex == -1)
-			curImageIndex = helperDatabase->getLength() - 1;
+			curImageIndex = imageHelper->getAmount() - 1;
 		loadPicture();
 	}
 	private: System::Void rightButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		curImageIndex++;
-		if (curImageIndex == helperDatabase->getLength())
+		if (curImageIndex == imageHelper->getAmount())
 			curImageIndex = 0;
 		loadPicture();
 	}
@@ -176,7 +177,7 @@ namespace demooop {
 	}
 	private:
 		void loadPicture() {
-			std::wstring imagePath = helperDatabase->getImageAtIndex(curImageIndex);
+			std::wstring imagePath = imageHelper->accept(visitor, curImageIndex)->getImagePath();
 			pictureBox->Image = nullptr;
 			pictureBox->Image = Image::FromFile(gcnew String(imagePath.data()));
 			pictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;

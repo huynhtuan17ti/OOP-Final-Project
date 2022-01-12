@@ -16,21 +16,11 @@ namespace demooop {
 	public ref class VideoHelperUI : public System::Windows::Forms::Form
 	{
 	public:
-		VideoHelperUI(System::Windows::Forms::Form^ srcPrevForm, int helperType)
+		VideoHelperUI(System::Windows::Forms::Form^ srcPrevForm, WebHelper* srcWebHelper)
 		{
 			prevForm = srcPrevForm;
-			if (helperType == 0) {
-				helperDatabase = new TheoryHelper();
-				helperDatabase->setDataName(L"Trợ giúp thi lý thuyết");
-			}
-			if (helperType == 1) {
-				helperDatabase = new PracticeHelper();
-				helperDatabase->setDataName(L"Trợ giúp thi thực hành");
-			}
-			if (helperType == 2) {
-				helperDatabase = new RegisterHelper();
-				helperDatabase->setDataName(L"Trợ giúp đăng kí thi");
-			}
+			webHelper = srcWebHelper;
+			visitor = new GetItemVisitor();
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -43,6 +33,7 @@ namespace demooop {
 		/// </summary>
 		~VideoHelperUI()
 		{
+			delete webHelper, visitor;
 			if (components)
 			{
 				delete components;
@@ -51,7 +42,8 @@ namespace demooop {
 	private:
 		System::Windows::Forms::Form^ prevForm;
 	private:
-		UrlHelperDatabase* helperDatabase;
+		WebHelper* webHelper;
+		HelperVisitor* visitor;
 	private: System::Windows::Forms::Label^ helperTitle;
 	private: System::Windows::Forms::Button^ backButton;
 	protected:
@@ -124,7 +116,7 @@ namespace demooop {
 	private: System::Void ClickLink(System::Object^ sender, System::EventArgs^ e) {
 		System::Windows::Forms::LinkLabel^ label = (System::Windows::Forms::LinkLabel^)sender;
 		int index = Convert::ToInt32(label->Tag);
-		std::wstring url = helperDatabase->getUrlAtIndex(index);
+		std::wstring url = webHelper->accept(visitor, index)->getUrl();
 		System::Diagnostics::Process::Start(gcnew String(url.data()));
 	}
 	private: System::Void backButton_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -132,14 +124,12 @@ namespace demooop {
 		prevForm->Show();
 	}
 	private: System::Void HelperVideoUI_Load(System::Object^ sender, System::EventArgs^ e) {
-		helperDatabase->readData();
-		std::wstring text = helperDatabase->getDataName();
+		std::wstring text = webHelper->getNameHelper();
 		this->helperTitle->Text = gcnew String(text.data());
 
 		int spaceDist = 35;
-		std::cout << helperDatabase->getLength() << '\n';
-		for (int i = 0; i < helperDatabase->getLength(); i++) {
-			std::wstring title = helperDatabase->getTitleAtIndex(i);
+		for (int i = 0; i < webHelper->getAmount(); i++) {
+			std::wstring title = webHelper->accept(visitor, i)->getTitle();
 			System::Windows::Forms::LinkLabel^ linkLabel = (gcnew System::Windows::Forms::LinkLabel());
 
 			linkLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,

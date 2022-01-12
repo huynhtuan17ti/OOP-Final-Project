@@ -16,10 +16,11 @@ namespace demooop {
 	public ref class LocateHelperUI : public System::Windows::Forms::Form
 	{
 	public:
-		LocateHelperUI(System::Windows::Forms::Form^ srcPrevForm)
+		LocateHelperUI(System::Windows::Forms::Form^ srcPrevForm, LocateHelper* srcLocateHelper)
 		{
 			prevForm = srcPrevForm;
-			helperDatabase = new LocateHelper();
+			locateHelper = srcLocateHelper;
+			visitor = new GetItemVisitor();
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -32,14 +33,15 @@ namespace demooop {
 		/// </summary>
 		~LocateHelperUI()
 		{
-			delete helperDatabase;
+			delete locateHelper, visitor;
 			if (components)
 			{
 				delete components;
 			}
 		}
 	private:
-		LocateHelper* helperDatabase;
+		LocateHelper* locateHelper;
+		HelperVisitor* visitor;
 		System::Windows::Forms::Form^ prevForm;
 	private: System::Windows::Forms::Button^ backButton;
 	private: System::Windows::Forms::Label^ helperTitle;
@@ -254,11 +256,10 @@ namespace demooop {
 		}
 #pragma endregion
 	private: System::Void LocateHelperUI_Load(System::Object^ sender, System::EventArgs^ e) {
-		helperDatabase->readData();
 		helperTitle->Text = L"Địa điểm sát hạch bằng lái";
 
-		for (int index = 0; index < helperDatabase->getLength(); index++) {
-			std::wstring curTitle = helperDatabase->getTitleAtIndex(index);
+		for (int index = 0; index < locateHelper->getAmount(); index++) {
+			std::wstring curTitle = locateHelper->accept(visitor, index)->getTitle();
 			comboBox->Items->Add(gcnew String(curTitle.data()));
 		}
 		comboBox->SelectedIndex = 0;
@@ -270,7 +271,7 @@ namespace demooop {
 	}
 	private: System::Void urlLinkLabel_Click(System::Object^ sender, System::EventArgs^ e) {
 		int index = Convert::ToInt32(urlLinkLabel->Tag);
-		std::wstring url = helperDatabase->getUrlAtIndex(index);
+		std::wstring url = locateHelper->accept(visitor, index)->getMap();
 		System::Diagnostics::Process::Start(gcnew String(url.data()));
 	}
 	private: System::Void backButton_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -279,9 +280,9 @@ namespace demooop {
 	}
 	private:
 		void loadUI(int index) {
-			locateLabel->Text = gcnew String(helperDatabase->getLocateAtIndex(index).data());
-			activeTimeLabel->Text = gcnew String(helperDatabase->getActiveTimeAtIndex(index).data());
-			urlLinkLabel->Text = gcnew String(helperDatabase->getUrlAtIndex(index).data());
+			locateLabel->Text = gcnew String(locateHelper->accept(visitor, index)->getAddress().data());
+			activeTimeLabel->Text = gcnew String(locateHelper->accept(visitor, index)->getActiveTime().data());
+			urlLinkLabel->Text = gcnew String(locateHelper->accept(visitor, index)->getMap().data());
 			urlLinkLabel->Tag = index;
 		}
 };

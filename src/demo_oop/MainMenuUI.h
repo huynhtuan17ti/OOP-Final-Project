@@ -801,27 +801,35 @@ namespace demooop {
 	}
 	private: System::Void theoryButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		VideoHelperUI^ videoHelperUI = gcnew VideoHelperUI(this, 0);
+		WebHelper* helper = new WebHelper(L"data/Helper/TheoryHelperDatabase.txt");
+		helper->setNameHelper(L"Trợ giúp lý thuyết");
+		VideoHelperUI^ videoHelperUI = gcnew VideoHelperUI(this, helper);
 		videoHelperUI->Show();
 	}
 	private: System::Void praticeButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		VideoHelperUI^ videoHelperUI = gcnew VideoHelperUI(this, 1);
+		WebHelper* helper = new WebHelper(L"data/Helper/PracticeHelperDatabase.txt");
+		helper->setNameHelper(L"Trợ giúp thực hành");
+		VideoHelperUI^ videoHelperUI = gcnew VideoHelperUI(this, helper);
 		videoHelperUI->Show();
 	}
 	private: System::Void registerHelper_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		VideoHelperUI^ videoHelperUI = gcnew VideoHelperUI(this, 2);
+		WebHelper* helper = new WebHelper(L"data/Helper/RegisterHelperDatabase.txt");
+		helper->setNameHelper(L"Trợ giúp đăng kí thi");
+		VideoHelperUI^ videoHelperUI = gcnew VideoHelperUI(this, helper);
 		videoHelperUI->Show();
 	}
 	private: System::Void locateButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		LocateHelperUI^ locateHelperUI = gcnew LocateHelperUI(this);
+		LocateHelper* helper = new LocateHelper(L"data/Helper/LocateHelperDatabase.txt");
+		LocateHelperUI^ locateHelperUI = gcnew LocateHelperUI(this, helper);
 		locateHelperUI->Show();
 	}
 	private: System::Void appButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		this->Hide();
-		AppHelperUI^ appHelperUI = gcnew AppHelperUI(this);
+		ImageHelper* helper = new ImageHelper(L"data/Helper/AppHelperDatabase.txt");
+		AppHelperUI^ appHelperUI = gcnew AppHelperUI(this, helper);
 		appHelperUI->Show();
 	}
 	private: System::Void exitButton_Click(System::Object^ sender, System::EventArgs^ e) {
