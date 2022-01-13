@@ -16,11 +16,11 @@ namespace demooop {
 	public ref class AppHelperUI : public System::Windows::Forms::Form
 	{
 	public:
-		AppHelperUI(System::Windows::Forms::Form^ srcPrevForm, ImageHelper* srcImageHelper)
+		AppHelperUI(System::Windows::Forms::Form^ srcPrevForm, BaseHelperCreator* creator)
 		{
 			prevForm = srcPrevForm;
-			imageHelper = srcImageHelper;
-			visitor = new GetItemVisitor();
+			itemList = creator->createHelper();
+			tempHelperTitle = gcnew String(creator->getHelperTitle().data());
 			curImageIndex = 0;
 			InitializeComponent();
 			//
@@ -34,7 +34,7 @@ namespace demooop {
 		/// </summary>
 		~AppHelperUI()
 		{
-			delete imageHelper, visitor;
+			delete itemList;
 			if (components)
 			{
 				delete components;
@@ -42,8 +42,8 @@ namespace demooop {
 		}
 	private:
 		int curImageIndex;
-		ImageHelper* imageHelper;
-		HelperVisitor* visitor;
+		String^ tempHelperTitle;
+		BaseList* itemList;
 		System::Windows::Forms::Form^ prevForm;
 	private: System::Windows::Forms::PictureBox^ pictureBox;
 	protected:
@@ -156,18 +156,18 @@ namespace demooop {
 		}
 #pragma endregion
 	private: System::Void AppHelperUI_Load(System::Object^ sender, System::EventArgs^ e) {
-		helperTitle->Text = L"Hướng dẫn sử dụng phần mềm";
+		helperTitle->Text = tempHelperTitle;
 		loadPicture();
 	}
 	private: System::Void leftButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		curImageIndex--;
 		if (curImageIndex == -1)
-			curImageIndex = imageHelper->getAmount() - 1;
+			curImageIndex = itemList->getAmount() - 1;
 		loadPicture();
 	}
 	private: System::Void rightButton_Click(System::Object^ sender, System::EventArgs^ e) {
 		curImageIndex++;
-		if (curImageIndex == imageHelper->getAmount())
+		if (curImageIndex == itemList->getAmount())
 			curImageIndex = 0;
 		loadPicture();
 	}
@@ -177,7 +177,7 @@ namespace demooop {
 	}
 	private:
 		void loadPicture() {
-			std::wstring imagePath = imageHelper->accept(visitor, curImageIndex)->getImagePath();
+			std::wstring imagePath = itemList->getImageItem(curImageIndex)->getImagePath();
 			pictureBox->Image = nullptr;
 			pictureBox->Image = Image::FromFile(gcnew String(imagePath.data()));
 			pictureBox->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;

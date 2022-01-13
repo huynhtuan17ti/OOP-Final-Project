@@ -16,11 +16,11 @@ namespace demooop {
 	public ref class VideoHelperUI : public System::Windows::Forms::Form
 	{
 	public:
-		VideoHelperUI(System::Windows::Forms::Form^ srcPrevForm, WebHelper* srcWebHelper)
+		VideoHelperUI(System::Windows::Forms::Form^ srcPrevForm, BaseHelperCreator* creator)
 		{
 			prevForm = srcPrevForm;
-			webHelper = srcWebHelper;
-			visitor = new GetItemVisitor();
+			itemList = creator->createHelper();
+			tempHelperTitle = gcnew String(creator->getHelperTitle().data());
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -33,7 +33,7 @@ namespace demooop {
 		/// </summary>
 		~VideoHelperUI()
 		{
-			delete webHelper, visitor;
+			delete itemList;
 			if (components)
 			{
 				delete components;
@@ -42,8 +42,8 @@ namespace demooop {
 	private:
 		System::Windows::Forms::Form^ prevForm;
 	private:
-		WebHelper* webHelper;
-		HelperVisitor* visitor;
+		String^ tempHelperTitle;
+		BaseList* itemList;
 	private: System::Windows::Forms::Label^ helperTitle;
 	private: System::Windows::Forms::Button^ backButton;
 	protected:
@@ -116,7 +116,7 @@ namespace demooop {
 	private: System::Void ClickLink(System::Object^ sender, System::EventArgs^ e) {
 		System::Windows::Forms::LinkLabel^ label = (System::Windows::Forms::LinkLabel^)sender;
 		int index = Convert::ToInt32(label->Tag);
-		std::wstring url = webHelper->accept(visitor, index)->getUrl();
+		std::wstring url = itemList->getWebItem(index)->getUrl();
 		System::Diagnostics::Process::Start(gcnew String(url.data()));
 	}
 	private: System::Void backButton_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -124,12 +124,10 @@ namespace demooop {
 		prevForm->Show();
 	}
 	private: System::Void HelperVideoUI_Load(System::Object^ sender, System::EventArgs^ e) {
-		std::wstring text = webHelper->getNameHelper();
-		this->helperTitle->Text = gcnew String(text.data());
-
+		helperTitle->Text = tempHelperTitle;
 		int spaceDist = 35;
-		for (int i = 0; i < webHelper->getAmount(); i++) {
-			std::wstring title = webHelper->accept(visitor, i)->getTitle();
+		for (int i = 0; i < itemList->getAmount(); i++) {
+			std::wstring title = itemList->getWebItem(i)->getTitle();
 			System::Windows::Forms::LinkLabel^ linkLabel = (gcnew System::Windows::Forms::LinkLabel());
 
 			linkLabel->Font = (gcnew System::Drawing::Font(L"Sitka Text", 10, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,

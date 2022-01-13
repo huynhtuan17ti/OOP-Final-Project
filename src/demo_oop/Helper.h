@@ -1,76 +1,71 @@
-#pragma once
-#include "HelperVisitor.h"
+﻿#pragma once
+#include "HelperItem.h"
 
-class ImageHelper: public Helper {
+class BaseHelperCreator {
 private:
-	std::vector <ImageItem*> itemList;
+	std::wstring helperTitle;
 public:
-	ImageHelper(std::wstring path);
-	~ImageHelper() {
-		for (auto& x : itemList) {
-			delete x;
-			x = nullptr;
-		}
+	std::wstring getHelperTitle() {
+		return helperTitle;
 	}
-	int getAmount() {
-		return itemList.size();
+	void setHelperTitle(std::wstring src) {
+		helperTitle = src;
 	}
-	ImageItem* getItemAtIndex(int index) const{
-		return itemList[index];
-	}
-	ImageItem* accept(HelperVisitor* visitor, int index) const {
-		return visitor->getImageItem(this, index);
-	}
+	virtual BaseList* createHelper() const = 0;
+	virtual ~BaseHelperCreator() {}
 };
 
-class LocateHelper: public Helper {
-private:
-	std::vector <LocateItem*> itemList;
+class TheoryHelperCreator : public BaseHelperCreator {
 public:
-	LocateHelper(std::wstring path);
-	~LocateHelper() {
-		for (auto& x : itemList) {
-			delete x;
-			x = nullptr;
-		}
+	TheoryHelperCreator() {
+		setHelperTitle(L"Trợ giúp lý thuyết");
 	}
-	int getAmount() {
-		return itemList.size();
+	BaseList* createHelper() const {
+		return new WebItemList(L"data/Helper/TheoryHelperDatabase.txt");
 	}
-	LocateItem* getItemAtIndex(int index) const {
-		return itemList[index];
-	}
-	LocateItem* accept(HelperVisitor* visitor, int index) const {
-		return visitor->getLocateItem(this, index);
-	}
+	~TheoryHelperCreator(){}
 };
 
-class WebHelper: public Helper {
-private:
-	std::wstring nameHelper;
-	std::vector <WebItem*> itemList;
+class PracticeHelperCreator : public BaseHelperCreator {
 public:
-	WebHelper(std::wstring path);
-	~WebHelper() {
-		for (auto& x : itemList) {
-			delete x;
-			x = nullptr;
-		}
+	PracticeHelperCreator() {
+		setHelperTitle(L"Trợ giúp thực hành");
 	}
-	int getAmount() {
-		return itemList.size();
+	BaseList* createHelper() const {
+		return new WebItemList(L"data/Helper/PracticeHelperDatabase.txt");
 	}
-	WebItem* getItemAtIndex(int index) const {
-		return itemList[index];
-	}
-	WebItem* accept(HelperVisitor* visitor, int index) const {
-		return visitor->getWebItem(this, index);
-	}
+	~PracticeHelperCreator() {}
+};
+
+class RegisterHelperCreator : public BaseHelperCreator {
 public:
-	void setNameHelper(std::wstring src) {
-		nameHelper = src;
+	RegisterHelperCreator() {
+		setHelperTitle(L"Trợ giúp đăng ký thi");
 	}
-	std::wstring getNameHelper() {
-		return nameHelper;
+	BaseList* createHelper() const {
+		return new WebItemList(L"data/Helper/RegisterHelperDatabase.txt");
 	}
+	~RegisterHelperCreator() {}
+};
+
+class LocateHelperCreator : public BaseHelperCreator {
+public:
+	LocateHelperCreator() {
+		setHelperTitle(L"Các địa điểm xác hạnh bằng lái");
+	}
+	BaseList* createHelper() const {
+		return new LocateItemList(L"data/Helper/LocateHelperDatabase.txt");
+	}
+	~LocateHelperCreator() {}
+};
+
+class AppHelperCreator : public BaseHelperCreator {
+public:
+	AppHelperCreator() {
+		setHelperTitle(L"Hướng dẫn sử dụng phần mềm");
+	}
+	BaseList* createHelper() const {
+		return new ImageItemList(L"data/Helper/AppHelperDatabase.txt");
+	}
+	~AppHelperCreator() {}
 };

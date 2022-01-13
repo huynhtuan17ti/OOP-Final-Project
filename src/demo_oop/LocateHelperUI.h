@@ -16,11 +16,11 @@ namespace demooop {
 	public ref class LocateHelperUI : public System::Windows::Forms::Form
 	{
 	public:
-		LocateHelperUI(System::Windows::Forms::Form^ srcPrevForm, LocateHelper* srcLocateHelper)
+		LocateHelperUI(System::Windows::Forms::Form^ srcPrevForm, BaseHelperCreator* creator)
 		{
 			prevForm = srcPrevForm;
-			locateHelper = srcLocateHelper;
-			visitor = new GetItemVisitor();
+			itemList = creator->createHelper();
+			tempHelperTitle = gcnew String(creator->getHelperTitle().data());
 			InitializeComponent();
 			//
 			//TODO: Add the constructor code here
@@ -33,15 +33,15 @@ namespace demooop {
 		/// </summary>
 		~LocateHelperUI()
 		{
-			delete locateHelper, visitor;
+			delete itemList;
 			if (components)
 			{
 				delete components;
 			}
 		}
 	private:
-		LocateHelper* locateHelper;
-		HelperVisitor* visitor;
+		String^ tempHelperTitle;
+		BaseList* itemList;
 		System::Windows::Forms::Form^ prevForm;
 	private: System::Windows::Forms::Button^ backButton;
 	private: System::Windows::Forms::Label^ helperTitle;
@@ -256,10 +256,10 @@ namespace demooop {
 		}
 #pragma endregion
 	private: System::Void LocateHelperUI_Load(System::Object^ sender, System::EventArgs^ e) {
-		helperTitle->Text = L"Địa điểm sát hạch bằng lái";
+		helperTitle->Text = tempHelperTitle;
 
-		for (int index = 0; index < locateHelper->getAmount(); index++) {
-			std::wstring curTitle = locateHelper->accept(visitor, index)->getTitle();
+		for (int index = 0; index < itemList->getAmount(); index++) {
+			std::wstring curTitle = itemList->getLocateItem(index)->getTitle();
 			comboBox->Items->Add(gcnew String(curTitle.data()));
 		}
 		comboBox->SelectedIndex = 0;
@@ -271,7 +271,7 @@ namespace demooop {
 	}
 	private: System::Void urlLinkLabel_Click(System::Object^ sender, System::EventArgs^ e) {
 		int index = Convert::ToInt32(urlLinkLabel->Tag);
-		std::wstring url = locateHelper->accept(visitor, index)->getMap();
+		std::wstring url = itemList->getLocateItem(index)->getMap();
 		System::Diagnostics::Process::Start(gcnew String(url.data()));
 	}
 	private: System::Void backButton_Click(System::Object^ sender, System::EventArgs^ e) {
@@ -280,9 +280,9 @@ namespace demooop {
 	}
 	private:
 		void loadUI(int index) {
-			locateLabel->Text = gcnew String(locateHelper->accept(visitor, index)->getAddress().data());
-			activeTimeLabel->Text = gcnew String(locateHelper->accept(visitor, index)->getActiveTime().data());
-			urlLinkLabel->Text = gcnew String(locateHelper->accept(visitor, index)->getMap().data());
+			locateLabel->Text = gcnew String(itemList->getLocateItem(index)->getAddress().data());
+			activeTimeLabel->Text = gcnew String(itemList->getLocateItem(index)->getActiveTime().data());
+			urlLinkLabel->Text = gcnew String(itemList->getLocateItem(index)->getMap().data());
 			urlLinkLabel->Tag = index;
 		}
 };
