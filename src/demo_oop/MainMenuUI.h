@@ -109,7 +109,10 @@ namespace demooop {
 	private: System::Windows::Forms::PictureBox^ pictureBox5;
 	private: System::Windows::Forms::PictureBox^ pictureBox4;
 	private: System::Windows::Forms::PictureBox^ pictureBox3;
-	private: System::Windows::Forms::Button^ button1;
+	private: System::Windows::Forms::PictureBox^ pictureBox8;
+	private: System::Windows::Forms::PictureBox^ pictureBox7;
+	private: System::Windows::Forms::PictureBox^ pictureBox6;
+
 
 	protected:
 
@@ -170,7 +173,9 @@ namespace demooop {
 			this->labelTime = (gcnew System::Windows::Forms::Label());
 			this->comboBoxTime = (gcnew System::Windows::Forms::ComboBox());
 			this->label2 = (gcnew System::Windows::Forms::Label());
-			this->button1 = (gcnew System::Windows::Forms::Button());
+			this->pictureBox6 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox7 = (gcnew System::Windows::Forms::PictureBox());
+			this->pictureBox8 = (gcnew System::Windows::Forms::PictureBox());
 			this->panel1->SuspendLayout();
 			this->panelHelp->SuspendLayout();
 			this->panel2->SuspendLayout();
@@ -182,6 +187,9 @@ namespace demooop {
 			this->panelData->SuspendLayout();
 			this->panelHistory->SuspendLayout();
 			this->panelTest->SuspendLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->BeginInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->BeginInit();
 			this->SuspendLayout();
 			// 
 			// questionButton
@@ -252,6 +260,9 @@ namespace demooop {
 			// panel1
 			// 
 			this->panel1->BackColor = System::Drawing::Color::MediumSeaGreen;
+			this->panel1->Controls->Add(this->pictureBox8);
+			this->panel1->Controls->Add(this->pictureBox7);
+			this->panel1->Controls->Add(this->pictureBox6);
 			this->panel1->Controls->Add(this->nameShowingLabel);
 			this->panel1->Location = System::Drawing::Point(0, 0);
 			this->panel1->Name = L"panel1";
@@ -433,11 +444,11 @@ namespace demooop {
 			this->label1->AutoSize = true;
 			this->label1->Font = (gcnew System::Drawing::Font(L"Sitka Text", 15.75F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label1->Location = System::Drawing::Point(103, 20);
+			this->label1->Location = System::Drawing::Point(148, 20);
 			this->label1->Name = L"label1";
-			this->label1->Size = System::Drawing::Size(393, 30);
+			this->label1->Size = System::Drawing::Size(326, 30);
 			this->label1->TabIndex = 0;
-			this->label1->Text = L"Hãy chọn loại bằng lái xe tương ứng";
+			this->label1->Text = L"Các bộ câu hỏi thi trắc nghiệm";
 			// 
 			// buttonA2
 			// 
@@ -503,7 +514,6 @@ namespace demooop {
 			// panelHistory
 			// 
 			this->panelHistory->BackColor = System::Drawing::Color::White;
-			this->panelHistory->Controls->Add(this->button1);
 			this->panelHistory->Controls->Add(this->resetHistoryButton);
 			this->panelHistory->Controls->Add(this->historyLabel);
 			this->panelHistory->Controls->Add(this->flowHistoryPanel);
@@ -683,22 +693,41 @@ namespace demooop {
 			this->label2->AutoSize = true;
 			this->label2->Font = (gcnew System::Drawing::Font(L"Sitka Text", 14.25F, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 				static_cast<System::Byte>(0)));
-			this->label2->Location = System::Drawing::Point(159, 22);
+			this->label2->Location = System::Drawing::Point(178, 22);
 			this->label2->Name = L"label2";
 			this->label2->Size = System::Drawing::Size(262, 28);
 			this->label2->TabIndex = 0;
 			this->label2->Text = L"Cài đặt cho làm bài thi thử";
 			// 
-			// button1
+			// pictureBox6
 			// 
-			this->button1->BackColor = System::Drawing::Color::White;
-			this->button1->BackgroundImage = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"button1.BackgroundImage")));
-			this->button1->BackgroundImageLayout = System::Windows::Forms::ImageLayout::Stretch;
-			this->button1->Location = System::Drawing::Point(427, 15);
-			this->button1->Name = L"button1";
-			this->button1->Size = System::Drawing::Size(40, 40);
-			this->button1->TabIndex = 3;
-			this->button1->UseVisualStyleBackColor = false;
+			this->pictureBox6->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox6.Image")));
+			this->pictureBox6->Location = System::Drawing::Point(351, 7);
+			this->pictureBox6->Name = L"pictureBox6";
+			this->pictureBox6->Size = System::Drawing::Size(70, 70);
+			this->pictureBox6->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox6->TabIndex = 1;
+			this->pictureBox6->TabStop = false;
+			// 
+			// pictureBox7
+			// 
+			this->pictureBox7->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox7.Image")));
+			this->pictureBox7->Location = System::Drawing::Point(534, 4);
+			this->pictureBox7->Name = L"pictureBox7";
+			this->pictureBox7->Size = System::Drawing::Size(70, 70);
+			this->pictureBox7->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox7->TabIndex = 2;
+			this->pictureBox7->TabStop = false;
+			// 
+			// pictureBox8
+			// 
+			this->pictureBox8->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox8.Image")));
+			this->pictureBox8->Location = System::Drawing::Point(711, 4);
+			this->pictureBox8->Name = L"pictureBox8";
+			this->pictureBox8->Size = System::Drawing::Size(70, 70);
+			this->pictureBox8->SizeMode = System::Windows::Forms::PictureBoxSizeMode::Zoom;
+			this->pictureBox8->TabIndex = 3;
+			this->pictureBox8->TabStop = false;
 			// 
 			// MainMenuUI
 			// 
@@ -709,14 +738,14 @@ namespace demooop {
 			this->ClientSize = System::Drawing::Size(873, 590);
 			this->Controls->Add(this->panel2);
 			this->Controls->Add(this->panel1);
-			this->Controls->Add(this->panelHistory);
-			this->Controls->Add(this->panelData);
 			this->Controls->Add(this->panelHelp);
 			this->Controls->Add(this->panelTest);
+			this->Controls->Add(this->panelHistory);
+			this->Controls->Add(this->panelData);
 			this->FormBorderStyle = System::Windows::Forms::FormBorderStyle::FixedSingle;
 			this->Name = L"MainMenuUI";
 			this->StartPosition = System::Windows::Forms::FormStartPosition::CenterScreen;
-			this->Text = L"Phần mềm thi bằng lái xe v0.1.2";
+			this->Text = L"Phần mềm thi bằng lái xe v0.2.2";
 			this->FormClosing += gcnew System::Windows::Forms::FormClosingEventHandler(this, &MainMenuUI::MainMenuUI_FormClosing);
 			this->Load += gcnew System::EventHandler(this, &MainMenuUI::MainMenuUI_Load);
 			this->panel1->ResumeLayout(false);
@@ -735,6 +764,9 @@ namespace demooop {
 			this->panelHistory->PerformLayout();
 			this->panelTest->ResumeLayout(false);
 			this->panelTest->PerformLayout();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox6))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox7))->EndInit();
+			(cli::safe_cast<System::ComponentModel::ISupportInitialize^>(this->pictureBox8))->EndInit();
 			this->ResumeLayout(false);
 
 		}

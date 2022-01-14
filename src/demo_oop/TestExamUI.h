@@ -287,7 +287,7 @@ namespace demooop {
 			this->panel3->Controls->Add(this->questionNumberLabel);
 			this->panel3->Location = System::Drawing::Point(303, 29);
 			this->panel3->Name = L"panel3";
-			this->panel3->Size = System::Drawing::Size(113, 50);
+			this->panel3->Size = System::Drawing::Size(135, 50);
 			this->panel3->TabIndex = 8;
 			// 
 			// panel4
@@ -664,7 +664,7 @@ namespace demooop {
 		void loadQuestionStateFlow() {
 			for (int i = 0; i < questionData->getQuestionAmount(); i++) {
 				System::Windows::Forms::Button^ questionStateButton = (gcnew System::Windows::Forms::Button());
-				questionStateButton->Font = (gcnew System::Drawing::Font(L"Arial", 16, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
+				questionStateButton->Font = (gcnew System::Drawing::Font(L"Arial", 12, System::Drawing::FontStyle::Bold, System::Drawing::GraphicsUnit::Point,
 					static_cast<System::Byte>(0)));
 					
 				questionStateButton->Size = System::Drawing::Size(50, 50);
@@ -754,7 +754,8 @@ namespace demooop {
 				this->pictureBox->Image = Image::FromFile(gcnew String(imagePath.data()));
 			}
 			else {
-				this->pictureBox->Image = Image::FromFile(noImagePath);
+				delete this->pictureBox->Image;
+				this->pictureBox->Image = nullptr;
 			}
 		}
 

@@ -45,6 +45,8 @@ public:
 		countdownSeconds = examSettings.countdownSeconds;
 		questionAmount = examSettings.questionAmount;
 		maxWrongAnswer = examSettings.maxWrongAnswer;
+
+		saveHistory = (countdownSeconds == 1200 && questionAmount == 25 && maxWrongAnswer == 4);
 	}
 	bool isSaveHistory() {
 		return saveHistory;

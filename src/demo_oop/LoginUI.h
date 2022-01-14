@@ -21,7 +21,6 @@ namespace demooop {
 	public:
 		LoginUI(void)
 		{
-			std::cout << "Do initialize!" << '\n';
 			userAccounts = new Users();
 			InitializeComponent();
 			//

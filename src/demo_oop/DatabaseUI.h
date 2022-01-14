@@ -219,7 +219,6 @@ namespace demooop {
 			// pictureBox
 			// 
 			this->pictureBox->BackgroundImageLayout = System::Windows::Forms::ImageLayout::None;
-			this->pictureBox->Image = (cli::safe_cast<System::Drawing::Image^>(resources->GetObject(L"pictureBox.Image")));
 			this->pictureBox->Location = System::Drawing::Point(486, 66);
 			this->pictureBox->Name = L"pictureBox";
 			this->pictureBox->Size = System::Drawing::Size(337, 239);
@@ -417,13 +416,13 @@ namespace demooop {
 			}
 
 			std::wstring questionPathImage = q.getImagePath();
-			//std::wcerr << questionPathImage << '\n';
 			if (questionPathImage != L"None") {
 				std::wstring imagePath = questionData->getImagePath() + questionPathImage;
 				pictureBox->Image = Image::FromFile(gcnew String(imagePath.data()));
 			}
 			else {
-				pictureBox->Image = Image::FromFile(noImagePath);
+				delete this->pictureBox->Image;
+				this->pictureBox->Image = nullptr;
 			}
 		}
 };
